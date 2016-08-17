@@ -1,0 +1,3 @@
+[submodule "ObjCCommandLine"]
+	path = ObjCCommandLine
+	url = git@github.com:dijkst/ObjCCommandLine.git

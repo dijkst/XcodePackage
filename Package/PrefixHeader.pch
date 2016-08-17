@@ -1,0 +1,15 @@
+//
+//  PrefixHeader.pch
+//  Package
+//
+//  Created by Whirlwind on 16/3/15.
+//  Copyright © 2016年 taobao. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define PathIsWorkspace(path) [[path pathExtension] isEqualToString:@"xcworkspace"]
+#define PathIsProject(path) [[path pathExtension] isEqualToString:@"xcodeproj"]
+
+#endif /* PrefixHeader_pch */

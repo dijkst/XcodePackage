@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MYPackageSelectTaskViewController">
+            <connections>
+                <outlet property="buildCheck" destination="ECk-d4-FjL" id="JMX-mD-rCD"/>
+                <outlet property="configrationSelector" destination="Sua-t5-0RH" id="iqa-3E-9MH"/>
+                <outlet property="packageCheck" destination="9IE-J0-RiZ" id="Ss8-mm-TTp"/>
+                <outlet property="podNameTextField" destination="3EY-AC-dn8" id="iv6-Ha-7vX"/>
+                <outlet property="rightButton" destination="6KG-mi-Jrz" id="RDD-5x-7at"/>
+                <outlet property="snapshotCheck" destination="EWa-3c-5Hp" id="jzQ-Wl-a5g"/>
+                <outlet property="uploadCheck" destination="BSZ-UJ-h3g" id="XHr-wk-pcG"/>
+                <outlet property="versionTextField" destination="iWk-2l-zBm" id="oEn-xC-59k"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="724" height="318"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="smh-la-8Rt" customClass="MYPackageTitleLabel">
+                    <rect key="frame" x="18" y="256" width="326" height="42"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="请选择需要的任务" id="W5Z-ee-CDY">
+                        <font key="font" metaFont="systemBold" size="35"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Jbg-Bn-qnQ">
+                    <rect key="frame" x="362" y="225" width="342" height="73"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="olH-Qz-hfz">
+                            <rect key="frame" x="-2" y="22" width="56" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="版本号：" id="VPe-fU-R5r">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iWk-2l-zBm">
+                            <rect key="frame" x="64" y="19" width="278" height="22"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="Cft-Z8-9pK">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </textFieldCell>
+                            <connections>
+                                <outlet property="nextKeyView" destination="EWa-3c-5Hp" id="2hg-Fj-FcN"/>
+                            </connections>
+                        </textField>
+                        <button horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="EWa-3c-5Hp">
+                            <rect key="frame" x="62" y="-2" width="93" height="18"/>
+                            <buttonCell key="cell" type="check" title="SNAPSHOT" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="R4Q-U5-wYI">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="toggleSNAPSHOT:" target="-2" id="7TW-Pm-caj"/>
+                                <outlet property="nextKeyView" destination="Sua-t5-0RH" id="Stl-Hv-ok0"/>
+                            </connections>
+                        </button>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="voj-CS-EoX">
+                            <rect key="frame" x="-2" y="54" width="58" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pod 名：" id="u1b-LF-MTs">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3EY-AC-dn8">
+                            <rect key="frame" x="64" y="51" width="278" height="22"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="G4o-BA-N8k">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </textFieldCell>
+                            <connections>
+                                <outlet property="delegate" destination="-2" id="yMg-fS-nRH"/>
+                                <outlet property="nextKeyView" destination="EWa-3c-5Hp" id="QCu-92-a9M"/>
+                            </connections>
+                        </textField>
+                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sua-t5-0RH">
+                            <rect key="frame" x="159" y="-6" width="186" height="26"/>
+                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="W5c-d4-y7U">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="Hgd-Ze-TXh"/>
+                            </popUpButtonCell>
+                            <connections>
+                                <outlet property="nextKeyView" destination="ECk-d4-FjL" id="hpU-Zc-Y2H"/>
+                            </connections>
+                        </popUpButton>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="3EY-AC-dn8" secondAttribute="trailing" id="0Qa-xe-HlO"/>
+                        <constraint firstAttribute="trailing" secondItem="iWk-2l-zBm" secondAttribute="trailing" id="DET-7f-R1c"/>
+                        <constraint firstItem="3EY-AC-dn8" firstAttribute="top" secondItem="Jbg-Bn-qnQ" secondAttribute="top" id="IZu-ZF-v4L"/>
+                        <constraint firstItem="Sua-t5-0RH" firstAttribute="centerY" secondItem="EWa-3c-5Hp" secondAttribute="centerY" id="OKa-Ai-VJW"/>
+                        <constraint firstAttribute="bottom" secondItem="EWa-3c-5Hp" secondAttribute="bottom" id="OgX-yf-7eF"/>
+                        <constraint firstItem="3EY-AC-dn8" firstAttribute="centerY" secondItem="voj-CS-EoX" secondAttribute="centerY" id="TsN-Xv-12Y"/>
+                        <constraint firstItem="olH-Qz-hfz" firstAttribute="leading" secondItem="Jbg-Bn-qnQ" secondAttribute="leading" id="Vli-sm-2mT"/>
+                        <constraint firstItem="Sua-t5-0RH" firstAttribute="leading" secondItem="EWa-3c-5Hp" secondAttribute="trailing" constant="8" id="YY5-qe-5z1"/>
+                        <constraint firstItem="Sua-t5-0RH" firstAttribute="trailing" secondItem="iWk-2l-zBm" secondAttribute="trailing" id="awh-Ln-yOc"/>
+                        <constraint firstItem="iWk-2l-zBm" firstAttribute="top" secondItem="3EY-AC-dn8" secondAttribute="bottom" constant="10" id="dNN-OI-Yrs"/>
+                        <constraint firstItem="voj-CS-EoX" firstAttribute="leading" secondItem="Jbg-Bn-qnQ" secondAttribute="leading" id="efJ-lt-9lC"/>
+                        <constraint firstItem="3EY-AC-dn8" firstAttribute="leading" secondItem="voj-CS-EoX" secondAttribute="trailing" constant="10" id="fLS-bi-nRR"/>
+                        <constraint firstItem="iWk-2l-zBm" firstAttribute="centerY" secondItem="olH-Qz-hfz" secondAttribute="centerY" id="g1W-JE-9Kx"/>
+                        <constraint firstItem="iWk-2l-zBm" firstAttribute="leading" secondItem="3EY-AC-dn8" secondAttribute="leading" id="kiv-jD-NZS"/>
+                        <constraint firstItem="EWa-3c-5Hp" firstAttribute="leading" secondItem="iWk-2l-zBm" secondAttribute="leading" id="prC-mC-AFQ"/>
+                        <constraint firstItem="EWa-3c-5Hp" firstAttribute="top" secondItem="iWk-2l-zBm" secondAttribute="bottom" constant="5" id="uba-0q-awe"/>
+                    </constraints>
+                </customView>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="boq-nA-QjK" customClass="MYPackageDetailLabel">
+                    <rect key="frame" x="23" y="108" width="316" height="102"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="CQx-OQ-1Gp">
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                        <string key="title">勾选需要执行的任务，点击“开始”。
+
+如果已经编译出通用二进制和 Spec，可以直接勾选“上传发布”。
+
+更改版本号必须重新执行“生成 Spec”任务！！</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="autoWidth" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <customView verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="aKc-6T-Bmx">
+                    <rect key="frame" x="362" y="35" width="342" height="180"/>
+                    <subviews>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="ECk-d4-FjL">
+                            <rect key="frame" x="0.0" y="120" width="342" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="4IV-lw-eFG"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" title="编译通用二进制" bezelStyle="regularSquare" image="cb_mono_off" imagePosition="left" alternateImage="cb_mono_on" state="on" inset="2" id="YdG-OB-WyG">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system" size="29"/>
+                            </buttonCell>
+                            <connections>
+                                <outlet property="nextKeyView" destination="9IE-J0-RiZ" id="BTS-Wz-Xqo"/>
+                            </connections>
+                        </button>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="9IE-J0-RiZ">
+                            <rect key="frame" x="0.0" y="60" width="342" height="60"/>
+                            <buttonCell key="cell" type="bevel" title="生成 Spec" bezelStyle="regularSquare" image="cb_mono_off" imagePosition="left" alternateImage="cb_mono_on" state="on" inset="2" id="CUZ-A3-R4E">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" size="29" name=".PingFangSC-Regular"/>
+                            </buttonCell>
+                            <connections>
+                                <outlet property="nextKeyView" destination="BSZ-UJ-h3g" id="agN-yz-aGj"/>
+                            </connections>
+                        </button>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="BSZ-UJ-h3g">
+                            <rect key="frame" x="0.0" y="0.0" width="342" height="60"/>
+                            <buttonCell key="cell" type="bevel" title="发布版本" bezelStyle="regularSquare" image="cb_mono_off" imagePosition="left" alternateImage="cb_mono_on" state="on" inset="2" id="aOM-LD-lK2">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" size="29" name=".PingFangSC-Regular"/>
+                            </buttonCell>
+                            <connections>
+                                <outlet property="nextKeyView" destination="6KG-mi-Jrz" id="BQP-FR-gGK"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="BSZ-UJ-h3g" secondAttribute="bottom" id="7G2-n4-6Od"/>
+                        <constraint firstAttribute="trailing" secondItem="BSZ-UJ-h3g" secondAttribute="trailing" id="Gil-p8-mvP"/>
+                        <constraint firstItem="9IE-J0-RiZ" firstAttribute="centerY" secondItem="aKc-6T-Bmx" secondAttribute="centerY" id="JdG-59-1Ia"/>
+                        <constraint firstAttribute="trailing" secondItem="ECk-d4-FjL" secondAttribute="trailing" id="WM1-YA-NaD"/>
+                        <constraint firstItem="ECk-d4-FjL" firstAttribute="leading" secondItem="aKc-6T-Bmx" secondAttribute="leading" id="bL8-8v-u9w"/>
+                        <constraint firstItem="BSZ-UJ-h3g" firstAttribute="leading" secondItem="aKc-6T-Bmx" secondAttribute="leading" id="cM3-6Q-kSd"/>
+                        <constraint firstItem="9IE-J0-RiZ" firstAttribute="leading" secondItem="ECk-d4-FjL" secondAttribute="leading" id="d7j-4d-Un1"/>
+                        <constraint firstItem="ECk-d4-FjL" firstAttribute="top" secondItem="aKc-6T-Bmx" secondAttribute="top" id="fcs-T9-jnr"/>
+                        <constraint firstItem="9IE-J0-RiZ" firstAttribute="height" secondItem="ECk-d4-FjL" secondAttribute="height" id="kh1-v4-GdN"/>
+                        <constraint firstItem="BSZ-UJ-h3g" firstAttribute="height" secondItem="9IE-J0-RiZ" secondAttribute="height" id="qeW-u1-ep7"/>
+                        <constraint firstAttribute="height" constant="180" id="wgY-Ue-b3N"/>
+                        <constraint firstItem="9IE-J0-RiZ" firstAttribute="trailing" secondItem="ECk-d4-FjL" secondAttribute="trailing" id="wp2-42-Ahi"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Jbg-Bn-qnQ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="1Dq-nb-vmF"/>
+                <constraint firstItem="Jbg-Bn-qnQ" firstAttribute="top" secondItem="smh-la-8Rt" secondAttribute="top" id="7lk-Jj-c5f"/>
+                <constraint firstItem="Jbg-Bn-qnQ" firstAttribute="leading" secondItem="smh-la-8Rt" secondAttribute="trailing" constant="20" id="9JV-LB-XQE"/>
+                <constraint firstItem="aKc-6T-Bmx" firstAttribute="leading" secondItem="Jbg-Bn-qnQ" secondAttribute="leading" id="IOI-ai-tce"/>
+                <constraint firstAttribute="trailing" secondItem="Jbg-Bn-qnQ" secondAttribute="trailing" constant="20" id="NcZ-bg-rI5"/>
+                <constraint firstItem="aKc-6T-Bmx" firstAttribute="trailing" secondItem="Jbg-Bn-qnQ" secondAttribute="trailing" id="QQ4-IE-BRF"/>
+                <constraint firstItem="boq-nA-QjK" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="Qpf-bi-1jx"/>
+                <constraint firstItem="smh-la-8Rt" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="VlZ-od-7S1"/>
+                <constraint firstItem="aKc-6T-Bmx" firstAttribute="top" secondItem="Jbg-Bn-qnQ" secondAttribute="bottom" constant="10" id="bYM-oN-UZw"/>
+                <constraint firstItem="boq-nA-QjK" firstAttribute="trailing" secondItem="smh-la-8Rt" secondAttribute="trailing" constant="-5" id="cZC-C5-IQp"/>
+                <constraint firstItem="smh-la-8Rt" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="rju-jV-mr5"/>
+                <constraint firstItem="boq-nA-QjK" firstAttribute="leading" secondItem="smh-la-8Rt" secondAttribute="leading" constant="5" id="xdm-7b-Rqm"/>
+            </constraints>
+            <point key="canvasLocation" x="-1499" y="362"/>
+        </customView>
+        <button verticalHuggingPriority="750" id="6KG-mi-Jrz">
+            <rect key="frame" x="0.0" y="0.0" width="159" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <buttonCell key="cell" type="smallSquare" title="开始" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4qc-aP-U7Q">
+                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                <font key="font" metaFont="system"/>
+            </buttonCell>
+            <connections>
+                <action selector="startAction:" target="-2" id="VmG-WX-Y3i"/>
+                <outlet property="nextKeyView" destination="iWk-2l-zBm" id="94M-kc-apj"/>
+            </connections>
+            <point key="canvasLocation" x="-806.5" y="639"/>
+        </button>
+    </objects>
+    <resources>
+        <image name="cb_mono_off" width="22" height="21"/>
+        <image name="cb_mono_on" width="22" height="21"/>
+    </resources>
+</document>

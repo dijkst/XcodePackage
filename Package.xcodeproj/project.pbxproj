@@ -1,0 +1,980 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 47;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB15DDFE1C1962D300DD1743 /* ObjCCommandLine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB15DDFD1C1962CB00DD1743 /* ObjCCommandLine.framework */; };
+		AB15DDFF1C1962D300DD1743 /* ObjCCommandLine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB15DDFD1C1962CB00DD1743 /* ObjCCommandLine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB20308A1C96A30C00F07A5E /* lipo.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB2030891C96A30C00F07A5E /* lipo.sh */; };
+		AB20308D1C96A6B200F07A5E /* MYPackageLipoTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20308C1C96A6B200F07A5E /* MYPackageLipoTask.m */; };
+		AB2030981C9800FA00F07A5E /* MYPackageWorkspace.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2030971C9800FA00F07A5E /* MYPackageWorkspace.m */; };
+		AB20309B1C9835A200F07A5E /* MYPackageAnalyzeTargetTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20309A1C9835A200F07A5E /* MYPackageAnalyzeTargetTask.m */; };
+		AB36C96C1BD8E680004941A4 /* MYPackageCommandLine.m in Sources */ = {isa = PBXBuildFile; fileRef = AB36C96B1BD8E680004941A4 /* MYPackageCommandLine.m */; };
+		AB36C96F1BD8E878004941A4 /* MYPackageTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB36C96E1BD8E878004941A4 /* MYPackageTaskManager.m */; };
+		AB3797061CAB689E0033287C /* MYPackageInitTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3797051CAB689E0033287C /* MYPackageInitTask.m */; };
+		AB3797081CAB83380033287C /* GetPrimaryMACAddress.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB3797071CAB83380033287C /* GetPrimaryMACAddress.mm */; };
+		AB38617E1C06B170001A40AC /* MYPackageSelectProjectTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = AB38617D1C06B16F001A40AC /* MYPackageSelectProjectTableViewHeader.m */; };
+		AB3861801C06B17F001A40AC /* MYPackageSelectProjectTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB38617F1C06B17F001A40AC /* MYPackageSelectProjectTableViewHeader.xib */; };
+		AB3861821C06E965001A40AC /* MYPackageSelectProjectTableViewRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3861811C06E965001A40AC /* MYPackageSelectProjectTableViewRow.xib */; };
+		AB3861851C06E975001A40AC /* MYPackageSelectProjectTableViewRow.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3861841C06E975001A40AC /* MYPackageSelectProjectTableViewRow.m */; };
+		AB38618B1C072796001A40AC /* MYPackageTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB38618A1C072796001A40AC /* MYPackageTitleLabel.m */; };
+		AB3861911C07FB87001A40AC /* MYPackageDetailLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3861901C07FB87001A40AC /* MYPackageDetailLabel.m */; };
+		AB488EEB1C16D5BF006156D9 /* MYPackageCheckGitTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB488EEA1C16D5BF006156D9 /* MYPackageCheckGitTask.m */; };
+		AB69AC061CD892F500A9E49C /* RubyEnv in Resources */ = {isa = PBXBuildFile; fileRef = AB69AC051CD892F500A9E49C /* RubyEnv */; };
+		AB69AC081CD8B0A500A9E49C /* setup_ruby_env.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB69AC071CD8A86C00A9E49C /* setup_ruby_env.sh */; };
+		AB69AC0A1CD99BBA00A9E49C /* setup_gem_env.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB69AC091CD8FF5A00A9E49C /* setup_gem_env.sh */; };
+		AB7A67BF1C60600E002CDBD0 /* build.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AB7A67BE1C60600E002CDBD0 /* build.xcconfig */; };
+		AB7CA6411C23030900D5B960 /* MYPackageListSchemeTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CA6401C23030900D5B960 /* MYPackageListSchemeTask.m */; };
+		AB84755E1CC4CBE600C6FAE8 /* MYPackageCheckEnvironmentTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB84755D1CC4CBE600C6FAE8 /* MYPackageCheckEnvironmentTask.m */; };
+		AB8475641CC4E03800C6FAE8 /* GetIPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8475631CC4E03800C6FAE8 /* GetIPAddress.m */; };
+		ABA2C5CC1BD739F60069EC5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5CB1BD739F60069EC5C /* AppDelegate.m */; };
+		ABA2C5CF1BD739F60069EC5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5CE1BD739F60069EC5C /* main.m */; };
+		ABA2C5D11BD739F60069EC5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABA2C5D01BD739F60069EC5C /* Assets.xcassets */; };
+		ABA2C5D41BD739F60069EC5C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA2C5D21BD739F60069EC5C /* MainMenu.xib */; };
+		ABA2C6221BD740290069EC5C /* MYPackageFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5E41BD740290069EC5C /* MYPackageFileLogger.m */; };
+		ABA2C6231BD740290069EC5C /* MYPackageLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5E61BD740290069EC5C /* MYPackageLogger.m */; };
+		ABA2C6241BD740290069EC5C /* MYPackageMultiLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5E81BD740290069EC5C /* MYPackageMultiLogger.m */; };
+		ABA2C6251BD740290069EC5C /* MYPackageTextViewLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5EA1BD740290069EC5C /* MYPackageTextViewLogger.m */; };
+		ABA2C6271BD740290069EC5C /* MYPackageWorkspaceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5EE1BD740290069EC5C /* MYPackageWorkspaceParser.m */; };
+		ABA2C6291BD740290069EC5C /* SafeThread.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5F21BD740290069EC5C /* SafeThread.m */; };
+		ABA2C62A1BD740290069EC5C /* MYPackageConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5F51BD740290069EC5C /* MYPackageConfig.m */; };
+		ABA2C62B1BD740290069EC5C /* MYPackageProject.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5F71BD740290069EC5C /* MYPackageProject.m */; };
+		ABA2C62C1BD740290069EC5C /* MYPackageTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5F91BD740290069EC5C /* MYPackageTarget.m */; };
+		ABA2C62D1BD740290069EC5C /* MYPackageCleanFinalProductTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5FD1BD740290069EC5C /* MYPackageCleanFinalProductTask.m */; };
+		ABA2C62E1BD740290069EC5C /* MYPackageCleanIntermediateProductTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5FF1BD740290069EC5C /* MYPackageCleanIntermediateProductTask.m */; };
+		ABA2C62F1BD740290069EC5C /* MYPackageBaseTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C6011BD740290069EC5C /* MYPackageBaseTask.m */; };
+		ABA2C6301BD740290069EC5C /* MYPackageShellTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C6031BD740290069EC5C /* MYPackageShellTask.m */; };
+		ABA2C6411BD742710069EC5C /* NSView+Enable.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C55D1BD659060069EC5C /* NSView+Enable.m */; };
+		ABAEB8F71C0856370044A3F0 /* MYPackageTableRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB8F61C0856370044A3F0 /* MYPackageTableRowView.m */; };
+		ABAEB8FA1C08595C0044A3F0 /* MYPackageSelectSchemeTableViewRow.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB8F91C08595C0044A3F0 /* MYPackageSelectSchemeTableViewRow.m */; };
+		ABAEB8FC1C085ADA0044A3F0 /* MYPackageSelectSchemeTableViewRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAEB8FB1C085ADA0044A3F0 /* MYPackageSelectSchemeTableViewRow.xib */; };
+		ABAEB9011C0874310044A3F0 /* MYPackageSelectTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB8FF1C0874310044A3F0 /* MYPackageSelectTaskViewController.m */; };
+		ABAEB9021C0874310044A3F0 /* MYPackageSelectTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAEB9001C0874310044A3F0 /* MYPackageSelectTaskViewController.xib */; };
+		ABAEB93C1C0D95530044A3F0 /* MYPackageBuildTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB90E1C0D95530044A3F0 /* MYPackageBuildTask.m */; };
+		ABAEB93D1C0D95530044A3F0 /* MYPackageCleanTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB9101C0D95530044A3F0 /* MYPackageCleanTask.m */; };
+		ABAEB9401C0D95530044A3F0 /* build.sh in Resources */ = {isa = PBXBuildFile; fileRef = ABAEB9161C0D95530044A3F0 /* build.sh */; };
+		ABAEB9411C0D95530044A3F0 /* MYPackageAnalyzeProductTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB9191C0D95530044A3F0 /* MYPackageAnalyzeProductTask.m */; };
+		ABAEB9421C0D95530044A3F0 /* MYPackageCreateSpecTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB91B1C0D95530044A3F0 /* MYPackageCreateSpecTask.m */; };
+		ABAEB9431C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB91D1C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.m */; };
+		ABAEB9441C0D95530044A3F0 /* MYPackageZipTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB91F1C0D95530044A3F0 /* MYPackageZipTask.m */; };
+		ABAEB9451C0D95530044A3F0 /* xcode-analyze.rb in Resources */ = {isa = PBXBuildFile; fileRef = ABAEB9211C0D95530044A3F0 /* xcode-analyze.rb */; };
+		ABAEB9461C0D95530044A3F0 /* MYPackageAnalyzeGitTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB9241C0D95530044A3F0 /* MYPackageAnalyzeGitTask.m */; };
+		ABAEB9471C0D95530044A3F0 /* MYPackageAnalyzeProjectTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB9261C0D95530044A3F0 /* MYPackageAnalyzeProjectTask.m */; };
+		ABAEB9481C0D95530044A3F0 /* MYPackageAnalyzeSchemeTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB9281C0D95530044A3F0 /* MYPackageAnalyzeSchemeTask.m */; };
+		ABAEB94B1C0D95530044A3F0 /* MYPackagePrepareEnvironmentTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB92E1C0D95530044A3F0 /* MYPackagePrepareEnvironmentTask.m */; };
+		ABAEB94D1C0D95530044A3F0 /* analyze_scheme.rb in Resources */ = {isa = PBXBuildFile; fileRef = ABAEB9321C0D95530044A3F0 /* analyze_scheme.rb */; };
+		ABAEB94E1C0D95530044A3F0 /* find_highest_version_in_repo.rb in Resources */ = {isa = PBXBuildFile; fileRef = ABAEB9331C0D95530044A3F0 /* find_highest_version_in_repo.rb */; };
+		ABAEB9511C0D95530044A3F0 /* MYPackageCreateTagTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB9381C0D95530044A3F0 /* MYPackageCreateTagTask.m */; };
+		ABAEB9641C0D963D0044A3F0 /* MYPackageGetHighestVersionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB95F1C0D963D0044A3F0 /* MYPackageGetHighestVersionTask.m */; };
+		ABAEB9651C0D963D0044A3F0 /* MYPackageListOpenedProjectTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB9611C0D963D0044A3F0 /* MYPackageListOpenedProjectTask.m */; };
+		ABC6BB051BFF1ABE00F97BE1 /* MYPackageScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC6BB041BFF1ABE00F97BE1 /* MYPackageScheme.m */; };
+		ABC6BB131C02C89900F97BE1 /* MYPackageBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC6BB111C02C89900F97BE1 /* MYPackageBaseViewController.m */; };
+		ABC6BB181C02C8B900F97BE1 /* MYPackageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC6BB161C02C8B900F97BE1 /* MYPackageContainerViewController.m */; };
+		ABC6BB191C02C8B900F97BE1 /* MYPackageContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC6BB171C02C8B900F97BE1 /* MYPackageContainerViewController.xib */; };
+		ABC6BB1E1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC6BB1C1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.m */; };
+		ABC6BB1F1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC6BB1D1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.xib */; };
+		ABC6BB241C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC6BB221C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.m */; };
+		ABC6BB251C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC6BB231C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.xib */; };
+		ABC6BB2A1C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC6BB281C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.m */; };
+		ABC6BB2B1C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC6BB291C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.xib */; };
+		ABDE7FB91CC3A57200760098 /* GemEnv in Resources */ = {isa = PBXBuildFile; fileRef = ABDE7FB81CC3A57200760098 /* GemEnv */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB15DDFC1C1962CB00DD1743 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB15DDF81C1962CB00DD1743 /* ObjCCommandLine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AB15DDD71C1958A700DD1743;
+			remoteInfo = ObjCCommandLine;
+		};
+		AB15DE001C1962D300DD1743 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB15DDF81C1962CB00DD1743 /* ObjCCommandLine.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AB15DDD61C1958A700DD1743;
+			remoteInfo = ObjCCommandLine;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AB15DE021C1962D300DD1743 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AB15DDFF1C1962D300DD1743 /* ObjCCommandLine.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AB15DDF81C1962CB00DD1743 /* ObjCCommandLine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjCCommandLine.xcodeproj; path = ObjCCommandLine/ObjCCommandLine.xcodeproj; sourceTree = "<group>"; };
+		AB2030891C96A30C00F07A5E /* lipo.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = lipo.sh; sourceTree = "<group>"; };
+		AB20308B1C96A6B200F07A5E /* MYPackageLipoTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageLipoTask.h; sourceTree = "<group>"; };
+		AB20308C1C96A6B200F07A5E /* MYPackageLipoTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageLipoTask.m; sourceTree = "<group>"; };
+		AB2030951C97FF9900F07A5E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		AB2030961C9800FA00F07A5E /* MYPackageWorkspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageWorkspace.h; sourceTree = "<group>"; };
+		AB2030971C9800FA00F07A5E /* MYPackageWorkspace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageWorkspace.m; sourceTree = "<group>"; };
+		AB2030991C9835A200F07A5E /* MYPackageAnalyzeTargetTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageAnalyzeTargetTask.h; sourceTree = "<group>"; };
+		AB20309A1C9835A200F07A5E /* MYPackageAnalyzeTargetTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageAnalyzeTargetTask.m; sourceTree = "<group>"; };
+		AB36C96A1BD8E680004941A4 /* MYPackageCommandLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCommandLine.h; sourceTree = "<group>"; };
+		AB36C96B1BD8E680004941A4 /* MYPackageCommandLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCommandLine.m; sourceTree = "<group>"; };
+		AB36C96D1BD8E878004941A4 /* MYPackageTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageTaskManager.h; sourceTree = "<group>"; };
+		AB36C96E1BD8E878004941A4 /* MYPackageTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageTaskManager.m; sourceTree = "<group>"; };
+		AB3797041CAB689E0033287C /* MYPackageInitTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageInitTask.h; sourceTree = "<group>"; };
+		AB3797051CAB689E0033287C /* MYPackageInitTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageInitTask.m; sourceTree = "<group>"; };
+		AB3797071CAB83380033287C /* GetPrimaryMACAddress.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GetPrimaryMACAddress.mm; sourceTree = "<group>"; };
+		AB3797091CAB83EE0033287C /* GetPrimaryMACAddress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPrimaryMACAddress.h; sourceTree = "<group>"; };
+		AB38617C1C06B16F001A40AC /* MYPackageSelectProjectTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageSelectProjectTableViewHeader.h; sourceTree = "<group>"; };
+		AB38617D1C06B16F001A40AC /* MYPackageSelectProjectTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageSelectProjectTableViewHeader.m; sourceTree = "<group>"; };
+		AB38617F1C06B17F001A40AC /* MYPackageSelectProjectTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYPackageSelectProjectTableViewHeader.xib; sourceTree = "<group>"; };
+		AB3861811C06E965001A40AC /* MYPackageSelectProjectTableViewRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYPackageSelectProjectTableViewRow.xib; sourceTree = "<group>"; };
+		AB3861831C06E975001A40AC /* MYPackageSelectProjectTableViewRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageSelectProjectTableViewRow.h; sourceTree = "<group>"; };
+		AB3861841C06E975001A40AC /* MYPackageSelectProjectTableViewRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageSelectProjectTableViewRow.m; sourceTree = "<group>"; };
+		AB3861891C072796001A40AC /* MYPackageTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageTitleLabel.h; sourceTree = "<group>"; };
+		AB38618A1C072796001A40AC /* MYPackageTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageTitleLabel.m; sourceTree = "<group>"; };
+		AB38618F1C07FB87001A40AC /* MYPackageDetailLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageDetailLabel.h; sourceTree = "<group>"; };
+		AB3861901C07FB87001A40AC /* MYPackageDetailLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageDetailLabel.m; sourceTree = "<group>"; };
+		AB488EE91C16D5BF006156D9 /* MYPackageCheckGitTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCheckGitTask.h; sourceTree = "<group>"; };
+		AB488EEA1C16D5BF006156D9 /* MYPackageCheckGitTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCheckGitTask.m; sourceTree = "<group>"; };
+		AB69AC051CD892F500A9E49C /* RubyEnv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RubyEnv; sourceTree = "<group>"; };
+		AB69AC071CD8A86C00A9E49C /* setup_ruby_env.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_ruby_env.sh; sourceTree = "<group>"; };
+		AB69AC091CD8FF5A00A9E49C /* setup_gem_env.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_gem_env.sh; sourceTree = "<group>"; };
+		AB7A67BE1C60600E002CDBD0 /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = build.xcconfig; sourceTree = "<group>"; };
+		AB7CA63F1C23030900D5B960 /* MYPackageListSchemeTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageListSchemeTask.h; sourceTree = "<group>"; };
+		AB7CA6401C23030900D5B960 /* MYPackageListSchemeTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageListSchemeTask.m; sourceTree = "<group>"; };
+		AB84755C1CC4CBE600C6FAE8 /* MYPackageCheckEnvironmentTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCheckEnvironmentTask.h; sourceTree = "<group>"; };
+		AB84755D1CC4CBE600C6FAE8 /* MYPackageCheckEnvironmentTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCheckEnvironmentTask.m; sourceTree = "<group>"; };
+		AB8475621CC4E03800C6FAE8 /* GetIPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetIPAddress.h; sourceTree = "<group>"; };
+		AB8475631CC4E03800C6FAE8 /* GetIPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetIPAddress.m; sourceTree = "<group>"; };
+		ABA2C55C1BD659060069EC5C /* NSView+Enable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Enable.h"; sourceTree = "<group>"; };
+		ABA2C55D1BD659060069EC5C /* NSView+Enable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Enable.m"; sourceTree = "<group>"; };
+		ABA2C5C81BD739F50069EC5C /* Package.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Package.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABA2C5CA1BD739F60069EC5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ABA2C5CB1BD739F60069EC5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ABA2C5CE1BD739F60069EC5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ABA2C5D01BD739F60069EC5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ABA2C5D31BD739F60069EC5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		ABA2C5D51BD739F60069EC5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABA2C5E31BD740290069EC5C /* MYPackageFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageFileLogger.h; sourceTree = "<group>"; };
+		ABA2C5E41BD740290069EC5C /* MYPackageFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageFileLogger.m; sourceTree = "<group>"; };
+		ABA2C5E51BD740290069EC5C /* MYPackageLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageLogger.h; sourceTree = "<group>"; };
+		ABA2C5E61BD740290069EC5C /* MYPackageLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageLogger.m; sourceTree = "<group>"; };
+		ABA2C5E71BD740290069EC5C /* MYPackageMultiLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageMultiLogger.h; sourceTree = "<group>"; };
+		ABA2C5E81BD740290069EC5C /* MYPackageMultiLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageMultiLogger.m; sourceTree = "<group>"; };
+		ABA2C5E91BD740290069EC5C /* MYPackageTextViewLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageTextViewLogger.h; sourceTree = "<group>"; };
+		ABA2C5EA1BD740290069EC5C /* MYPackageTextViewLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageTextViewLogger.m; sourceTree = "<group>"; };
+		ABA2C5ED1BD740290069EC5C /* MYPackageWorkspaceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageWorkspaceParser.h; sourceTree = "<group>"; };
+		ABA2C5EE1BD740290069EC5C /* MYPackageWorkspaceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageWorkspaceParser.m; sourceTree = "<group>"; };
+		ABA2C5F11BD740290069EC5C /* SafeThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeThread.h; sourceTree = "<group>"; };
+		ABA2C5F21BD740290069EC5C /* SafeThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeThread.m; sourceTree = "<group>"; };
+		ABA2C5F41BD740290069EC5C /* MYPackageConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageConfig.h; sourceTree = "<group>"; };
+		ABA2C5F51BD740290069EC5C /* MYPackageConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageConfig.m; sourceTree = "<group>"; };
+		ABA2C5F61BD740290069EC5C /* MYPackageProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageProject.h; sourceTree = "<group>"; };
+		ABA2C5F71BD740290069EC5C /* MYPackageProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageProject.m; sourceTree = "<group>"; };
+		ABA2C5F81BD740290069EC5C /* MYPackageTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageTarget.h; sourceTree = "<group>"; };
+		ABA2C5F91BD740290069EC5C /* MYPackageTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageTarget.m; sourceTree = "<group>"; };
+		ABA2C5FC1BD740290069EC5C /* MYPackageCleanFinalProductTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCleanFinalProductTask.h; sourceTree = "<group>"; };
+		ABA2C5FD1BD740290069EC5C /* MYPackageCleanFinalProductTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCleanFinalProductTask.m; sourceTree = "<group>"; };
+		ABA2C5FE1BD740290069EC5C /* MYPackageCleanIntermediateProductTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCleanIntermediateProductTask.h; sourceTree = "<group>"; };
+		ABA2C5FF1BD740290069EC5C /* MYPackageCleanIntermediateProductTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCleanIntermediateProductTask.m; sourceTree = "<group>"; };
+		ABA2C6001BD740290069EC5C /* MYPackageBaseTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageBaseTask.h; sourceTree = "<group>"; };
+		ABA2C6011BD740290069EC5C /* MYPackageBaseTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageBaseTask.m; sourceTree = "<group>"; };
+		ABA2C6021BD740290069EC5C /* MYPackageShellTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageShellTask.h; sourceTree = "<group>"; };
+		ABA2C6031BD740290069EC5C /* MYPackageShellTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageShellTask.m; sourceTree = "<group>"; };
+		ABAC6FD91AF5D91F00BBC281 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		ABAC6FDB1AF5D91F00BBC281 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		ABAEB8F51C0856370044A3F0 /* MYPackageTableRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageTableRowView.h; sourceTree = "<group>"; };
+		ABAEB8F61C0856370044A3F0 /* MYPackageTableRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageTableRowView.m; sourceTree = "<group>"; };
+		ABAEB8F81C08595C0044A3F0 /* MYPackageSelectSchemeTableViewRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageSelectSchemeTableViewRow.h; sourceTree = "<group>"; };
+		ABAEB8F91C08595C0044A3F0 /* MYPackageSelectSchemeTableViewRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageSelectSchemeTableViewRow.m; sourceTree = "<group>"; };
+		ABAEB8FB1C085ADA0044A3F0 /* MYPackageSelectSchemeTableViewRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYPackageSelectSchemeTableViewRow.xib; sourceTree = "<group>"; };
+		ABAEB8FE1C0874310044A3F0 /* MYPackageSelectTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageSelectTaskViewController.h; sourceTree = "<group>"; };
+		ABAEB8FF1C0874310044A3F0 /* MYPackageSelectTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageSelectTaskViewController.m; sourceTree = "<group>"; };
+		ABAEB9001C0874310044A3F0 /* MYPackageSelectTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYPackageSelectTaskViewController.xib; sourceTree = "<group>"; };
+		ABAEB90D1C0D95530044A3F0 /* MYPackageBuildTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageBuildTask.h; sourceTree = "<group>"; };
+		ABAEB90E1C0D95530044A3F0 /* MYPackageBuildTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageBuildTask.m; sourceTree = "<group>"; };
+		ABAEB90F1C0D95530044A3F0 /* MYPackageCleanTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCleanTask.h; sourceTree = "<group>"; };
+		ABAEB9101C0D95530044A3F0 /* MYPackageCleanTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCleanTask.m; sourceTree = "<group>"; };
+		ABAEB9161C0D95530044A3F0 /* build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
+		ABAEB9181C0D95530044A3F0 /* MYPackageAnalyzeProductTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageAnalyzeProductTask.h; sourceTree = "<group>"; };
+		ABAEB9191C0D95530044A3F0 /* MYPackageAnalyzeProductTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageAnalyzeProductTask.m; sourceTree = "<group>"; };
+		ABAEB91A1C0D95530044A3F0 /* MYPackageCreateSpecTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCreateSpecTask.h; sourceTree = "<group>"; };
+		ABAEB91B1C0D95530044A3F0 /* MYPackageCreateSpecTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCreateSpecTask.m; sourceTree = "<group>"; };
+		ABAEB91C1C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageUpdateVersionNumberTask.h; sourceTree = "<group>"; };
+		ABAEB91D1C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageUpdateVersionNumberTask.m; sourceTree = "<group>"; };
+		ABAEB91E1C0D95530044A3F0 /* MYPackageZipTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageZipTask.h; sourceTree = "<group>"; };
+		ABAEB91F1C0D95530044A3F0 /* MYPackageZipTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageZipTask.m; sourceTree = "<group>"; };
+		ABAEB9211C0D95530044A3F0 /* xcode-analyze.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = "xcode-analyze.rb"; sourceTree = "<group>"; };
+		ABAEB9231C0D95530044A3F0 /* MYPackageAnalyzeGitTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageAnalyzeGitTask.h; sourceTree = "<group>"; };
+		ABAEB9241C0D95530044A3F0 /* MYPackageAnalyzeGitTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageAnalyzeGitTask.m; sourceTree = "<group>"; };
+		ABAEB9251C0D95530044A3F0 /* MYPackageAnalyzeProjectTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageAnalyzeProjectTask.h; sourceTree = "<group>"; };
+		ABAEB9261C0D95530044A3F0 /* MYPackageAnalyzeProjectTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageAnalyzeProjectTask.m; sourceTree = "<group>"; };
+		ABAEB9271C0D95530044A3F0 /* MYPackageAnalyzeSchemeTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageAnalyzeSchemeTask.h; sourceTree = "<group>"; };
+		ABAEB9281C0D95530044A3F0 /* MYPackageAnalyzeSchemeTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageAnalyzeSchemeTask.m; sourceTree = "<group>"; };
+		ABAEB92D1C0D95530044A3F0 /* MYPackagePrepareEnvironmentTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackagePrepareEnvironmentTask.h; sourceTree = "<group>"; };
+		ABAEB92E1C0D95530044A3F0 /* MYPackagePrepareEnvironmentTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackagePrepareEnvironmentTask.m; sourceTree = "<group>"; };
+		ABAEB9321C0D95530044A3F0 /* analyze_scheme.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = analyze_scheme.rb; sourceTree = "<group>"; };
+		ABAEB9331C0D95530044A3F0 /* find_highest_version_in_repo.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = find_highest_version_in_repo.rb; sourceTree = "<group>"; };
+		ABAEB9371C0D95530044A3F0 /* MYPackageCreateTagTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCreateTagTask.h; sourceTree = "<group>"; };
+		ABAEB9381C0D95530044A3F0 /* MYPackageCreateTagTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCreateTagTask.m; sourceTree = "<group>"; };
+		ABAEB95E1C0D963D0044A3F0 /* MYPackageGetHighestVersionTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageGetHighestVersionTask.h; sourceTree = "<group>"; };
+		ABAEB95F1C0D963D0044A3F0 /* MYPackageGetHighestVersionTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageGetHighestVersionTask.m; sourceTree = "<group>"; };
+		ABAEB9601C0D963D0044A3F0 /* MYPackageListOpenedProjectTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageListOpenedProjectTask.h; sourceTree = "<group>"; };
+		ABAEB9611C0D963D0044A3F0 /* MYPackageListOpenedProjectTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageListOpenedProjectTask.m; sourceTree = "<group>"; };
+		ABC6BB031BFF1ABE00F97BE1 /* MYPackageScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageScheme.h; sourceTree = "<group>"; };
+		ABC6BB041BFF1ABE00F97BE1 /* MYPackageScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageScheme.m; sourceTree = "<group>"; };
+		ABC6BB101C02C89900F97BE1 /* MYPackageBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageBaseViewController.h; sourceTree = "<group>"; };
+		ABC6BB111C02C89900F97BE1 /* MYPackageBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageBaseViewController.m; sourceTree = "<group>"; };
+		ABC6BB151C02C8B900F97BE1 /* MYPackageContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageContainerViewController.h; sourceTree = "<group>"; };
+		ABC6BB161C02C8B900F97BE1 /* MYPackageContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageContainerViewController.m; sourceTree = "<group>"; };
+		ABC6BB171C02C8B900F97BE1 /* MYPackageContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYPackageContainerViewController.xib; sourceTree = "<group>"; };
+		ABC6BB1B1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageSelectProjectViewController.h; sourceTree = "<group>"; };
+		ABC6BB1C1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageSelectProjectViewController.m; sourceTree = "<group>"; };
+		ABC6BB1D1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYPackageSelectProjectViewController.xib; sourceTree = "<group>"; };
+		ABC6BB211C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageSelectSchemeViewController.h; sourceTree = "<group>"; };
+		ABC6BB221C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageSelectSchemeViewController.m; sourceTree = "<group>"; };
+		ABC6BB231C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYPackageSelectSchemeViewController.xib; sourceTree = "<group>"; };
+		ABC6BB271C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackagePrepareEnvironmentViewController.h; sourceTree = "<group>"; };
+		ABC6BB281C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackagePrepareEnvironmentViewController.m; sourceTree = "<group>"; };
+		ABC6BB291C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYPackagePrepareEnvironmentViewController.xib; sourceTree = "<group>"; };
+		ABDE7FB81CC3A57200760098 /* GemEnv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GemEnv; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ABA2C5C51BD739F50069EC5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB15DDFE1C1962D300DD1743 /* ObjCCommandLine.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB15DDF91C1962CB00DD1743 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB15DDFD1C1962CB00DD1743 /* ObjCCommandLine.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB36C9661BD8E611004941A4 /* CommandLine */ = {
+			isa = PBXGroup;
+			children = (
+				AB36C96A1BD8E680004941A4 /* MYPackageCommandLine.h */,
+				AB36C96B1BD8E680004941A4 /* MYPackageCommandLine.m */,
+			);
+			path = CommandLine;
+			sourceTree = "<group>";
+		};
+		ABA2C5531BD659060069EC5C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ABC6BB0C1C02C82B00F97BE1 /* Base */,
+				ABC6BB0B1C02C78500F97BE1 /* Container */,
+				ABC6BB261C02ED0D00F97BE1 /* PrepareEnvironment */,
+				ABC6BB1A1C02E05C00F97BE1 /* SelectProject */,
+				ABC6BB201C02E25600F97BE1 /* SelectScheme */,
+				ABAEB8FD1C0873F20044A3F0 /* SelectTask */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		ABA2C5571BD659060069EC5C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABA2C55C1BD659060069EC5C /* NSView+Enable.h */,
+				ABA2C55D1BD659060069EC5C /* NSView+Enable.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ABA2C5C91BD739F60069EC5C /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				AB36C9661BD8E611004941A4 /* CommandLine */,
+				ABA2C5531BD659060069EC5C /* ViewController */,
+				ABA2C5571BD659060069EC5C /* View */,
+				ABA2C5CA1BD739F60069EC5C /* AppDelegate.h */,
+				ABA2C5CB1BD739F60069EC5C /* AppDelegate.m */,
+				ABA2C5D01BD739F60069EC5C /* Assets.xcassets */,
+				ABA2C5D21BD739F60069EC5C /* MainMenu.xib */,
+				ABA2C5D51BD739F60069EC5C /* Info.plist */,
+				ABA2C5CD1BD739F60069EC5C /* Supporting Files */,
+			);
+			path = Package;
+			sourceTree = "<group>";
+		};
+		ABA2C5CD1BD739F60069EC5C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABA2C5CE1BD739F60069EC5C /* main.m */,
+				AB2030951C97FF9900F07A5E /* PrefixHeader.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ABA2C5DE1BD740290069EC5C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				ABA2C5DF1BD740290069EC5C /* Helpers */,
+				ABA2C5F31BD740290069EC5C /* Model */,
+				ABA2C5FA1BD740290069EC5C /* Task */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		ABA2C5DF1BD740290069EC5C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ABA2C5E21BD740290069EC5C /* Logger */,
+				ABA2C5ED1BD740290069EC5C /* MYPackageWorkspaceParser.h */,
+				ABA2C5EE1BD740290069EC5C /* MYPackageWorkspaceParser.m */,
+				ABA2C5F11BD740290069EC5C /* SafeThread.h */,
+				ABA2C5F21BD740290069EC5C /* SafeThread.m */,
+				AB3797091CAB83EE0033287C /* GetPrimaryMACAddress.h */,
+				AB3797071CAB83380033287C /* GetPrimaryMACAddress.mm */,
+				AB8475621CC4E03800C6FAE8 /* GetIPAddress.h */,
+				AB8475631CC4E03800C6FAE8 /* GetIPAddress.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ABA2C5E21BD740290069EC5C /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				ABA2C5E31BD740290069EC5C /* MYPackageFileLogger.h */,
+				ABA2C5E41BD740290069EC5C /* MYPackageFileLogger.m */,
+				ABA2C5E51BD740290069EC5C /* MYPackageLogger.h */,
+				ABA2C5E61BD740290069EC5C /* MYPackageLogger.m */,
+				ABA2C5E71BD740290069EC5C /* MYPackageMultiLogger.h */,
+				ABA2C5E81BD740290069EC5C /* MYPackageMultiLogger.m */,
+				ABA2C5E91BD740290069EC5C /* MYPackageTextViewLogger.h */,
+				ABA2C5EA1BD740290069EC5C /* MYPackageTextViewLogger.m */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		ABA2C5F31BD740290069EC5C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABA2C5F41BD740290069EC5C /* MYPackageConfig.h */,
+				ABA2C5F51BD740290069EC5C /* MYPackageConfig.m */,
+				ABA2C5F61BD740290069EC5C /* MYPackageProject.h */,
+				ABA2C5F71BD740290069EC5C /* MYPackageProject.m */,
+				ABA2C5F81BD740290069EC5C /* MYPackageTarget.h */,
+				ABA2C5F91BD740290069EC5C /* MYPackageTarget.m */,
+				ABC6BB031BFF1ABE00F97BE1 /* MYPackageScheme.h */,
+				ABC6BB041BFF1ABE00F97BE1 /* MYPackageScheme.m */,
+				AB2030961C9800FA00F07A5E /* MYPackageWorkspace.h */,
+				AB2030971C9800FA00F07A5E /* MYPackageWorkspace.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ABA2C5FA1BD740290069EC5C /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				ABAEB9221C0D95530044A3F0 /* Prepare */,
+				ABAEB90A1C0D95530044A3F0 /* Compile */,
+				ABAEB9171C0D95530044A3F0 /* Package */,
+				ABAEB9361C0D95530044A3F0 /* Release */,
+				ABA2C5FB1BD740290069EC5C /* Clean */,
+				ABA2C6001BD740290069EC5C /* MYPackageBaseTask.h */,
+				ABA2C6011BD740290069EC5C /* MYPackageBaseTask.m */,
+				ABA2C6021BD740290069EC5C /* MYPackageShellTask.h */,
+				ABA2C6031BD740290069EC5C /* MYPackageShellTask.m */,
+				AB36C96D1BD8E878004941A4 /* MYPackageTaskManager.h */,
+				AB36C96E1BD8E878004941A4 /* MYPackageTaskManager.m */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		ABA2C5FB1BD740290069EC5C /* Clean */ = {
+			isa = PBXGroup;
+			children = (
+				ABA2C5FC1BD740290069EC5C /* MYPackageCleanFinalProductTask.h */,
+				ABA2C5FD1BD740290069EC5C /* MYPackageCleanFinalProductTask.m */,
+				ABA2C5FE1BD740290069EC5C /* MYPackageCleanIntermediateProductTask.h */,
+				ABA2C5FF1BD740290069EC5C /* MYPackageCleanIntermediateProductTask.m */,
+			);
+			path = Clean;
+			sourceTree = "<group>";
+		};
+		ABAC6FCD1AF5D91F00BBC281 = {
+			isa = PBXGroup;
+			children = (
+				AB15DDF81C1962CB00DD1743 /* ObjCCommandLine.xcodeproj */,
+				ABA2C5DE1BD740290069EC5C /* Core */,
+				ABA2C5C91BD739F60069EC5C /* Package */,
+				ABAC6FD81AF5D91F00BBC281 /* Frameworks */,
+				ABAC6FD71AF5D91F00BBC281 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ABAC6FD71AF5D91F00BBC281 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ABA2C5C81BD739F50069EC5C /* Package.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ABAC6FD81AF5D91F00BBC281 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ABAC6FD91AF5D91F00BBC281 /* AppKit.framework */,
+				ABAC6FDB1AF5D91F00BBC281 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ABAEB8FD1C0873F20044A3F0 /* SelectTask */ = {
+			isa = PBXGroup;
+			children = (
+				ABAEB8FE1C0874310044A3F0 /* MYPackageSelectTaskViewController.h */,
+				ABAEB8FF1C0874310044A3F0 /* MYPackageSelectTaskViewController.m */,
+				ABAEB9001C0874310044A3F0 /* MYPackageSelectTaskViewController.xib */,
+			);
+			path = SelectTask;
+			sourceTree = "<group>";
+		};
+		ABAEB90A1C0D95530044A3F0 /* Compile */ = {
+			isa = PBXGroup;
+			children = (
+				ABAEB90F1C0D95530044A3F0 /* MYPackageCleanTask.h */,
+				ABAEB9101C0D95530044A3F0 /* MYPackageCleanTask.m */,
+				ABAEB90D1C0D95530044A3F0 /* MYPackageBuildTask.h */,
+				ABAEB90E1C0D95530044A3F0 /* MYPackageBuildTask.m */,
+				AB20308B1C96A6B200F07A5E /* MYPackageLipoTask.h */,
+				AB20308C1C96A6B200F07A5E /* MYPackageLipoTask.m */,
+				ABAEB9151C0D95530044A3F0 /* Shell */,
+			);
+			path = Compile;
+			sourceTree = "<group>";
+		};
+		ABAEB9151C0D95530044A3F0 /* Shell */ = {
+			isa = PBXGroup;
+			children = (
+				ABAEB9161C0D95530044A3F0 /* build.sh */,
+				AB7A67BE1C60600E002CDBD0 /* build.xcconfig */,
+				AB2030891C96A30C00F07A5E /* lipo.sh */,
+			);
+			path = Shell;
+			sourceTree = "<group>";
+		};
+		ABAEB9171C0D95530044A3F0 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				ABAEB9181C0D95530044A3F0 /* MYPackageAnalyzeProductTask.h */,
+				ABAEB9191C0D95530044A3F0 /* MYPackageAnalyzeProductTask.m */,
+				ABAEB91C1C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.h */,
+				ABAEB91D1C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.m */,
+				ABAEB91E1C0D95530044A3F0 /* MYPackageZipTask.h */,
+				ABAEB91F1C0D95530044A3F0 /* MYPackageZipTask.m */,
+				ABAEB91A1C0D95530044A3F0 /* MYPackageCreateSpecTask.h */,
+				ABAEB91B1C0D95530044A3F0 /* MYPackageCreateSpecTask.m */,
+				ABAEB9201C0D95530044A3F0 /* Shell */,
+			);
+			path = Package;
+			sourceTree = "<group>";
+		};
+		ABAEB9201C0D95530044A3F0 /* Shell */ = {
+			isa = PBXGroup;
+			children = (
+				ABAEB9211C0D95530044A3F0 /* xcode-analyze.rb */,
+			);
+			path = Shell;
+			sourceTree = "<group>";
+		};
+		ABAEB9221C0D95530044A3F0 /* Prepare */ = {
+			isa = PBXGroup;
+			children = (
+				ABAEB95D1C0D963D0044A3F0 /* Feature */,
+				ABAEB9311C0D95530044A3F0 /* Script */,
+				AB3797041CAB689E0033287C /* MYPackageInitTask.h */,
+				AB3797051CAB689E0033287C /* MYPackageInitTask.m */,
+				ABAEB92D1C0D95530044A3F0 /* MYPackagePrepareEnvironmentTask.h */,
+				ABAEB92E1C0D95530044A3F0 /* MYPackagePrepareEnvironmentTask.m */,
+				AB84755C1CC4CBE600C6FAE8 /* MYPackageCheckEnvironmentTask.h */,
+				AB84755D1CC4CBE600C6FAE8 /* MYPackageCheckEnvironmentTask.m */,
+				AB488EE91C16D5BF006156D9 /* MYPackageCheckGitTask.h */,
+				AB488EEA1C16D5BF006156D9 /* MYPackageCheckGitTask.m */,
+				ABAEB9231C0D95530044A3F0 /* MYPackageAnalyzeGitTask.h */,
+				ABAEB9241C0D95530044A3F0 /* MYPackageAnalyzeGitTask.m */,
+				AB7CA63F1C23030900D5B960 /* MYPackageListSchemeTask.h */,
+				AB7CA6401C23030900D5B960 /* MYPackageListSchemeTask.m */,
+				ABAEB9271C0D95530044A3F0 /* MYPackageAnalyzeSchemeTask.h */,
+				ABAEB9281C0D95530044A3F0 /* MYPackageAnalyzeSchemeTask.m */,
+				ABAEB9251C0D95530044A3F0 /* MYPackageAnalyzeProjectTask.h */,
+				ABAEB9261C0D95530044A3F0 /* MYPackageAnalyzeProjectTask.m */,
+				AB2030991C9835A200F07A5E /* MYPackageAnalyzeTargetTask.h */,
+				AB20309A1C9835A200F07A5E /* MYPackageAnalyzeTargetTask.m */,
+			);
+			path = Prepare;
+			sourceTree = "<group>";
+		};
+		ABAEB9311C0D95530044A3F0 /* Script */ = {
+			isa = PBXGroup;
+			children = (
+				AB69AC051CD892F500A9E49C /* RubyEnv */,
+				ABDE7FB81CC3A57200760098 /* GemEnv */,
+				ABAEB9321C0D95530044A3F0 /* analyze_scheme.rb */,
+				ABAEB9331C0D95530044A3F0 /* find_highest_version_in_repo.rb */,
+				AB69AC071CD8A86C00A9E49C /* setup_ruby_env.sh */,
+				AB69AC091CD8FF5A00A9E49C /* setup_gem_env.sh */,
+			);
+			path = Script;
+			sourceTree = "<group>";
+		};
+		ABAEB9361C0D95530044A3F0 /* Release */ = {
+			isa = PBXGroup;
+			children = (
+				ABAEB9371C0D95530044A3F0 /* MYPackageCreateTagTask.h */,
+				ABAEB9381C0D95530044A3F0 /* MYPackageCreateTagTask.m */,
+			);
+			path = Release;
+			sourceTree = "<group>";
+		};
+		ABAEB95D1C0D963D0044A3F0 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				ABAEB95E1C0D963D0044A3F0 /* MYPackageGetHighestVersionTask.h */,
+				ABAEB95F1C0D963D0044A3F0 /* MYPackageGetHighestVersionTask.m */,
+				ABAEB9601C0D963D0044A3F0 /* MYPackageListOpenedProjectTask.h */,
+				ABAEB9611C0D963D0044A3F0 /* MYPackageListOpenedProjectTask.m */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		ABC6BB0B1C02C78500F97BE1 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				ABC6BB151C02C8B900F97BE1 /* MYPackageContainerViewController.h */,
+				ABC6BB161C02C8B900F97BE1 /* MYPackageContainerViewController.m */,
+				ABC6BB171C02C8B900F97BE1 /* MYPackageContainerViewController.xib */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		ABC6BB0C1C02C82B00F97BE1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				ABC6BB101C02C89900F97BE1 /* MYPackageBaseViewController.h */,
+				ABC6BB111C02C89900F97BE1 /* MYPackageBaseViewController.m */,
+				ABAEB8F51C0856370044A3F0 /* MYPackageTableRowView.h */,
+				ABAEB8F61C0856370044A3F0 /* MYPackageTableRowView.m */,
+				AB3861891C072796001A40AC /* MYPackageTitleLabel.h */,
+				AB38618A1C072796001A40AC /* MYPackageTitleLabel.m */,
+				AB38618F1C07FB87001A40AC /* MYPackageDetailLabel.h */,
+				AB3861901C07FB87001A40AC /* MYPackageDetailLabel.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		ABC6BB1A1C02E05C00F97BE1 /* SelectProject */ = {
+			isa = PBXGroup;
+			children = (
+				ABC6BB1B1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.h */,
+				ABC6BB1C1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.m */,
+				ABC6BB1D1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.xib */,
+				AB38617C1C06B16F001A40AC /* MYPackageSelectProjectTableViewHeader.h */,
+				AB38617D1C06B16F001A40AC /* MYPackageSelectProjectTableViewHeader.m */,
+				AB38617F1C06B17F001A40AC /* MYPackageSelectProjectTableViewHeader.xib */,
+				AB3861831C06E975001A40AC /* MYPackageSelectProjectTableViewRow.h */,
+				AB3861841C06E975001A40AC /* MYPackageSelectProjectTableViewRow.m */,
+				AB3861811C06E965001A40AC /* MYPackageSelectProjectTableViewRow.xib */,
+			);
+			path = SelectProject;
+			sourceTree = "<group>";
+		};
+		ABC6BB201C02E25600F97BE1 /* SelectScheme */ = {
+			isa = PBXGroup;
+			children = (
+				ABC6BB211C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.h */,
+				ABC6BB221C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.m */,
+				ABC6BB231C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.xib */,
+				ABAEB8F81C08595C0044A3F0 /* MYPackageSelectSchemeTableViewRow.h */,
+				ABAEB8F91C08595C0044A3F0 /* MYPackageSelectSchemeTableViewRow.m */,
+				ABAEB8FB1C085ADA0044A3F0 /* MYPackageSelectSchemeTableViewRow.xib */,
+			);
+			path = SelectScheme;
+			sourceTree = "<group>";
+		};
+		ABC6BB261C02ED0D00F97BE1 /* PrepareEnvironment */ = {
+			isa = PBXGroup;
+			children = (
+				ABC6BB271C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.h */,
+				ABC6BB281C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.m */,
+				ABC6BB291C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.xib */,
+			);
+			path = PrepareEnvironment;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ABA2C5C71BD739F50069EC5C /* Package */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABA2C5D61BD739F60069EC5C /* Build configuration list for PBXNativeTarget "Package" */;
+			buildPhases = (
+				ABA2C5C41BD739F50069EC5C /* Sources */,
+				ABA2C5C51BD739F50069EC5C /* Frameworks */,
+				AB69AC041CD8914500A9E49C /* Delete Bundle Path In GemEnv */,
+				ABA2C5C61BD739F50069EC5C /* Resources */,
+				ABA2C6421BD763B90069EC5C /* Auto Update Build Version */,
+				AB15DE021C1962D300DD1743 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB15DE011C1962D300DD1743 /* PBXTargetDependency */,
+			);
+			name = Package;
+			productName = Package;
+			productReference = ABA2C5C81BD739F50069EC5C /* Package.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ABAC6FCE1AF5D91F00BBC281 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = taobao;
+				TargetAttributes = {
+					ABA2C5C71BD739F50069EC5C = {
+						CreatedOnToolsVersion = 7.0.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = ABAC6FD11AF5D91F00BBC281 /* Build configuration list for PBXProject "Package" */;
+			compatibilityVersion = "Xcode 6.3";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ABAC6FCD1AF5D91F00BBC281;
+			productRefGroup = ABAC6FD71AF5D91F00BBC281 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AB15DDF91C1962CB00DD1743 /* Products */;
+					ProjectRef = AB15DDF81C1962CB00DD1743 /* ObjCCommandLine.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				ABA2C5C71BD739F50069EC5C /* Package */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AB15DDFD1C1962CB00DD1743 /* ObjCCommandLine.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjCCommandLine.framework;
+			remoteRef = AB15DDFC1C1962CB00DD1743 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ABA2C5C61BD739F50069EC5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABC6BB191C02C8B900F97BE1 /* MYPackageContainerViewController.xib in Resources */,
+				ABC6BB251C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.xib in Resources */,
+				AB7A67BF1C60600E002CDBD0 /* build.xcconfig in Resources */,
+				ABAEB8FC1C085ADA0044A3F0 /* MYPackageSelectSchemeTableViewRow.xib in Resources */,
+				AB20308A1C96A30C00F07A5E /* lipo.sh in Resources */,
+				AB3861801C06B17F001A40AC /* MYPackageSelectProjectTableViewHeader.xib in Resources */,
+				AB69AC0A1CD99BBA00A9E49C /* setup_gem_env.sh in Resources */,
+				ABA2C5D11BD739F60069EC5C /* Assets.xcassets in Resources */,
+				ABDE7FB91CC3A57200760098 /* GemEnv in Resources */,
+				ABAEB9451C0D95530044A3F0 /* xcode-analyze.rb in Resources */,
+				ABAEB9021C0874310044A3F0 /* MYPackageSelectTaskViewController.xib in Resources */,
+				ABC6BB1F1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.xib in Resources */,
+				ABC6BB2B1C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.xib in Resources */,
+				AB69AC061CD892F500A9E49C /* RubyEnv in Resources */,
+				AB3861821C06E965001A40AC /* MYPackageSelectProjectTableViewRow.xib in Resources */,
+				ABAEB94D1C0D95530044A3F0 /* analyze_scheme.rb in Resources */,
+				AB69AC081CD8B0A500A9E49C /* setup_ruby_env.sh in Resources */,
+				ABAEB94E1C0D95530044A3F0 /* find_highest_version_in_repo.rb in Resources */,
+				ABA2C5D41BD739F60069EC5C /* MainMenu.xib in Resources */,
+				ABAEB9401C0D95530044A3F0 /* build.sh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AB69AC041CD8914500A9E49C /* Delete Bundle Path In GemEnv */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Delete Bundle Path In GemEnv";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rm -rf \"${SRCROOT}/Core/Task/Prepare/Script/GemEnv/vendor/bundle\"";
+			showEnvVarsInLog = 0;
+		};
+		ABA2C6421BD763B90069EC5C /* Auto Update Build Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Auto Update Build Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Package/auto-update-build-version.sh\" GIT";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ABA2C5C41BD739F50069EC5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB8475641CC4E03800C6FAE8 /* GetIPAddress.m in Sources */,
+				AB488EEB1C16D5BF006156D9 /* MYPackageCheckGitTask.m in Sources */,
+				ABAEB9651C0D963D0044A3F0 /* MYPackageListOpenedProjectTask.m in Sources */,
+				ABAEB9421C0D95530044A3F0 /* MYPackageCreateSpecTask.m in Sources */,
+				ABAEB9431C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.m in Sources */,
+				AB3797061CAB689E0033287C /* MYPackageInitTask.m in Sources */,
+				ABA2C6231BD740290069EC5C /* MYPackageLogger.m in Sources */,
+				ABA2C62E1BD740290069EC5C /* MYPackageCleanIntermediateProductTask.m in Sources */,
+				ABA2C5CF1BD739F60069EC5C /* main.m in Sources */,
+				ABAEB9441C0D95530044A3F0 /* MYPackageZipTask.m in Sources */,
+				ABAEB9511C0D95530044A3F0 /* MYPackageCreateTagTask.m in Sources */,
+				ABC6BB131C02C89900F97BE1 /* MYPackageBaseViewController.m in Sources */,
+				ABA2C6221BD740290069EC5C /* MYPackageFileLogger.m in Sources */,
+				ABA2C62A1BD740290069EC5C /* MYPackageConfig.m in Sources */,
+				AB36C96F1BD8E878004941A4 /* MYPackageTaskManager.m in Sources */,
+				AB2030981C9800FA00F07A5E /* MYPackageWorkspace.m in Sources */,
+				ABA2C6241BD740290069EC5C /* MYPackageMultiLogger.m in Sources */,
+				ABAEB8FA1C08595C0044A3F0 /* MYPackageSelectSchemeTableViewRow.m in Sources */,
+				ABA2C6271BD740290069EC5C /* MYPackageWorkspaceParser.m in Sources */,
+				ABA2C6291BD740290069EC5C /* SafeThread.m in Sources */,
+				AB7CA6411C23030900D5B960 /* MYPackageListSchemeTask.m in Sources */,
+				ABA2C6301BD740290069EC5C /* MYPackageShellTask.m in Sources */,
+				ABC6BB2A1C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.m in Sources */,
+				ABA2C62B1BD740290069EC5C /* MYPackageProject.m in Sources */,
+				AB20309B1C9835A200F07A5E /* MYPackageAnalyzeTargetTask.m in Sources */,
+				ABAEB94B1C0D95530044A3F0 /* MYPackagePrepareEnvironmentTask.m in Sources */,
+				ABA2C62C1BD740290069EC5C /* MYPackageTarget.m in Sources */,
+				AB3861911C07FB87001A40AC /* MYPackageDetailLabel.m in Sources */,
+				AB3797081CAB83380033287C /* GetPrimaryMACAddress.mm in Sources */,
+				ABAEB9461C0D95530044A3F0 /* MYPackageAnalyzeGitTask.m in Sources */,
+				ABC6BB051BFF1ABE00F97BE1 /* MYPackageScheme.m in Sources */,
+				AB38618B1C072796001A40AC /* MYPackageTitleLabel.m in Sources */,
+				ABA2C62D1BD740290069EC5C /* MYPackageCleanFinalProductTask.m in Sources */,
+				ABAEB9011C0874310044A3F0 /* MYPackageSelectTaskViewController.m in Sources */,
+				ABC6BB241C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.m in Sources */,
+				ABAEB8F71C0856370044A3F0 /* MYPackageTableRowView.m in Sources */,
+				ABAEB9641C0D963D0044A3F0 /* MYPackageGetHighestVersionTask.m in Sources */,
+				AB3861851C06E975001A40AC /* MYPackageSelectProjectTableViewRow.m in Sources */,
+				ABA2C6411BD742710069EC5C /* NSView+Enable.m in Sources */,
+				AB36C96C1BD8E680004941A4 /* MYPackageCommandLine.m in Sources */,
+				ABAEB93C1C0D95530044A3F0 /* MYPackageBuildTask.m in Sources */,
+				ABAEB9411C0D95530044A3F0 /* MYPackageAnalyzeProductTask.m in Sources */,
+				ABC6BB1E1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.m in Sources */,
+				AB20308D1C96A6B200F07A5E /* MYPackageLipoTask.m in Sources */,
+				ABAEB93D1C0D95530044A3F0 /* MYPackageCleanTask.m in Sources */,
+				AB84755E1CC4CBE600C6FAE8 /* MYPackageCheckEnvironmentTask.m in Sources */,
+				ABC6BB181C02C8B900F97BE1 /* MYPackageContainerViewController.m in Sources */,
+				ABAEB9471C0D95530044A3F0 /* MYPackageAnalyzeProjectTask.m in Sources */,
+				ABA2C6251BD740290069EC5C /* MYPackageTextViewLogger.m in Sources */,
+				AB38617E1C06B170001A40AC /* MYPackageSelectProjectTableViewHeader.m in Sources */,
+				ABA2C62F1BD740290069EC5C /* MYPackageBaseTask.m in Sources */,
+				ABAEB9481C0D95530044A3F0 /* MYPackageAnalyzeSchemeTask.m in Sources */,
+				ABA2C5CC1BD739F60069EC5C /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AB15DE011C1962D300DD1743 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ObjCCommandLine;
+			targetProxy = AB15DE001C1962D300DD1743 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ABA2C5D21BD739F60069EC5C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABA2C5D31BD739F60069EC5C /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ABA2C5D71BD739F60069EC5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREFIX_HEADER = Package/PrefixHeader.pch;
+				INFOPLIST_FILE = Package/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.Package;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		ABA2C5D81BD739F60069EC5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_PREFIX_HEADER = Package/PrefixHeader.pch;
+				INFOPLIST_FILE = Package/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.Package;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		ABAC6FE51AF5D91F00BBC281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		ABAC6FE61AF5D91F00BBC281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ABA2C5D61BD739F60069EC5C /* Build configuration list for PBXNativeTarget "Package" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABA2C5D71BD739F60069EC5C /* Debug */,
+				ABA2C5D81BD739F60069EC5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABAC6FD11AF5D91F00BBC281 /* Build configuration list for PBXProject "Package" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABAC6FE51AF5D91F00BBC281 /* Debug */,
+				ABAC6FE61AF5D91F00BBC281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ABAC6FCE1AF5D91F00BBC281 /* Project object */;
+}

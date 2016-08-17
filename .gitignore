@@ -1,0 +1,26 @@
+.DS_Store
+.hgignore
+DerivedData/
+build/
+.hg/*
+.svn/
+*.moved-aside
+*.swp
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+project.xcworkspace/
+xcuserdata/
+
+.idea/
+
+
+# CocoaPods
+Pods/
+Podfile.lock
