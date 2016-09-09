@@ -2,12 +2,12 @@
 
 require 'cocoapods-core'
 
-# rsync 仓库
-repo = ENV['HOME'] + "/.cocoapods/repos/alibaba-specs"
-
-# git 仓库
-repo = ENV['HOME'] +"/.cocoapods/repos/alibaba-inc-specs" unless File.exist?(repo)
-
-source = Pod::Source.new(repo)
-
-puts source.set(ARGV[0]).highest_version.to_s
+repos = ENV['HOME'] +"/.cocoapods/repos/*"
+Dir[repos].each do |repo|
+    source = Pod::Source.new(repo)
+    version = source.set(ARGV[0]).highest_version
+    unless version.nil?
+        puts version.to_s
+        break
+    end
+end
