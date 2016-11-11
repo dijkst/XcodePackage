@@ -9,6 +9,7 @@
 #import "MYPackageSelectSchemeViewController.h"
 #import "MYPackageContainerViewController.h"
 #import "MYPackageSelectTaskViewController.h"
+#import "MYPackageBuildIPAViewController.h"
 
 #import "MYPackageSelectSchemeTableViewRow.h"
 #import "MYPackageTableRowView.h"
@@ -66,7 +67,9 @@
 }
 
 - (IBAction)tableViewDoubleAction:(id)sender {
-    [self selectScheme:self.config.workspace.schemes[self.tableView.selectedRow]];
+    if (self.config.workspace.schemes.count > self.tableView.selectedRow) {
+        [self selectScheme:self.config.workspace.schemes[self.tableView.selectedRow]];
+    }
 }
 
 #pragma mark - task
@@ -79,7 +82,13 @@
                              ]
                  autoOrder:YES]) {
             dispatch_main_async_safe(^{
-                [self.containerVC pushViewController:[[MYPackageSelectTaskViewController alloc] init]];
+                MYPackageBaseViewController *vc;
+                if (self.config.IPA) {
+                    vc = [[MYPackageBuildIPAViewController alloc] init];
+                } else {
+                    vc = [[MYPackageSelectTaskViewController alloc] init];
+                }
+                [self.containerVC pushViewController:vc];
             });
         }
     });

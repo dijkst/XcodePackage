@@ -196,7 +196,9 @@
 
 #pragma mark - action
 - (IBAction)tableViewDoubleAction:(id)sender {
-    [self openProject:[self pathForRow:self.tableView.selectedRow]];
+    if ([self.tableData count] > self.tableView.selectedRow) {
+        [self openProject:[self pathForRow:self.tableView.selectedRow]];
+    }
 }
 
 - (IBAction)openOtherProjectAction:(id)sender {
