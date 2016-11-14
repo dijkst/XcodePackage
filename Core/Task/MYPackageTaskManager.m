@@ -38,6 +38,7 @@ static NSArray *taskClassOrder;
 
                        // release
                        @"MYPackageUploadTask",
+                       @"MYPackageUploadLocalTask",
                        @"MYPackageCreateTagTask",
 
                        // Clean

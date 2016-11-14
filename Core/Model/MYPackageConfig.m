@@ -26,6 +26,31 @@
     return _configruation;
 }
 
+- (NSString *)xcconfig {
+    if (self.IPA) {
+        return [[NSBundle mainBundle] pathForResource:@"build-ipa" ofType:@".xcconfig"];
+    }
+    return [[NSBundle mainBundle] pathForResource:@"build-static-framework" ofType:@".xcconfig"];
+}
+
+- (BOOL)IPA {
+    for (MYPackageTarget *target in self.selectedScheme.targets) {
+        if (target.type == MYPackageTargetTypeExecutable) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (NSString *)serverPath {
+    if (!_serverPath) {
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd_HH-mm-ss"];
+        _serverPath =  [self.podName stringByAppendingPathComponent:[dateFormat stringFromDate:[NSDate date]]];
+    }
+    return _serverPath;
+}
+
 #pragma mark - scheme
 - (NSString *)selectedSchemeName {
     if (!_selectedSchemeName) {
@@ -102,6 +127,8 @@
 
     config.logger    = _logger;
     config.workspace = _workspace;
+
+    config.serverPath = _serverPath;
 
     config.version       = _version;
     config.authorName    = _authorName;

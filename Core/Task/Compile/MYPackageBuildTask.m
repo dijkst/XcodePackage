@@ -21,7 +21,8 @@
     if (![super launch]) {
         return NO;
     }
-    NSString *shellPath = [self scriptForName:@"build" ofType:@"sh"];
+    NSString *scriptName = self.config.IPA ? @"build-ipa" : @"build-library";
+    NSString *shellPath  = [self scriptForName:scriptName ofType:@"sh"];
     if ([self executeCommand:[NSString stringWithFormat:@"'%@' '%@' '%@' '%@' '%@'",
                               shellPath,
                               self.config.workspace.filePath,

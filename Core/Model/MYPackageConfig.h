@@ -14,6 +14,12 @@
 
 @property (nonatomic, strong) MYPackageMultiLogger *logger;
 
+@property (nonatomic, readonly) BOOL     IPA;
+@property (nonatomic, readonly) NSString *xcconfig;
+
+// IPA 放在本地服务器的路径
+@property (nonatomic, strong) NSString *serverPath;
+
 @property (nonatomic, strong) NSString *version;
 @property (nonatomic, strong) NSString *authorName;
 @property (nonatomic, strong) NSString *authorEmail;
@@ -23,7 +29,6 @@
 @property (nonatomic, strong) NSString *podName;
 @property (nonatomic, strong) NSString *configruation;
 @property (nonatomic, strong) NSString *xcconfigSettings;
-
 
 @property (nonatomic, strong) NSString        *selectedSchemeName;
 @property (nonatomic, strong) MYPackageScheme *selectedScheme;

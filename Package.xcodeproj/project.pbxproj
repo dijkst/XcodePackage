@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		205749C2E7FD94A78892647D /* libPods-Package.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4E48C25F35DFAB5EFDD6ED /* libPods-Package.a */; };
 		AB15DDFE1C1962D300DD1743 /* ObjCCommandLine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB15DDFD1C1962CB00DD1743 /* ObjCCommandLine.framework */; };
 		AB15DDFF1C1962D300DD1743 /* ObjCCommandLine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB15DDFD1C1962CB00DD1743 /* ObjCCommandLine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AB20308A1C96A30C00F07A5E /* lipo.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB2030891C96A30C00F07A5E /* lipo.sh */; };
@@ -24,6 +25,17 @@
 		AB38618B1C072796001A40AC /* MYPackageTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB38618A1C072796001A40AC /* MYPackageTitleLabel.m */; };
 		AB3861911C07FB87001A40AC /* MYPackageDetailLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3861901C07FB87001A40AC /* MYPackageDetailLabel.m */; };
 		AB488EEB1C16D5BF006156D9 /* MYPackageCheckGitTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB488EEA1C16D5BF006156D9 /* MYPackageCheckGitTask.m */; };
+		AB50A9201D6C210D005A6863 /* NSColor+GDQrCode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB50A91B1D6C210D005A6863 /* NSColor+GDQrCode.m */; };
+		AB50A9211D6C210D005A6863 /* NSImage+CGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AB50A91D1D6C210D005A6863 /* NSImage+CGImage.m */; };
+		AB50A9221D6C210D005A6863 /* NSImage+GDQrCodeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AB50A91F1D6C210D005A6863 /* NSImage+GDQrCodeImage.m */; };
+		AB50A9281D6C3BB5005A6863 /* build-ipa.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB50A9241D6C3BB5005A6863 /* build-ipa.sh */; };
+		AB50A9291D6C3BB5005A6863 /* build-ipa.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AB50A9251D6C3BB5005A6863 /* build-ipa.xcconfig */; };
+		AB50A92A1D6C3BB5005A6863 /* build-library.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB50A9261D6C3BB5005A6863 /* build-library.sh */; };
+		AB50A92B1D6C3BB5005A6863 /* build-library.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AB50A9271D6C3BB5005A6863 /* build-library.xcconfig */; };
+		AB50A92E1D6C3BCD005A6863 /* MYPackageUploadLocalTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB50A92D1D6C3BCD005A6863 /* MYPackageUploadLocalTask.m */; };
+		AB50A9331D6C3C55005A6863 /* MYPackageBuildIPAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB50A9311D6C3C55005A6863 /* MYPackageBuildIPAViewController.m */; };
+		AB50A9341D6C3C55005A6863 /* MYPackageBuildIPAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB50A9321D6C3C55005A6863 /* MYPackageBuildIPAViewController.xib */; };
+		AB50A9381D6C3C8C005A6863 /* MYPackageServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB50A9371D6C3C8C005A6863 /* MYPackageServer.m */; };
 		AB69AC061CD892F500A9E49C /* RubyEnv in Resources */ = {isa = PBXBuildFile; fileRef = AB69AC051CD892F500A9E49C /* RubyEnv */; };
 		AB69AC081CD8B0A500A9E49C /* setup_ruby_env.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB69AC071CD8A86C00A9E49C /* setup_ruby_env.sh */; };
 		AB69AC0A1CD99BBA00A9E49C /* setup_gem_env.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB69AC091CD8FF5A00A9E49C /* setup_gem_env.sh */; };
@@ -56,7 +68,6 @@
 		ABAEB9021C0874310044A3F0 /* MYPackageSelectTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAEB9001C0874310044A3F0 /* MYPackageSelectTaskViewController.xib */; };
 		ABAEB93C1C0D95530044A3F0 /* MYPackageBuildTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB90E1C0D95530044A3F0 /* MYPackageBuildTask.m */; };
 		ABAEB93D1C0D95530044A3F0 /* MYPackageCleanTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB9101C0D95530044A3F0 /* MYPackageCleanTask.m */; };
-		ABAEB9401C0D95530044A3F0 /* build.sh in Resources */ = {isa = PBXBuildFile; fileRef = ABAEB9161C0D95530044A3F0 /* build.sh */; };
 		ABAEB9411C0D95530044A3F0 /* MYPackageAnalyzeProductTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB9191C0D95530044A3F0 /* MYPackageAnalyzeProductTask.m */; };
 		ABAEB9421C0D95530044A3F0 /* MYPackageCreateSpecTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB91B1C0D95530044A3F0 /* MYPackageCreateSpecTask.m */; };
 		ABAEB9431C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB91D1C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.m */; };
@@ -116,6 +127,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4258B3226376844FC1EDFAC0 /* Pods-Package.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Package.release.xcconfig"; path = "Pods/Target Support Files/Pods-Package/Pods-Package.release.xcconfig"; sourceTree = "<group>"; };
+		951AE4BA4A4F53AE2B5DED82 /* Pods-Package.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Package.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Package/Pods-Package.debug.xcconfig"; sourceTree = "<group>"; };
 		AB15DDF81C1962CB00DD1743 /* ObjCCommandLine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjCCommandLine.xcodeproj; path = ObjCCommandLine/ObjCCommandLine.xcodeproj; sourceTree = "<group>"; };
 		AB2030891C96A30C00F07A5E /* lipo.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = lipo.sh; sourceTree = "<group>"; };
 		AB20308B1C96A6B200F07A5E /* MYPackageLipoTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageLipoTask.h; sourceTree = "<group>"; };
@@ -145,6 +158,24 @@
 		AB3861901C07FB87001A40AC /* MYPackageDetailLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageDetailLabel.m; sourceTree = "<group>"; };
 		AB488EE91C16D5BF006156D9 /* MYPackageCheckGitTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCheckGitTask.h; sourceTree = "<group>"; };
 		AB488EEA1C16D5BF006156D9 /* MYPackageCheckGitTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCheckGitTask.m; sourceTree = "<group>"; };
+		AB50A9191D6C210D005A6863 /* GDQrCodeConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDQrCodeConst.h; sourceTree = "<group>"; };
+		AB50A91A1D6C210D005A6863 /* NSColor+GDQrCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+GDQrCode.h"; sourceTree = "<group>"; };
+		AB50A91B1D6C210D005A6863 /* NSColor+GDQrCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+GDQrCode.m"; sourceTree = "<group>"; };
+		AB50A91C1D6C210D005A6863 /* NSImage+CGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+CGImage.h"; sourceTree = "<group>"; };
+		AB50A91D1D6C210D005A6863 /* NSImage+CGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+CGImage.m"; sourceTree = "<group>"; };
+		AB50A91E1D6C210D005A6863 /* NSImage+GDQrCodeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+GDQrCodeImage.h"; sourceTree = "<group>"; };
+		AB50A91F1D6C210D005A6863 /* NSImage+GDQrCodeImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+GDQrCodeImage.m"; sourceTree = "<group>"; };
+		AB50A9241D6C3BB5005A6863 /* build-ipa.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "build-ipa.sh"; sourceTree = "<group>"; };
+		AB50A9251D6C3BB5005A6863 /* build-ipa.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "build-ipa.xcconfig"; sourceTree = "<group>"; };
+		AB50A9261D6C3BB5005A6863 /* build-library.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "build-library.sh"; sourceTree = "<group>"; };
+		AB50A9271D6C3BB5005A6863 /* build-library.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "build-library.xcconfig"; sourceTree = "<group>"; };
+		AB50A92C1D6C3BCD005A6863 /* MYPackageUploadLocalTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageUploadLocalTask.h; sourceTree = "<group>"; };
+		AB50A92D1D6C3BCD005A6863 /* MYPackageUploadLocalTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageUploadLocalTask.m; sourceTree = "<group>"; };
+		AB50A9301D6C3C55005A6863 /* MYPackageBuildIPAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageBuildIPAViewController.h; sourceTree = "<group>"; };
+		AB50A9311D6C3C55005A6863 /* MYPackageBuildIPAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageBuildIPAViewController.m; sourceTree = "<group>"; };
+		AB50A9321D6C3C55005A6863 /* MYPackageBuildIPAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYPackageBuildIPAViewController.xib; sourceTree = "<group>"; };
+		AB50A9361D6C3C8C005A6863 /* MYPackageServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageServer.h; sourceTree = "<group>"; };
+		AB50A9371D6C3C8C005A6863 /* MYPackageServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageServer.m; sourceTree = "<group>"; };
 		AB69AC051CD892F500A9E49C /* RubyEnv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RubyEnv; sourceTree = "<group>"; };
 		AB69AC071CD8A86C00A9E49C /* setup_ruby_env.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_ruby_env.sh; sourceTree = "<group>"; };
 		AB69AC091CD8FF5A00A9E49C /* setup_gem_env.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup_gem_env.sh; sourceTree = "<group>"; };
@@ -204,7 +235,6 @@
 		ABAEB90E1C0D95530044A3F0 /* MYPackageBuildTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageBuildTask.m; sourceTree = "<group>"; };
 		ABAEB90F1C0D95530044A3F0 /* MYPackageCleanTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCleanTask.h; sourceTree = "<group>"; };
 		ABAEB9101C0D95530044A3F0 /* MYPackageCleanTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCleanTask.m; sourceTree = "<group>"; };
-		ABAEB9161C0D95530044A3F0 /* build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
 		ABAEB9181C0D95530044A3F0 /* MYPackageAnalyzeProductTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageAnalyzeProductTask.h; sourceTree = "<group>"; };
 		ABAEB9191C0D95530044A3F0 /* MYPackageAnalyzeProductTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageAnalyzeProductTask.m; sourceTree = "<group>"; };
 		ABAEB91A1C0D95530044A3F0 /* MYPackageCreateSpecTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCreateSpecTask.h; sourceTree = "<group>"; };
@@ -247,6 +277,7 @@
 		ABC6BB281C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackagePrepareEnvironmentViewController.m; sourceTree = "<group>"; };
 		ABC6BB291C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYPackagePrepareEnvironmentViewController.xib; sourceTree = "<group>"; };
 		ABDE7FB81CC3A57200760098 /* GemEnv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GemEnv; sourceTree = "<group>"; };
+		CA4E48C25F35DFAB5EFDD6ED /* libPods-Package.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Package.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,12 +286,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB15DDFE1C1962D300DD1743 /* ObjCCommandLine.framework in Frameworks */,
+				205749C2E7FD94A78892647D /* libPods-Package.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13C9328BC08659429F33F5EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				951AE4BA4A4F53AE2B5DED82 /* Pods-Package.debug.xcconfig */,
+				4258B3226376844FC1EDFAC0 /* Pods-Package.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AB15DDF91C1962CB00DD1743 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,9 +319,43 @@
 			path = CommandLine;
 			sourceTree = "<group>";
 		};
+		AB50A9181D6C210D005A6863 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				AB50A9191D6C210D005A6863 /* GDQrCodeConst.h */,
+				AB50A91A1D6C210D005A6863 /* NSColor+GDQrCode.h */,
+				AB50A91B1D6C210D005A6863 /* NSColor+GDQrCode.m */,
+				AB50A91C1D6C210D005A6863 /* NSImage+CGImage.h */,
+				AB50A91D1D6C210D005A6863 /* NSImage+CGImage.m */,
+				AB50A91E1D6C210D005A6863 /* NSImage+GDQrCodeImage.h */,
+				AB50A91F1D6C210D005A6863 /* NSImage+GDQrCodeImage.m */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		AB50A92F1D6C3C55005A6863 /* BuildIPA */ = {
+			isa = PBXGroup;
+			children = (
+				AB50A9301D6C3C55005A6863 /* MYPackageBuildIPAViewController.h */,
+				AB50A9311D6C3C55005A6863 /* MYPackageBuildIPAViewController.m */,
+				AB50A9321D6C3C55005A6863 /* MYPackageBuildIPAViewController.xib */,
+			);
+			path = BuildIPA;
+			sourceTree = "<group>";
+		};
+		AB50A9351D6C3C8C005A6863 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				AB50A9361D6C3C8C005A6863 /* MYPackageServer.h */,
+				AB50A9371D6C3C8C005A6863 /* MYPackageServer.m */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
 		ABA2C5531BD659060069EC5C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AB50A92F1D6C3C55005A6863 /* BuildIPA */,
 				ABC6BB0C1C02C82B00F97BE1 /* Base */,
 				ABC6BB0B1C02C78500F97BE1 /* Container */,
 				ABC6BB261C02ED0D00F97BE1 /* PrepareEnvironment */,
@@ -303,6 +378,7 @@
 		ABA2C5C91BD739F60069EC5C /* Package */ = {
 			isa = PBXGroup;
 			children = (
+				AB50A9351D6C3C8C005A6863 /* Server */,
 				AB36C9661BD8E611004941A4 /* CommandLine */,
 				ABA2C5531BD659060069EC5C /* ViewController */,
 				ABA2C5571BD659060069EC5C /* View */,
@@ -338,6 +414,7 @@
 		ABA2C5DF1BD740290069EC5C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				AB50A9181D6C210D005A6863 /* QRCode */,
 				ABA2C5E21BD740290069EC5C /* Logger */,
 				ABA2C5ED1BD740290069EC5C /* MYPackageWorkspaceParser.h */,
 				ABA2C5EE1BD740290069EC5C /* MYPackageWorkspaceParser.m */,
@@ -420,6 +497,7 @@
 				ABA2C5C91BD739F60069EC5C /* Package */,
 				ABAC6FD81AF5D91F00BBC281 /* Frameworks */,
 				ABAC6FD71AF5D91F00BBC281 /* Products */,
+				13C9328BC08659429F33F5EC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -436,6 +514,7 @@
 			children = (
 				ABAC6FD91AF5D91F00BBC281 /* AppKit.framework */,
 				ABAC6FDB1AF5D91F00BBC281 /* Foundation.framework */,
+				CA4E48C25F35DFAB5EFDD6ED /* libPods-Package.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -467,7 +546,10 @@
 		ABAEB9151C0D95530044A3F0 /* Shell */ = {
 			isa = PBXGroup;
 			children = (
-				ABAEB9161C0D95530044A3F0 /* build.sh */,
+				AB50A9241D6C3BB5005A6863 /* build-ipa.sh */,
+				AB50A9251D6C3BB5005A6863 /* build-ipa.xcconfig */,
+				AB50A9261D6C3BB5005A6863 /* build-library.sh */,
+				AB50A9271D6C3BB5005A6863 /* build-library.xcconfig */,
 				AB7A67BE1C60600E002CDBD0 /* build.xcconfig */,
 				AB2030891C96A30C00F07A5E /* lipo.sh */,
 			);
@@ -541,6 +623,8 @@
 		ABAEB9361C0D95530044A3F0 /* Release */ = {
 			isa = PBXGroup;
 			children = (
+				AB50A92C1D6C3BCD005A6863 /* MYPackageUploadLocalTask.h */,
+				AB50A92D1D6C3BCD005A6863 /* MYPackageUploadLocalTask.m */,
 				ABAEB9371C0D95530044A3F0 /* MYPackageCreateTagTask.h */,
 				ABAEB9381C0D95530044A3F0 /* MYPackageCreateTagTask.m */,
 			);
@@ -629,12 +713,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABA2C5D61BD739F60069EC5C /* Build configuration list for PBXNativeTarget "Package" */;
 			buildPhases = (
+				BB8AA41472C0CC2ABE07F2DE /* [CP] Check Pods Manifest.lock */,
 				ABA2C5C41BD739F50069EC5C /* Sources */,
 				ABA2C5C51BD739F50069EC5C /* Frameworks */,
 				AB69AC041CD8914500A9E49C /* Delete Bundle Path In GemEnv */,
 				ABA2C5C61BD739F50069EC5C /* Resources */,
 				ABA2C6421BD763B90069EC5C /* Auto Update Build Version */,
 				AB15DE021C1962D300DD1743 /* Embed Frameworks */,
+				2743FD3232B756B1E22227C4 /* [CP] Embed Pods Frameworks */,
+				8EEC27C9F4C28C426AC65A1B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -652,7 +739,7 @@
 		ABAC6FCE1AF5D91F00BBC281 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = taobao;
 				TargetAttributes = {
 					ABA2C5C71BD739F50069EC5C = {
@@ -709,27 +796,61 @@
 				AB7A67BF1C60600E002CDBD0 /* build.xcconfig in Resources */,
 				ABAEB8FC1C085ADA0044A3F0 /* MYPackageSelectSchemeTableViewRow.xib in Resources */,
 				AB20308A1C96A30C00F07A5E /* lipo.sh in Resources */,
+				AB50A92A1D6C3BB5005A6863 /* build-library.sh in Resources */,
 				AB3861801C06B17F001A40AC /* MYPackageSelectProjectTableViewHeader.xib in Resources */,
 				AB69AC0A1CD99BBA00A9E49C /* setup_gem_env.sh in Resources */,
 				ABA2C5D11BD739F60069EC5C /* Assets.xcassets in Resources */,
+				AB50A9281D6C3BB5005A6863 /* build-ipa.sh in Resources */,
 				ABDE7FB91CC3A57200760098 /* GemEnv in Resources */,
+				AB50A9291D6C3BB5005A6863 /* build-ipa.xcconfig in Resources */,
 				ABAEB9451C0D95530044A3F0 /* xcode-analyze.rb in Resources */,
 				ABAEB9021C0874310044A3F0 /* MYPackageSelectTaskViewController.xib in Resources */,
 				ABC6BB1F1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.xib in Resources */,
+				AB50A92B1D6C3BB5005A6863 /* build-library.xcconfig in Resources */,
 				ABC6BB2B1C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.xib in Resources */,
 				AB69AC061CD892F500A9E49C /* RubyEnv in Resources */,
 				AB3861821C06E965001A40AC /* MYPackageSelectProjectTableViewRow.xib in Resources */,
+				AB50A9341D6C3C55005A6863 /* MYPackageBuildIPAViewController.xib in Resources */,
 				ABAEB94D1C0D95530044A3F0 /* analyze_scheme.rb in Resources */,
 				AB69AC081CD8B0A500A9E49C /* setup_ruby_env.sh in Resources */,
 				ABAEB94E1C0D95530044A3F0 /* find_highest_version_in_repo.rb in Resources */,
 				ABA2C5D41BD739F60069EC5C /* MainMenu.xib in Resources */,
-				ABAEB9401C0D95530044A3F0 /* build.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2743FD3232B756B1E22227C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Package/Pods-Package-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EEC27C9F4C28C426AC65A1B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Package/Pods-Package-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AB69AC041CD8914500A9E49C /* Delete Bundle Path In GemEnv */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -760,6 +881,21 @@
 			shellScript = "\"${SRCROOT}/Package/auto-update-build-version.sh\" GIT";
 			showEnvVarsInLog = 0;
 		};
+		BB8AA41472C0CC2ABE07F2DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -771,6 +907,8 @@
 				AB488EEB1C16D5BF006156D9 /* MYPackageCheckGitTask.m in Sources */,
 				ABAEB9651C0D963D0044A3F0 /* MYPackageListOpenedProjectTask.m in Sources */,
 				ABAEB9421C0D95530044A3F0 /* MYPackageCreateSpecTask.m in Sources */,
+				AB50A9211D6C210D005A6863 /* NSImage+CGImage.m in Sources */,
+				AB50A9221D6C210D005A6863 /* NSImage+GDQrCodeImage.m in Sources */,
 				ABAEB9431C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.m in Sources */,
 				AB3797061CAB689E0033287C /* MYPackageInitTask.m in Sources */,
 				ABA2C6231BD740290069EC5C /* MYPackageLogger.m in Sources */,
@@ -783,10 +921,12 @@
 				ABA2C62A1BD740290069EC5C /* MYPackageConfig.m in Sources */,
 				AB36C96F1BD8E878004941A4 /* MYPackageTaskManager.m in Sources */,
 				AB2030981C9800FA00F07A5E /* MYPackageWorkspace.m in Sources */,
+				AB50A92E1D6C3BCD005A6863 /* MYPackageUploadLocalTask.m in Sources */,
 				ABA2C6241BD740290069EC5C /* MYPackageMultiLogger.m in Sources */,
 				ABAEB8FA1C08595C0044A3F0 /* MYPackageSelectSchemeTableViewRow.m in Sources */,
 				ABA2C6271BD740290069EC5C /* MYPackageWorkspaceParser.m in Sources */,
 				ABA2C6291BD740290069EC5C /* SafeThread.m in Sources */,
+				AB50A9331D6C3C55005A6863 /* MYPackageBuildIPAViewController.m in Sources */,
 				AB7CA6411C23030900D5B960 /* MYPackageListSchemeTask.m in Sources */,
 				ABA2C6301BD740290069EC5C /* MYPackageShellTask.m in Sources */,
 				ABC6BB2A1C02EDCF00F97BE1 /* MYPackagePrepareEnvironmentViewController.m in Sources */,
@@ -808,6 +948,7 @@
 				ABA2C6411BD742710069EC5C /* NSView+Enable.m in Sources */,
 				AB36C96C1BD8E680004941A4 /* MYPackageCommandLine.m in Sources */,
 				ABAEB93C1C0D95530044A3F0 /* MYPackageBuildTask.m in Sources */,
+				AB50A9201D6C210D005A6863 /* NSColor+GDQrCode.m in Sources */,
 				ABAEB9411C0D95530044A3F0 /* MYPackageAnalyzeProductTask.m in Sources */,
 				ABC6BB1E1C02E09A00F97BE1 /* MYPackageSelectProjectViewController.m in Sources */,
 				AB20308D1C96A6B200F07A5E /* MYPackageLipoTask.m in Sources */,
@@ -820,6 +961,7 @@
 				ABA2C62F1BD740290069EC5C /* MYPackageBaseTask.m in Sources */,
 				ABAEB9481C0D95530044A3F0 /* MYPackageAnalyzeSchemeTask.m in Sources */,
 				ABA2C5CC1BD739F60069EC5C /* AppDelegate.m in Sources */,
+				AB50A9381D6C3C8C005A6863 /* MYPackageServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,6 +989,7 @@
 /* Begin XCBuildConfiguration section */
 		ABA2C5D71BD739F60069EC5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 951AE4BA4A4F53AE2B5DED82 /* Pods-Package.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
@@ -865,6 +1008,7 @@
 		};
 		ABA2C5D81BD739F60069EC5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4258B3226376844FC1EDFAC0 /* Pods-Package.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
