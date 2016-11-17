@@ -15,6 +15,8 @@
 
 @implementation MYPackageConfig
 
+@synthesize logPath = _logPath;
+
 - (NSString *)podName {
     return _podName ? : _workspace.name;
 }
@@ -93,7 +95,14 @@
 }
 
 - (NSString *)logPath {
-    return [self.outputDir stringByAppendingPathComponent:@"log"];
+    if (!_logPath) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        if ([paths count] > 0) {
+            NSString *bundleName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+            _logPath = [[[paths objectAtIndex:0] stringByAppendingPathComponent:bundleName] stringByAppendingPathComponent:@"log.log"];
+        }
+    }
+    return _logPath;
 }
 
 - (NSString *)specPath {

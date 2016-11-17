@@ -15,9 +15,6 @@
 
 @property (weak) IBOutlet NSButton *backButton;
 
-@property (strong) IBOutlet NSWindow              *logWindow;
-@property (unsafe_unretained) IBOutlet NSTextView *logTextView;
-
 - (void)showNormalText:(NSString *)text;
 - (void)showHighlightText:(NSString *)text;
 

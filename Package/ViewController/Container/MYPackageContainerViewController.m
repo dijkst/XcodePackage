@@ -30,7 +30,6 @@
 }
 
 - (void)awakeFromNib {
-    [self.config.logger setTextView:self.logTextView];
     self.backButton.showsBorderOnlyWhileMouseInside = YES;
     //    self.backButton.wantsLayer = YES;
     //    self.backButton.layer.cornerRadius = 0;

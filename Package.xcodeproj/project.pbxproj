@@ -200,8 +200,6 @@
 		ABA2C5E61BD740290069EC5C /* MYPackageLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageLogger.m; sourceTree = "<group>"; };
 		ABA2C5E71BD740290069EC5C /* MYPackageMultiLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageMultiLogger.h; sourceTree = "<group>"; };
 		ABA2C5E81BD740290069EC5C /* MYPackageMultiLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageMultiLogger.m; sourceTree = "<group>"; };
-		ABA2C5E91BD740290069EC5C /* MYPackageTextViewLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageTextViewLogger.h; sourceTree = "<group>"; };
-		ABA2C5EA1BD740290069EC5C /* MYPackageTextViewLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageTextViewLogger.m; sourceTree = "<group>"; };
 		ABA2C5ED1BD740290069EC5C /* MYPackageWorkspaceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageWorkspaceParser.h; sourceTree = "<group>"; };
 		ABA2C5EE1BD740290069EC5C /* MYPackageWorkspaceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageWorkspaceParser.m; sourceTree = "<group>"; };
 		ABA2C5F11BD740290069EC5C /* SafeThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeThread.h; sourceTree = "<group>"; };
@@ -436,8 +434,6 @@
 				ABA2C5E61BD740290069EC5C /* MYPackageLogger.m */,
 				ABA2C5E71BD740290069EC5C /* MYPackageMultiLogger.h */,
 				ABA2C5E81BD740290069EC5C /* MYPackageMultiLogger.m */,
-				ABA2C5E91BD740290069EC5C /* MYPackageTextViewLogger.h */,
-				ABA2C5EA1BD740290069EC5C /* MYPackageTextViewLogger.m */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -955,7 +951,6 @@
 				AB84755E1CC4CBE600C6FAE8 /* MYPackageCheckEnvironmentTask.m in Sources */,
 				ABC6BB181C02C8B900F97BE1 /* MYPackageContainerViewController.m in Sources */,
 				ABAEB9471C0D95530044A3F0 /* MYPackageAnalyzeProjectTask.m in Sources */,
-				ABA2C6251BD740290069EC5C /* MYPackageTextViewLogger.m in Sources */,
 				AB38617E1C06B170001A40AC /* MYPackageSelectProjectTableViewHeader.m in Sources */,
 				ABA2C62F1BD740290069EC5C /* MYPackageBaseTask.m in Sources */,
 				ABAEB9481C0D95530044A3F0 /* MYPackageAnalyzeSchemeTask.m in Sources */,

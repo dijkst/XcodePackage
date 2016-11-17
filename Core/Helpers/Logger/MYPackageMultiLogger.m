@@ -8,12 +8,10 @@
 
 #import "MYPackageMultiLogger.h"
 #import "MYPackageFileLogger.h"
-#import "MYPackageTextViewLogger.h"
 
 @interface MYPackageMultiLogger ()
 
-@property (nonatomic, strong) MYPackageFileLogger     *fileLogger;
-@property (nonatomic, strong) MYPackageTextViewLogger *textViewLogger;
+@property (nonatomic, strong) MYPackageFileLogger *fileLogger;
 
 @end
 
@@ -30,21 +28,12 @@
     [self.fileLogger setFilePath:filePath];
 }
 
-- (MYPackageTextViewLogger *)textViewLogger {
-    if (!_textViewLogger && _textView) {
-        _textViewLogger = [[MYPackageTextViewLogger alloc] init];
-        [_textViewLogger setTextView:_textView];
-    }
-    return _textViewLogger;
-}
-
 - (void)logMessage:(NSString *)message {
     if (!message) {
         return;
     }
     printf("%s", [message UTF8String]);
     [self.fileLogger logMessage:message];
-    [self.textViewLogger logMessage:message];
 }
 
 - (NSString *)logText {

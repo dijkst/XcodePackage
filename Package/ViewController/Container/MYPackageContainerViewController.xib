@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15F18b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MYPackageContainerViewController">
@@ -10,8 +11,6 @@
                 <outlet property="bottomContainer" destination="cWc-Z1-7Md" id="Zah-iS-fBN"/>
                 <outlet property="contentView" destination="02M-wy-bTt" id="mvj-bj-SFU"/>
                 <outlet property="loadingView" destination="PBv-hz-j1z" id="GVv-a3-W86"/>
-                <outlet property="logTextView" destination="eYN-Ik-9El" id="k14-YJ-lAN"/>
-                <outlet property="logWindow" destination="3wx-Tb-H1V" id="wyz-Z1-orA"/>
                 <outlet property="rightButtonContainer" destination="Jl0-GC-ybW" id="sY7-kE-VIL"/>
                 <outlet property="taskTextLabel" destination="wDp-ug-HSU" id="Yn5-PB-yBU"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -124,53 +123,6 @@
             </constraints>
             <point key="canvasLocation" x="244.5" y="459.5"/>
         </customView>
-        <window title="Log" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="3wx-Tb-H1V">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES"/>
-            <rect key="contentRect" x="443" y="531" width="624" height="270"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <view key="contentView" id="JLs-J0-Oqo">
-                <rect key="frame" x="0.0" y="0.0" width="624" height="270"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qr-eN-ENv">
-                        <rect key="frame" x="0.0" y="0.0" width="624" height="270"/>
-                        <clipView key="contentView" id="0rV-pf-CBa">
-                            <rect key="frame" x="0.0" y="0.0" width="624" height="270"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textView editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="eYN-Ik-9El">
-                                    <rect key="frame" x="0.0" y="0.0" width="624" height="270"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="624" height="270"/>
-                                    <size key="maxSize" width="624" height="10000000"/>
-                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="624" height="270"/>
-                                    <size key="maxSize" width="624" height="10000000"/>
-                                </textView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="8Aa-1q-CFE">
-                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="4ed-y9-ksd">
-                            <rect key="frame" x="224" y="1" width="15" height="133"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
-                </subviews>
-                <constraints>
-                    <constraint firstItem="7Qr-eN-ENv" firstAttribute="leading" secondItem="JLs-J0-Oqo" secondAttribute="leading" id="Rmo-Tn-j3x"/>
-                    <constraint firstAttribute="trailing" secondItem="7Qr-eN-ENv" secondAttribute="trailing" id="Taj-kG-4ic"/>
-                    <constraint firstItem="7Qr-eN-ENv" firstAttribute="top" secondItem="JLs-J0-Oqo" secondAttribute="top" id="eRw-gU-coB"/>
-                    <constraint firstAttribute="bottom" secondItem="7Qr-eN-ENv" secondAttribute="bottom" id="p6a-j4-SGF"/>
-                </constraints>
-            </view>
-            <point key="canvasLocation" x="218" y="129"/>
-        </window>
         <userDefaultsController representsSharedInstance="YES" id="uIe-n4-A42"/>
     </objects>
 </document>
