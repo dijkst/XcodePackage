@@ -30,6 +30,6 @@ extern NSDictionary *shellEnv;
 
 - (int)executeRubyScript:(NSString *)script, ... NS_REQUIRES_NIL_TERMINATION;
 
-- (BOOL)updateGit:(NSString *)git local:(NSString *)local name:(NSString *)name;
+- (BOOL)updateGit:(NSString *)git local:(NSString *)local name:(NSString *)name isInit:(BOOL *)isInit;
 
 @end

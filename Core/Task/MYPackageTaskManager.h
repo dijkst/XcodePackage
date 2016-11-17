@@ -23,4 +23,7 @@
 - (BOOL)runTaskClassNamesInOrder:(NSArray *)tasks;
 - (BOOL)runTaskClassNames:(NSArray *)tasks;
 
++ (void)registHookTaskName:(NSString *)hookTaskName beforeTaskName:(NSString *)taskName;
++ (void)registHookTaskName:(NSString *)hookTaskName afterTaskName:(NSString *)taskName;
+
 @end

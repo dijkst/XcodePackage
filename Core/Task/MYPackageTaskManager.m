@@ -50,6 +50,43 @@ static NSArray *taskClassOrder;
                        ];
 }
 
++ (NSMutableDictionary *)beforeHooks {
+    static dispatch_once_t onceToken;
+    static NSMutableDictionary *__beforeHooks;
+    dispatch_once(&onceToken, ^{
+        __beforeHooks = [NSMutableDictionary dictionary];
+    });
+    return __beforeHooks;
+}
+
++ (NSMutableDictionary *)afterHooks {
+    static dispatch_once_t onceToken;
+    static NSMutableDictionary *__afterHooks;
+    dispatch_once(&onceToken, ^{
+        __afterHooks = [NSMutableDictionary dictionary];
+    });
+    return __afterHooks;
+}
+
++ (void)registHookTaskName:(NSString *)hookTaskName taskName:(NSString *)taskName hooks:(NSMutableDictionary *)allHooks {
+    @synchronized (self) {
+        NSMutableArray *hooks = [allHooks objectForKey:taskName];
+        if (!hooks) {
+            hooks = [NSMutableArray array];
+            [allHooks setObject:hooks forKey:taskName];
+        }
+        [hooks addObject:hookTaskName];
+    }
+}
+
++ (void)registHookTaskName:(NSString *)hookTaskName beforeTaskName:(NSString *)taskName {
+    [self registHookTaskName:hookTaskName taskName:taskName hooks:[self beforeHooks]];
+}
+
++ (void)registHookTaskName:(NSString *)hookTaskName afterTaskName:(NSString *)taskName {
+    [self registHookTaskName:hookTaskName taskName:taskName hooks:[self afterHooks]];
+}
+
 - (BOOL)runTasks:(NSArray *)tasks {
     if (!tasks) {
         return [self runTaskClassNames:taskClassOrder];
@@ -90,6 +127,13 @@ static NSArray *taskClassOrder;
 - (BOOL)runTaskClassName:(NSString *)taskName {
     Class taskClass = NSClassFromString(taskName);
     if (taskClass) {
+
+        for (NSString *hookName in [[[self class] beforeHooks] objectForKey:taskName]) {
+            if (![self runTaskClassName:hookName]) {
+                return NO;
+            }
+        }
+
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
         _currentTask = [[taskClass alloc] init];
@@ -111,6 +155,15 @@ static NSArray *taskClassOrder;
         [center postNotificationName:MYPackageTaskManagerFinishRunTaskNotification
                               object:self
                             userInfo:@{@"task": _currentTask, @"success": @(result)}];
+
+        if (result) {
+            for (NSString *hookName in [[[self class] afterHooks] objectForKey:taskName]) {
+                if (![self runTaskClassName:hookName]) {
+                    return NO;
+                }
+            }
+        }
+
         return result;
     }
     return NO;

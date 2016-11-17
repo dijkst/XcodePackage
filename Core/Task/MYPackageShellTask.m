@@ -111,7 +111,7 @@ NSDictionary *shellEnv = nil;
     [super cancel];
 }
 
-- (BOOL)updateGit:(NSString *)git local:(NSString *)local name:(NSString *)name {
+- (BOOL)updateGit:(NSString *)git local:(NSString *)local name:(NSString *)name isInit:(BOOL *)isInit {
     NSString *folder = [local stringByExpandingTildeInPath];
     NSString *path   = [folder stringByAppendingPathComponent:name];
 
@@ -121,6 +121,7 @@ NSDictionary *shellEnv = nil;
             [self.config.logger logN:@"Clone Failed! %@", self.errorMessage];
             return NO;
         }
+        *isInit = NO;
     } else {
         if (![[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:&error]) {
             [self.config.logger logN:@"创建目录失败！%@", [error description]];
@@ -130,6 +131,7 @@ NSDictionary *shellEnv = nil;
             [self.config.logger logN:@"Clone Failed! %@", self.errorMessage];
             return NO;
         }
+        *isInit = YES;
     }
     return YES;
 }
