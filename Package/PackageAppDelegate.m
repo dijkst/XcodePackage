@@ -69,8 +69,7 @@
 }
 
 - (IBAction)showFinder:(id)sender {
-    NSArray *fileURLs = [NSArray arrayWithObjects:[NSURL fileURLWithPath:_mainVC.config.logPath], nil];
-    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
+    [[NSWorkspace sharedWorkspace] openFile:_mainVC.config.outputDir];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
