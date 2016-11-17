@@ -1,17 +1,17 @@
 //
-//  AppDelegate.m
+//  PackageAppDelegate.m
 //  Package
 //
 //  Created by Whirlwind on 15/10/21.
 //  Copyright © 2015年 taobao. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "PackageAppDelegate.h"
 #import "SafeThread.h"
 #import "MYPackageContainerViewController.h"
 #import "MYPackageConfig.h"
 
-@interface AppDelegate () <NSUserNotificationCenterDelegate>
+@interface PackageAppDelegate () <NSUserNotificationCenterDelegate>
 
 @property (weak) IBOutlet NSWindow *window;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation AppDelegate
+@implementation PackageAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     _mainVC = [[MYPackageContainerViewController alloc] init];
@@ -36,9 +36,6 @@
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
-    if (_mainVC.logWindow.isVisible) {
-        _mainVC.logWindow.isVisible = NO;
-    }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -67,8 +64,8 @@
 #pragma mark - window
 
 - (IBAction)showLogWindow:(id)sender {
-    [_mainVC.logWindow setIsVisible:YES];
-    [_mainVC.logTextView scrollToEndOfDocument:nil];
+    NSURL *url = [NSURL fileURLWithPath:_mainVC.config.logPath];
+    [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
 - (IBAction)showFinder:(id)sender {

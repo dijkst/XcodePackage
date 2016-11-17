@@ -43,14 +43,13 @@
 		AB7CA6411C23030900D5B960 /* MYPackageListSchemeTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CA6401C23030900D5B960 /* MYPackageListSchemeTask.m */; };
 		AB84755E1CC4CBE600C6FAE8 /* MYPackageCheckEnvironmentTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB84755D1CC4CBE600C6FAE8 /* MYPackageCheckEnvironmentTask.m */; };
 		AB8475641CC4E03800C6FAE8 /* GetIPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8475631CC4E03800C6FAE8 /* GetIPAddress.m */; };
-		ABA2C5CC1BD739F60069EC5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5CB1BD739F60069EC5C /* AppDelegate.m */; };
+		ABA2C5CC1BD739F60069EC5C /* PackageAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5CB1BD739F60069EC5C /* PackageAppDelegate.m */; };
 		ABA2C5CF1BD739F60069EC5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5CE1BD739F60069EC5C /* main.m */; };
 		ABA2C5D11BD739F60069EC5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABA2C5D01BD739F60069EC5C /* Assets.xcassets */; };
 		ABA2C5D41BD739F60069EC5C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA2C5D21BD739F60069EC5C /* MainMenu.xib */; };
 		ABA2C6221BD740290069EC5C /* MYPackageFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5E41BD740290069EC5C /* MYPackageFileLogger.m */; };
 		ABA2C6231BD740290069EC5C /* MYPackageLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5E61BD740290069EC5C /* MYPackageLogger.m */; };
 		ABA2C6241BD740290069EC5C /* MYPackageMultiLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5E81BD740290069EC5C /* MYPackageMultiLogger.m */; };
-		ABA2C6251BD740290069EC5C /* MYPackageTextViewLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5EA1BD740290069EC5C /* MYPackageTextViewLogger.m */; };
 		ABA2C6271BD740290069EC5C /* MYPackageWorkspaceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5EE1BD740290069EC5C /* MYPackageWorkspaceParser.m */; };
 		ABA2C6291BD740290069EC5C /* SafeThread.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5F21BD740290069EC5C /* SafeThread.m */; };
 		ABA2C62A1BD740290069EC5C /* MYPackageConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5F51BD740290069EC5C /* MYPackageConfig.m */; };
@@ -189,8 +188,8 @@
 		ABA2C55C1BD659060069EC5C /* NSView+Enable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Enable.h"; sourceTree = "<group>"; };
 		ABA2C55D1BD659060069EC5C /* NSView+Enable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Enable.m"; sourceTree = "<group>"; };
 		ABA2C5C81BD739F50069EC5C /* Package.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Package.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABA2C5CA1BD739F60069EC5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		ABA2C5CB1BD739F60069EC5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ABA2C5CA1BD739F60069EC5C /* PackageAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackageAppDelegate.h; sourceTree = "<group>"; };
+		ABA2C5CB1BD739F60069EC5C /* PackageAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackageAppDelegate.m; sourceTree = "<group>"; };
 		ABA2C5CE1BD739F60069EC5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABA2C5D01BD739F60069EC5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABA2C5D31BD739F60069EC5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -382,8 +381,8 @@
 				AB36C9661BD8E611004941A4 /* CommandLine */,
 				ABA2C5531BD659060069EC5C /* ViewController */,
 				ABA2C5571BD659060069EC5C /* View */,
-				ABA2C5CA1BD739F60069EC5C /* AppDelegate.h */,
-				ABA2C5CB1BD739F60069EC5C /* AppDelegate.m */,
+				ABA2C5CA1BD739F60069EC5C /* PackageAppDelegate.h */,
+				ABA2C5CB1BD739F60069EC5C /* PackageAppDelegate.m */,
 				ABA2C5D01BD739F60069EC5C /* Assets.xcassets */,
 				ABA2C5D21BD739F60069EC5C /* MainMenu.xib */,
 				ABA2C5D51BD739F60069EC5C /* Info.plist */,
@@ -960,7 +959,7 @@
 				AB38617E1C06B170001A40AC /* MYPackageSelectProjectTableViewHeader.m in Sources */,
 				ABA2C62F1BD740290069EC5C /* MYPackageBaseTask.m in Sources */,
 				ABAEB9481C0D95530044A3F0 /* MYPackageAnalyzeSchemeTask.m in Sources */,
-				ABA2C5CC1BD739F60069EC5C /* AppDelegate.m in Sources */,
+				ABA2C5CC1BD739F60069EC5C /* PackageAppDelegate.m in Sources */,
 				AB50A9381D6C3C8C005A6863 /* MYPackageServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

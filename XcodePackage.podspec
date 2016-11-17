@@ -17,17 +17,12 @@ Pod::Spec.new do |s|
 
   s.name         = "XcodePackage"
   s.version      = "0.0.1"
-  s.summary      = "A short description of XcodePackage."
-
-  # This description is used to generate tags and improve search results.
-  #   * Think: What does it do? Why did you write it? What is the focus?
-  #   * Try to keep it short, snappy and to the point.
-  #   * Write the description between the DESC delimiters below.
-  #   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.summary      = "Xcode auto package tool."
   s.description  = <<-DESC
+                  Package will build framework and create its podspec.
                    DESC
 
-  s.homepage     = "http://EXAMPLE/XcodePackage"
+  s.homepage     = "http://github.com/dijkst/XcodePackage.git"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -38,10 +33,10 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
+  s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
-
+  s.platform     = :osx, "10.10"
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Specify the authors of the library, with email addresses. Email addresses
@@ -53,60 +48,12 @@ Pod::Spec.new do |s|
   #
 
   s.author             = { "Whirlwind" => "whirlwindjames@foxmail.com" }
-  # Or just: s.author    = "Whirlwind"
-  # s.authors            = { "Whirlwind" => "whirlwindjames@foxmail.com" }
-  # s.social_media_url   = "http://twitter.com/Whirlwind"
+  s.source       = { :git => "git@github.com:dijkst/XcodePackage.git", :tag => "#{s.version}" }
 
-  # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  If this Pod runs only on iOS or OS X, then specify the platform and
-  #  the deployment target. You can optionally include the target after the platform.
-  #
-
-  # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
-
-  #  When using multiple platforms
-  # s.ios.deployment_target = "5.0"
-  # s.osx.deployment_target = "10.7"
-  # s.watchos.deployment_target = "2.0"
-  # s.tvos.deployment_target = "9.0"
-
-
-  # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the location from where the source should be retrieved.
-  #  Supports git, hg, bzr, svn and HTTP.
-  #
-
-  s.source       = { :git => "http://EXAMPLE/XcodePackage.git", :tag => "#{s.version}" }
-
-
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  CocoaPods is smart about how it includes source code. For source files
-  #  giving a folder will include any swift, h, m, mm, c & cpp files.
-  #  For header files it will include any header in the folder.
-  #  Not including the public_header_files will make all headers public.
-  #
-
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
-
-  # s.public_header_files = "Classes/**/*.h"
-
-
-  # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  A list of resources included with the Pod. These are copied into the
-  #  target bundle with a build phase script. Anything else will be cleaned.
-  #  You can preserve files from being cleaned, please don't preserve
-  #  non-essential files like tests, examples and documentation.
-  #
-
-  # s.resource  = "icon.png"
-  # s.resources = "Resources/*.png"
-
+  s.source_files  = "{Core,ObjCCommandLine,Package}/**/*.{h,m,mm}"
+  s.exclude_files = "**/MainMenu.xib"
+  s.resources = "Core/Task/Prepare/Script/{RubyEnv,GemEnv}", "**/*/*.{xib,rb,sh,xcconfig}", "*/*.xcassets"
+  s.prefix_header_file = "Package/PrefixHeader.pch"
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
 

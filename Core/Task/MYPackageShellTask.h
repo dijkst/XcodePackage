@@ -7,7 +7,13 @@
 //
 
 #import "MYPackageBaseTask.h"
-#import <ObjCCommandLine/ObjCShell.h>
+
+#if __has_include(<ObjCCommandLine/ObjCShell.h>)
+#   import <ObjCCommandLine/ObjCShell.h>
+#else
+#   import "ObjCShell.h"
+#endif
+
 
 extern NSDictionary *shellEnv;
 

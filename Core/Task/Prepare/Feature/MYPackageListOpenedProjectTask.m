@@ -7,7 +7,12 @@
 //
 
 #import "MYPackageListOpenedProjectTask.h"
-@import ObjCCommandLine;
+
+#if __has_include(<ObjCCommandLine/ObjCShell.h>)
+#   import <ObjCCommandLine/ObjCAppleScript.h>
+#else
+#   import "ObjCAppleScript.h"
+#endif
 
 @implementation MYPackageListOpenedProjectTask
 
