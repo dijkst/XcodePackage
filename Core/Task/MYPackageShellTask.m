@@ -121,7 +121,9 @@ NSDictionary *shellEnv = nil;
             [self.config.logger logN:@"Clone Failed! %@", self.errorMessage];
             return NO;
         }
-        *isInit = NO;
+        if (isInit) {
+            *isInit = NO;
+        }
     } else {
         if (![[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:&error]) {
             [self.config.logger logN:@"创建目录失败！%@", [error description]];
@@ -131,7 +133,9 @@ NSDictionary *shellEnv = nil;
             [self.config.logger logN:@"Clone Failed! %@", self.errorMessage];
             return NO;
         }
-        *isInit = YES;
+        if (isInit) {
+            *isInit = YES;
+        }
     }
     return YES;
 }

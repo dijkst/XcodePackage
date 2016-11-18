@@ -72,7 +72,7 @@
         if ([scheme isEqualToString:@"ssh"]) {
             scheme = @"http";
         }
-        if ([self executeCommand:[NSString stringWithFormat:@"ssh -G \"%@\" | awk '/^hostname / { print $2 }'", url.host]] != 0) {
+        if ([self executeCommand:[NSString stringWithFormat:@"ssh -T -G \"%@\" | awk '/^hostname / { print $2 }'", url.host]] != 0) {
             self.errorMessage = @"解析 ssh Host 失败！";
             return NO;
         }
