@@ -37,7 +37,6 @@ static NSArray *taskClassOrder;
                        @"MYPackageCreateSpecTask",
 
                        // release
-                       @"MYPackageUploadTask",
                        @"MYPackageUploadLocalTask",
                        @"MYPackageCreateTagTask",
 
@@ -105,31 +104,33 @@ static NSArray *taskClassOrder;
 }
 
 - (BOOL)runTaskClassNamesInOrder:(NSArray *)tasks {
+    NSMutableArray *orderedTasks = [NSMutableArray arrayWithCapacity:tasks.count];
     for (NSString *taskName in taskClassOrder) {
         if ([tasks indexOfObject:taskName] != NSNotFound) {
-            if (![self runTaskClassName:taskName]) {
-                return NO;
-            }
+            [orderedTasks addObject:taskName];
         }
     }
-    return YES;
+    return [self runTaskClassNames:orderedTasks];
 }
 
 - (BOOL)runTaskClassNames:(NSArray *)tasks {
     for (NSString *taskName in tasks) {
-        if (![self runTaskClassName:taskName]) {
+        if (![self runTaskClassName:taskName inTaskList:tasks]) {
             return NO;
         }
     }
     return YES;
 }
 
-- (BOOL)runTaskClassName:(NSString *)taskName {
+- (BOOL)runTaskClassName:(NSString *)taskName inTaskList:(NSArray *)taskList {
     Class taskClass = NSClassFromString(taskName);
     if (taskClass) {
+        if (![taskClass shouldLaunchInTaskList:taskList]) {
+            return YES;
+        }
 
         for (NSString *hookName in [[[self class] beforeHooks] objectForKey:taskName]) {
-            if (![self runTaskClassName:hookName]) {
+            if (![self runTaskClassName:hookName inTaskList:taskList]) {
                 return NO;
             }
         }
@@ -158,7 +159,7 @@ static NSArray *taskClassOrder;
 
         if (result) {
             for (NSString *hookName in [[[self class] afterHooks] objectForKey:taskName]) {
-                if (![self runTaskClassName:hookName]) {
+                if (![self runTaskClassName:hookName inTaskList:taskList]) {
                     return NO;
                 }
             }

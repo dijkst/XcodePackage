@@ -24,4 +24,6 @@
 - (void)cancel;
 - (BOOL)launch;
 
++ (BOOL)shouldLaunchInTaskList:(NSArray<NSString *> *)taskList;
+
 @end
