@@ -21,6 +21,10 @@
     return _podName ? : _workspace.name;
 }
 
+- (BOOL)isSNAPSHOT {
+    return [[self.version lowercaseString] hasSuffix:@"snapshot"];
+}
+
 - (NSString *)configruation {
     if ([_configruation length] == 0) {
         return @"Release";
@@ -111,6 +115,13 @@
 
 - (NSString *)largeZipPath {
     return [self.lipoDir stringByAppendingPathComponent:[self.podName stringByAppendingString:@".library.zip"]];
+}
+
+- (NSString *)zipUrl {
+    if (_zipUrl) {
+        return _zipUrl;
+    }
+    return @"服务器 zip 地址";
 }
 
 #pragma mark - workspace

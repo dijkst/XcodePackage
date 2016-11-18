@@ -21,11 +21,13 @@
 @property (nonatomic, strong) NSString *serverPath;
 
 @property (nonatomic, strong) NSString *version;
+@property (nonatomic, assign) BOOL isSNAPSHOT;
 @property (nonatomic, strong) NSString *authorName;
 @property (nonatomic, strong) NSString *authorEmail;
 @property (nonatomic, strong) NSString *homePage;
 @property (nonatomic, strong) NSString *gitUrl;
 @property (nonatomic, strong) NSString *commitHash;
+@property (nonatomic, strong) NSString *zipUrl;
 @property (nonatomic, strong) NSString *podName;
 @property (nonatomic, strong) NSString *configruation;
 @property (nonatomic, strong) NSString *xcconfigSettings;

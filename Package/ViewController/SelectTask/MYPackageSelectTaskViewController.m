@@ -178,7 +178,7 @@
                                      NSStringFromClass([MYPackageBuildTask class]),
                                      NSStringFromClass([MYPackageLipoTask class]),
                                      ]];
-        if (![self isSNAPSHOT]) {
+        if (![self.config isSNAPSHOT]) {
             [tasks addObject:NSStringFromClass([MYPackageCleanTask class])];
             [tasks addObject:NSStringFromClass([MYPackageCleanIntermediateProductTask class])];
         }
@@ -194,7 +194,8 @@
 
     }
     if (self.uploadCheck.state == NSOnState) {
-        if (![self isSNAPSHOT]) {
+        [tasks addObjectsFromArray:@[NSStringFromClass([MYPackageAnalyzeGitTask class])]];
+        if (![self.config isSNAPSHOT]) {
             [tasks addObject:NSStringFromClass([MYPackageCheckGitTask class])];
         }
         [tasks addObjectsFromArray:@[NSStringFromClass([MYPackageCreateTagTask class]),
@@ -217,10 +218,6 @@
             self.rightButton.title = @"开始";
         });
     });
-}
-
-- (BOOL)isSNAPSHOT {
-    return [[self.config.version lowercaseString] hasSuffix:@"snapshot"];
 }
 
 @end
