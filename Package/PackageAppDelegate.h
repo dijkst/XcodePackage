@@ -10,6 +10,8 @@
 
 @interface PackageAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 
+@property (weak) IBOutlet NSWindow *window;
+
 - (IBAction)showLogWindow:(id)sender;
 - (IBAction)showFinder:(id)sender;
 

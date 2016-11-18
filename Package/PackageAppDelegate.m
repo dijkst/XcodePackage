@@ -13,8 +13,6 @@
 
 @interface PackageAppDelegate () <NSUserNotificationCenterDelegate>
 
-@property (weak) IBOutlet NSWindow *window;
-
 @property (nonatomic, strong) MYPackageContainerViewController *mainVC;
 
 @end
