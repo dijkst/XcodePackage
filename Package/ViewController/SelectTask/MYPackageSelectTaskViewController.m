@@ -198,7 +198,8 @@
         if (![self.config isSNAPSHOT]) {
             [tasks addObject:NSStringFromClass([MYPackageCheckGitTask class])];
         }
-        [tasks addObjectsFromArray:@[NSStringFromClass([MYPackageCreateTagTask class]),
+        [tasks addObjectsFromArray:@[NSStringFromClass([MYPackageCreateSpecTask class]),
+                                     NSStringFromClass([MYPackageCreateTagTask class]),
                                      ]];
     }
     if ([tasks count] == 0) {
