@@ -46,7 +46,7 @@
         }
         NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:infoPath];
         if (!info) {
-            self.errorMessage = [NSString stringWithFormat:@"<INFO> 读取 Info.plist 失败，跳过！ %@", infoPath];
+            [self.config.logger logN:[NSString stringWithFormat:@"<INFO> 读取 Info.plist 失败，跳过！ %@", infoPath]];
             return;
         }
         NSString *ver = [info objectForKey:@"CFBundleShortVersionString"];
