@@ -15,8 +15,8 @@ exe() {
     fi
 }
 
-UPDATEGEM=false
-UPDATEBUNDLER=false
+UPDATEGEM=""
+UPDATEBUNDLER=""
 
 while [[ $# > 1 ]]
 do
@@ -45,19 +45,19 @@ fi
 
 RubyEnv="$(pwd)/RubyEnv"
 
-if [[ $UPDATEGEM == true ]]; then
+if [[ $UPDATEGEM != "" ]]; then
     cache=/Library/Caches/com.taobao.Package
     rm -rf $cache
     mkdir -p $cache
     exe cd "$RubyEnv"
-    exe unzip -q "./rubygems-2.6.4.zip" -d $cache
-    exe cd "$cache/rubygems-2.6.4"
-    exe ruby setup.rb --no-document ri,rdoc --previous-version=2.6.4
+    exe unzip -q "./rubygems-$UPDATEGEM.zip" -d $cache
+    exe cd "$cache/rubygems-$UPDATEGEM"
+    exe ruby setup.rb --no-document ri,rdoc --previous-version=$UPDATEGEM
     rm -rf $cache
 fi
 
-if [[ $UPDATEBUNDLER == true ]]; then
+if [[ $UPDATEBUNDLER != "" ]]; then
     exe cd "$RubyEnv"
-    exe gem install -l "./bundler-1.12.1.gem" --no-document $binPath
+    exe gem install -l "./bundler-$UPDATEBUNDLER.gem" --no-document $binPath
     exe gem clean bundler
 fi
