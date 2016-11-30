@@ -24,6 +24,6 @@
 - (void)cancel;
 - (BOOL)launch;
 
-+ (BOOL)shouldLaunchInTaskList:(NSArray<NSString *> *)taskList;
++ (BOOL)shouldLaunchWithPreTaskStatus:(BOOL)status;
 
 @end

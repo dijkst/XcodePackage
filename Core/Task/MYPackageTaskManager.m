@@ -98,21 +98,24 @@ static NSArray *taskClassOrder;
     for (void(^observer)(NSMutableArray *) in observers) {
         observer(ts);
     }
+    BOOL result = YES;
     for (NSString *taskName in ts) {
-        if (![self runTaskClassName:taskName inTaskList:ts]) {
-            return NO;
+        Class taskClass = NSClassFromString(taskName);
+        if (!taskClass) {
+            continue;
+        }
+        if (![taskClass shouldLaunchWithPreTaskStatus:result]) {
+            continue;
+        }
+        if (![self runTaskClass:taskClass]) {
+            result = NO;
         }
     }
-    return YES;
+    return result;
 }
 
-- (BOOL)runTaskClassName:(NSString *)taskName inTaskList:(NSArray *)taskList {
-    Class taskClass = NSClassFromString(taskName);
+- (BOOL)runTaskClass:(Class)taskClass {
     if (taskClass) {
-        if (![taskClass shouldLaunchInTaskList:taskList]) {
-            return YES;
-        }
-
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
         _currentTask = [[taskClass alloc] init];
@@ -123,7 +126,7 @@ static NSArray *taskClassOrder;
                               object:self
                             userInfo:@{@"task": _currentTask}];
 
-        [self.config.logger logN:@"==================== Task: %@ ====================", taskName];
+        [self.config.logger logN:@"==================== Task: %@ ====================", NSStringFromClass(taskClass)];
         NSDate *startDate = [NSDate date];
 
         BOOL result = [_currentTask launch];

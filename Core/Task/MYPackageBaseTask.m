@@ -24,8 +24,9 @@
     [self.config.logger logN:@"❌ %@", errorMessage];
 }
 
-+ (BOOL)shouldLaunchInTaskList:(NSArray<NSString *> *)taskList {
-    return YES;
++ (BOOL)shouldLaunchWithPreTaskStatus:(BOOL)status {
+    return status;
 }
+
 
 @end
