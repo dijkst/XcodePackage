@@ -19,7 +19,7 @@ static NSArray *ignoreResources;
             blackKeys = @[@"version", @"authors", @"source", @"prepare_command", @"platforms", @"requires_arc", @"compiler_flags", @"pod_target_xcconfig", @"prefix_header_contents", @"prefix_header_file", @"module_name", @"header_dir", @"header_mappings_dir", @"source_files", @"resource_bundles", @"resources", @"exclude_files", @"preserve_paths", @"module_map", @"subspecs"];
         }
         if (!ignoreResources) {
-            ignoreResources = @[@"Headers", @"PrivateHeaders", @"Modules", @"Versions", @"_CodeSignature"];
+            ignoreResources = @[@"Headers", @"PrivateHeaders", @"Modules", @"Versions", @"_CodeSignature", @".DS_Store", @"Info.plist"];
         }
     }
     return self;
@@ -73,74 +73,105 @@ static NSArray *ignoreResources;
 - (NSMutableDictionary *)dictionaryForTarget:(MYPackageTarget *)target {
     NSMutableDictionary *spec = [NSMutableDictionary dictionaryWithObject:target.name forKey:@"name"];
 
-    NSMutableArray *frameworks = [NSMutableArray array];
+    NSMutableDictionary *dynamticallyFrameworks = [NSMutableDictionary dictionary];
+    NSMutableDictionary *staticFrameworks = [NSMutableDictionary dictionary];
+
+    NSMutableArray *libraries  = [NSMutableArray array];
     NSMutableArray *resources  = [NSMutableArray array];
+    NSMutableArray *headers    = [NSMutableArray array];
     NSMutableArray *excludes   = [NSMutableArray array];
     NSFileManager  *fm         = [NSFileManager defaultManager];
 
     // 判断是否是链接库
     if ([target isSharedLibrary]) {
         if ([target.wrapperExtension isEqualToString:@"framework"]) {
-            [frameworks addObject:target.fullProductName];
+            NSMutableDictionary *frameworks = nil;
+            if (target.type == MYPackageTargetTypeDynamicLibrary) {
+                frameworks = dynamticallyFrameworks;
+            } else {
+                frameworks = staticFrameworks;
+            }
+            [frameworks setObject:[self.config.lipoDir stringByAppendingPathComponent:target.fullProductName]
+                           forKey:target.fullProductName];
         } else {
-            [spec setObject:[NSMutableArray arrayWithObject:target.fullProductName]
-                     forKey:@"vendored_libraries"];
+            [libraries addObject:target.fullProductName];
         }
-        [spec setObject:@{target.supportedPlatform:target.systemMinVersion} forKey:@"platforms"];
-
-        // 判断是否有资源文件
-        NSString *infoPath = [self.config.lipoDir stringByAppendingPathComponent:target.resourcePath];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:infoPath]) {
-            [resources addObject:[target.resourcePath stringByAppendingPathComponent:@"*"]];
-        }
+        [spec setObject:@{target.supportedPlatform:target.systemMinVersion}
+                 forKey:@"platforms"];
     } else {
-        if (![target.wrapperExtension isEqualToString:@"framework"]) {
-            [spec setObject:target.fullProductName forKey:@"resources"];
-        }
+        // .bundle
+        [spec setObject:target.fullProductName forKey:@"resources"];
     }
 
     // 本地 framework
     [target.localFrameworks enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *path, BOOL *_Nonnull stop) {
-        [frameworks addObject:key];
         NSString *fileName = [key stringByDeletingPathExtension];
         if ([fm fileExistsAtPath:path]) {
             if ([self executeCommand:[NSString stringWithFormat:@"file '%@/%@'", path, fileName]]) {
-                // 动态库不复制资源
+                NSMutableDictionary *frameworks = nil;
                 if ([self.output indexOfObject:@"dynamically linked shared"] != NSNotFound) {
-                    return;
+                    frameworks = dynamticallyFrameworks;
+                } else {
+                    frameworks = staticFrameworks;
                 }
-            }
-            BOOL isDirectory;
-            NSString *resource = [path stringByAppendingPathComponent:@"Resources"];
-            if ([fm fileExistsAtPath:resource isDirectory:&isDirectory] && isDirectory) {
-                [resources addObject:[[key stringByAppendingPathComponent:@"Resources"] stringByAppendingPathComponent:@"*"]];
-            } else {
-                [resources addObject:[key stringByAppendingPathComponent:@"*"]];
-                [excludes addObject:[NSString stringWithFormat:@"%@/%@", key, fileName]];
-                for (NSString *name in ignoreResources) {
-                    [excludes addObject:[NSString stringWithFormat:@"%@/%@", key, name]];
-                }
+                [frameworks setObject:path forKey:key];
             }
         }
     }];
 
+    [staticFrameworks enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *path, BOOL *stop) {
+        BOOL isDirectory;
+
+        // 获取资源路径
+        if ([fm fileExistsAtPath:[path stringByAppendingPathComponent:@"Resources"]
+                     isDirectory:&isDirectory] && isDirectory) {
+            // 存在 Resources 目录则直接使用该目录
+            [resources addObject:[[key stringByAppendingPathComponent:@"Resources"] stringByAppendingPathComponent:@"*"]];
+        } else {
+            NSArray *ignored = [ignoreResources arrayByAddingObject:[key stringByDeletingPathExtension]];
+            NSArray *resourceFiles = [[fm contentsOfDirectoryAtPath:path error:nil] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+                return ![ignored containsObject:evaluatedObject];
+            }]];
+            if ([resourceFiles count] > [ignored count]) {
+                // 资源较多则采用排除方式
+                [resources addObject:[key stringByAppendingPathComponent:@"*"]];
+                for (NSString *name in ignoreResources) {
+                    if ([fm fileExistsAtPath:[path stringByAppendingPathComponent:name]]) {
+                        [excludes addObject:[NSString stringWithFormat:@"%@/%@", key, name]];
+                    }
+                }
+            } else {
+                // 资源较少甚至没有资源，则采用直接声明
+                [resourceFiles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    [resources addObject:[key stringByAppendingPathComponent:obj]];
+                }];
+            }
+        }
+
+        // 头文件路径
+        NSString *headerPath = [path stringByAppendingPathComponent:@"Headers"];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:headerPath]) {
+            [headers addObject:[key stringByAppendingPathComponent:@"Headers/*"]];
+        }
+    }];
+
+    NSArray *frameworks = [[dynamticallyFrameworks allKeys] arrayByAddingObjectsFromArray:[staticFrameworks allKeys]];
     if ([frameworks count] > 0) {
         [spec setObject:frameworks forKey:@"vendored_frameworks"];
+    }
+    if ([libraries count] > 0) {
+        [spec setObject:libraries forKey:@"vendored_libraries"];
+    }
+    if ([headers count] > 0) {
+        [spec setObject:headers forKey:@"source_files"];
     }
     if ([resources count] > 0) {
         [spec setObject:resources forKey:@"resources"];
     }
     if ([excludes count] > 0) {
-        [excludes addObject:@".DS_Store"];
-        [excludes addObject:@"Info.plist"];
         [spec setObject:excludes forKey:@"exclude_files"];
     }
 
-    // 判断是否有头文件
-    NSString *headerPath = [self.config.lipoDir stringByAppendingPathComponent:target.publicHeaderPath];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:headerPath]) {
-        [spec setObject:[target.publicHeaderPath stringByAppendingPathComponent:@"*"] forKey:@"source_files"];
-    }
 
     MYPackageTarget *demoTarget = [target.project demoTargetForName:target.name];
     if (demoTarget) {
