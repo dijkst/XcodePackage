@@ -21,7 +21,7 @@
         return NO;
     }
     NSDictionary *errorDict = nil;
-    self.output = [ObjCAppleScript executeWithSource:@"on is_running(appName)\n\
+    NSArray *list = [ObjCAppleScript executeWithSource:@"on is_running(appName)\n\
                    tell application \"System Events\" to (name of processes) contains appName\n\
                    end is_running\n\
                    set xcodeRunning to is_running(\"Xcode\")\n\
@@ -32,12 +32,14 @@
                    else\n\
                     return {}\n\
                    end if"
-                                               error:&errorDict];
-    [self.config.logger logN:[self.output description]];
+                                                 error:&errorDict];
+    [self.config.logger logN:[list description]];
     if (errorDict) {
         self.errorMessage = errorDict[NSAppleScriptErrorBriefMessage];
         return NO;
     }
+    NSData *data = [NSJSONSerialization dataWithJSONObject:list options:0 error:nil];
+    self.output = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
     return YES;
 }

@@ -109,7 +109,7 @@ static NSArray *ignoreResources;
         if ([fm fileExistsAtPath:path]) {
             if ([self executeCommand:[NSString stringWithFormat:@"file '%@/%@'", path, fileName]]) {
                 NSMutableDictionary *frameworks = nil;
-                if ([self.output indexOfObject:@"dynamically linked shared"] != NSNotFound) {
+                if ([self.output rangeOfString:@"dynamically linked shared"].location != NSNotFound) {
                     frameworks = dynamticallyFrameworks;
                 } else {
                     frameworks = staticFrameworks;

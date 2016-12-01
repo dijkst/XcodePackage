@@ -11,6 +11,7 @@
 @implementation MYPackageBaseTask
 
 - (void)cancel {
+    _isCancelled = YES;
     [self.config.logger logN:@"User Cancel!"];
 }
 
@@ -24,7 +25,7 @@
     [self.config.logger logN:@"❌ %@", errorMessage];
 }
 
-+ (BOOL)shouldLaunchWithPreTaskStatus:(BOOL)status {
++ (BOOL)shouldLaunchWithPreTaskStatus:(BOOL)status manager:(MYPackageTaskManager *)manager {
     return status;
 }
 

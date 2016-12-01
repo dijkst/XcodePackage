@@ -21,8 +21,6 @@
 
 @property (nonatomic, assign) BOOL busy;
 
-@property (nonatomic, readonly) MYPackageBaseTask *currentTask;
-
 @property (nonatomic, weak) MYPackageContainerViewController *containerVC;
 
 @property (nonatomic, assign) BOOL showBackButton;

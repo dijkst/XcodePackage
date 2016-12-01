@@ -15,13 +15,14 @@
 
 @interface MYPackageTaskManager : NSObject
 
-@property (nonatomic, readonly) MYPackageBaseTask *currentTask;
 @property (nonatomic, strong) MYPackageConfig     *config;
 @property (nonatomic, strong) NSString            *lastErrorMessage;
+@property (nonatomic, strong) NSString            *output;
 
 - (BOOL)runTasks:(NSArray *)tasks;
 - (BOOL)runTaskClassNamesInOrder:(NSArray *)tasks;
 - (BOOL)runTaskClassNames:(NSArray *)tasks;
+- (void)cancelAllTask;
 
 + (void)registTasksObserver:(void(^)(NSMutableArray *tasks))observer id:(NSInteger)_id;
 

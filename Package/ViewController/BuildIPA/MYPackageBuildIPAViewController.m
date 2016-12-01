@@ -55,7 +55,7 @@
 }
 
 - (void)stopTask {
-    [self.currentTask cancel];
+    [self.taskManager cancelAllTask];
 }
 
 - (void)startTask {

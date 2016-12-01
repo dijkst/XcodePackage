@@ -100,7 +100,7 @@ NSDictionary *shellEnv = nil;
     return [self executeCommand:[NSString stringWithFormat:@"bundle exec ruby '%@'", [args componentsJoinedByString:@"' '"]]];
 }
 
-- (id)output {
+- (NSString *)output {
     return self.shellTask.outputString;
 }
 

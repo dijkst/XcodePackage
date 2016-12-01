@@ -24,7 +24,7 @@
 - (void)viewWillDisappear {
     [super viewWillDisappear];
     if (self.busy) {
-        [self.currentTask cancel];
+        [self.taskManager cancelAllTask];
     }
 }
 
@@ -44,14 +44,10 @@
     return _taskManager;
 }
 
-- (MYPackageBaseTask *)currentTask {
-    return self.taskManager.currentTask;
-}
-
 - (BOOL)runTasks:(NSArray<NSString *> *)tasks autoOrder:(BOOL)order {
     self.busy = YES;
     BOOL status = order ? [self.taskManager runTaskClassNamesInOrder:tasks] : [self.taskManager runTaskClassNames:tasks];
-    NSString *errorMessage = self.currentTask.errorMessage;
+    NSString *errorMessage = self.taskManager.lastErrorMessage;
     [self.containerVC finishLoadingWithErrorText:errorMessage];
     self.busy = NO;
     return status;

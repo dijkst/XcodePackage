@@ -48,7 +48,10 @@
         if ([self runTasks:@[NSStringFromClass([MYPackageListOpenedProjectTask class])] autoOrder:NO]) {
             dispatch_main_async_safe(^{
                 // 处理打开 project 里面的 workspace
-                NSArray *opened = self.currentTask.output;
+                NSArray *opened = nil;
+                if ([self.taskManager.output length] > 0) {
+                    opened = [NSJSONSerialization JSONObjectWithData:[self.taskManager.output dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+                }
                 NSMutableArray *openedProjects = [NSMutableArray arrayWithCapacity:[opened count]];
                 for (NSString *path in opened) {
                     if ([[[path pathExtension] lowercaseString] isEqualToString:@"xcworkspace"]) {

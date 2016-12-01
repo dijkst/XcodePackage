@@ -17,13 +17,13 @@
 @property (nonatomic, weak) MYPackageTaskManager *taskManager;
 
 @property (nonatomic, strong) NSString *errorMessage;
-@property (nonatomic, strong) id       output;
-
+@property (nonatomic, strong) NSString *output;
+@property (nonatomic, readonly) BOOL   isCancelled;
 @property (nonatomic, strong) NSString *name;
 
 - (void)cancel;
 - (BOOL)launch;
 
-+ (BOOL)shouldLaunchWithPreTaskStatus:(BOOL)status;
++ (BOOL)shouldLaunchWithPreTaskStatus:(BOOL)status manager:(MYPackageTaskManager *)manager;
 
 @end

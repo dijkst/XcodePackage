@@ -10,6 +10,12 @@
 
 static NSArray *taskClassOrder;
 
+@interface MYPackageTaskManager ()
+
+@property (nonatomic, readonly) MYPackageBaseTask *currentTask;
+
+@end
+
 @implementation MYPackageTaskManager
 
 + (void)load {
@@ -99,18 +105,26 @@ static NSArray *taskClassOrder;
         observer(ts);
     }
     BOOL result = YES;
+    NSMutableString *output = [NSMutableString string];
     for (NSString *taskName in ts) {
         Class taskClass = NSClassFromString(taskName);
         if (!taskClass) {
             continue;
         }
-        if (![taskClass shouldLaunchWithPreTaskStatus:result]) {
+        if (![taskClass shouldLaunchWithPreTaskStatus:result manager:self]) {
             continue;
         }
         if (![self runTaskClass:taskClass]) {
             result = NO;
         }
+        if ([self.currentTask.output length] > 0) {
+            [output appendString:self.currentTask.output];
+        }
+        if (self.currentTask.isCancelled) {
+            break;
+        }
     }
+    self.output = output;
     return result;
 }
 
@@ -141,6 +155,10 @@ static NSArray *taskClassOrder;
         return result;
     }
     return NO;
+}
+
+- (void)cancelAllTask {
+    [self.currentTask cancel];
 }
 
 @end
