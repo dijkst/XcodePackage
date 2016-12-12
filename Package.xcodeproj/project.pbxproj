@@ -14,6 +14,7 @@
 		AB20308D1C96A6B200F07A5E /* MYPackageLipoTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20308C1C96A6B200F07A5E /* MYPackageLipoTask.m */; };
 		AB2030981C9800FA00F07A5E /* MYPackageWorkspace.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2030971C9800FA00F07A5E /* MYPackageWorkspace.m */; };
 		AB20309B1C9835A200F07A5E /* MYPackageAnalyzeTargetTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20309A1C9835A200F07A5E /* MYPackageAnalyzeTargetTask.m */; };
+		AB28E68F1DFE3E7600761897 /* MYPackageCalculateMD5Task.m in Sources */ = {isa = PBXBuildFile; fileRef = AB28E68E1DFE3E7600761897 /* MYPackageCalculateMD5Task.m */; };
 		AB36C96C1BD8E680004941A4 /* MYPackageCommandLine.m in Sources */ = {isa = PBXBuildFile; fileRef = AB36C96B1BD8E680004941A4 /* MYPackageCommandLine.m */; };
 		AB36C96F1BD8E878004941A4 /* MYPackageTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB36C96E1BD8E878004941A4 /* MYPackageTaskManager.m */; };
 		AB3797061CAB689E0033287C /* MYPackageInitTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3797051CAB689E0033287C /* MYPackageInitTask.m */; };
@@ -137,6 +138,8 @@
 		AB2030971C9800FA00F07A5E /* MYPackageWorkspace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageWorkspace.m; sourceTree = "<group>"; };
 		AB2030991C9835A200F07A5E /* MYPackageAnalyzeTargetTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageAnalyzeTargetTask.h; sourceTree = "<group>"; };
 		AB20309A1C9835A200F07A5E /* MYPackageAnalyzeTargetTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageAnalyzeTargetTask.m; sourceTree = "<group>"; };
+		AB28E68D1DFE3E7600761897 /* MYPackageCalculateMD5Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCalculateMD5Task.h; sourceTree = "<group>"; };
+		AB28E68E1DFE3E7600761897 /* MYPackageCalculateMD5Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCalculateMD5Task.m; sourceTree = "<group>"; };
 		AB36C96A1BD8E680004941A4 /* MYPackageCommandLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageCommandLine.h; sourceTree = "<group>"; };
 		AB36C96B1BD8E680004941A4 /* MYPackageCommandLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageCommandLine.m; sourceTree = "<group>"; };
 		AB36C96D1BD8E878004941A4 /* MYPackageTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageTaskManager.h; sourceTree = "<group>"; };
@@ -560,6 +563,8 @@
 				ABAEB91D1C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.m */,
 				ABAEB91E1C0D95530044A3F0 /* MYPackageZipTask.h */,
 				ABAEB91F1C0D95530044A3F0 /* MYPackageZipTask.m */,
+				AB28E68D1DFE3E7600761897 /* MYPackageCalculateMD5Task.h */,
+				AB28E68E1DFE3E7600761897 /* MYPackageCalculateMD5Task.m */,
 				ABAEB91A1C0D95530044A3F0 /* MYPackageCreateSpecTask.h */,
 				ABAEB91B1C0D95530044A3F0 /* MYPackageCreateSpecTask.m */,
 				ABAEB9201C0D95530044A3F0 /* Shell */,
@@ -907,6 +912,7 @@
 				ABAEB9431C0D95530044A3F0 /* MYPackageUpdateVersionNumberTask.m in Sources */,
 				AB3797061CAB689E0033287C /* MYPackageInitTask.m in Sources */,
 				ABA2C6231BD740290069EC5C /* MYPackageLogger.m in Sources */,
+				AB28E68F1DFE3E7600761897 /* MYPackageCalculateMD5Task.m in Sources */,
 				ABA2C62E1BD740290069EC5C /* MYPackageCleanIntermediateProductTask.m in Sources */,
 				ABA2C5CF1BD739F60069EC5C /* main.m in Sources */,
 				ABAEB9441C0D95530044A3F0 /* MYPackageZipTask.m in Sources */,

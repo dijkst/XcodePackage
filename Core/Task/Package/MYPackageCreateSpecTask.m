@@ -341,7 +341,8 @@ static NSArray *ignoreResources;
                                   @"authors": @{self.config.authorName: self.config.authorEmail},
                                   @"homepage": self.config.homePage ? : @"",
                                   @"description": self.config.podName,
-                                  @"source": @{@"http": self.config.zipUrl}
+                                  @"source": @{@"http": self.config.zipUrl,
+                                               @"hash": self.config.largeZipHash?:@""}
                                   };
     NSMutableDictionary        *specDic = [NSMutableDictionary dictionaryWithDictionary:defaultSpec];
     NSArray<MYPackageTarget *> *targets = self.config.selectedScheme.targets;

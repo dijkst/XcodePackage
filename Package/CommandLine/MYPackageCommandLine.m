@@ -28,7 +28,7 @@
                           @"setup": @[@"prepareEnvironment"],
                           @"check": @[@"checkEnvironment"],
                           @"package": @[@"analyzeProject", @"listScheme", @"analyzeScheme", @"analyzeTarget", @"clean", @"build", @"lipo", @"updateVersionNumber", @"zip"],
-                          @"createSpec": @[@"checkGit", @"analyzeProject", @"analyzeProduct", @"analyzeGit", @"createSpec", @"uploadStatistics"],
+                          @"createSpec": @[@"checkGit", @"analyzeProject", @"analyzeProduct", @"analyzeGit", @"calculateMD5Task", @"createSpec", @"uploadStatistics"],
                           @"upload": @[@"upload", @"createTag"],
                           @"clean": @[@"cleanIntermediateProduct"],
                           @"cleanAll": @[@"cleanIntermediateProduct", @"cleanFinalProduct"]

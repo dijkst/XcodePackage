@@ -46,4 +46,6 @@
 @property (nonatomic, readonly) NSString *specPath;
 @property (nonatomic, readonly) NSString *largeZipPath;
 
+@property (nonatomic, strong) NSString *largeZipHash;
+
 @end

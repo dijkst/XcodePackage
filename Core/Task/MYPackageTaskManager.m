@@ -40,6 +40,7 @@ static NSArray *taskClassOrder;
                        @"MYPackageAnalyzeProductTask",
                        @"MYPackageUpdateVersionNumberTask",
                        @"MYPackageZipTask",
+                       @"MYPackageCalculateMD5Task",
                        @"MYPackageCreateSpecTask",
 
                        // release

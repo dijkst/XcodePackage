@@ -25,6 +25,7 @@
 #import "MYPackageAnalyzeProductTask.h"
 #import "MYPackageUpdateVersionNumberTask.h"
 #import "MYPackageZipTask.h"
+#import "MYPackageCalculateMD5Task.h"
 #import "MYPackageCreateSpecTask.h"
 
 #import "MYPackageCreateTagTask.h"
@@ -189,6 +190,7 @@
                                      NSStringFromClass([MYPackageAnalyzeProductTask class]),
                                      NSStringFromClass([MYPackageUpdateVersionNumberTask class]),
                                      NSStringFromClass([MYPackageZipTask class]),
+                                     NSStringFromClass([MYPackageCalculateMD5Task class]),
                                      NSStringFromClass([MYPackageCreateSpecTask class]),
                                      ]];
 
