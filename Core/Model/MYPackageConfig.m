@@ -126,19 +126,13 @@
 
 #pragma mark - workspace
 - (void)setWorkspaceFilePath:(NSString *)workspacePath {
+    self.workspace = [[MYPackageWorkspace alloc] init];
     self.workspace.filePath = workspacePath;
     [self.logger setFilePath:self.logPath];
 }
 
 - (NSString *)workspaceFilePath {
     return self.workspace.filePath;
-}
-
-- (MYPackageWorkspace *)workspace {
-    if (!_workspace) {
-        _workspace = [[MYPackageWorkspace alloc] init];
-    }
-    return _workspace;
 }
 
 #pragma mark - copy protocol
