@@ -117,7 +117,7 @@ static NSArray *ignoreResources;
     [target.localFrameworks enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *path, BOOL *_Nonnull stop) {
         NSString *fileName = [key stringByDeletingPathExtension];
         if ([fm fileExistsAtPath:path]) {
-            if ([self executeCommand:[NSString stringWithFormat:@"file '%@/%@'", path, fileName]]) {
+            if ([self executeCommand:[NSString stringWithFormat:@"file '%@/%@'", path, fileName]] == 0) {
                 NSMutableDictionary *frameworks = nil;
                 if ([self.output rangeOfString:@"dynamically linked shared"].location != NSNotFound) {
                     frameworks = dynamticallyFrameworks;
