@@ -96,7 +96,7 @@ static NSArray *ignoreResources;
         } else {
             [libraries addObject:target.fullProductName];
         }
-        [spec setObject:@{target.supportedPlatform:target.systemMinVersion}
+        [spec setObject:@{target.platformName: target.platformMinVersion}
                  forKey:@"platforms"];
     } else {
         // .bundle

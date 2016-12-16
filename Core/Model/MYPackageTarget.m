@@ -31,6 +31,7 @@ NSString *nameForTargetType(MYPackageTargetType type) {
 @end
 
 @implementation MYPackageTarget
+@synthesize resources = _resources;
 
 - (id)initWithName:(NSString *)name {
     if (self = [super init]) {
@@ -40,70 +41,6 @@ NSString *nameForTargetType(MYPackageTargetType type) {
 }
 
 #pragma mark - user configurations
-/*
- {
- "Build Phases": [
- {
- "Check Pods Manifest.lock": [
- ]
- },
- {
- "SourcesBuildPhase": [
- "TBHDMain.m"
- ]
- },
- {
- "FrameworksBuildPhase": [
- ]
- },
- {
- "HeadersBuildPhase": [
- {
- "testFramework.h": {
- "ATTRIBUTES": [
- "Public"
- ]
- }
- },
- "TBHDMain.h"
- ]
- },
- {
- "ResourcesBuildPhase": [
- "Podfile.lock"
- ]
- }
- ],
- "Build Configurations": [
- {
- "Release": {
- "Build Settings": {
- "LD_RUNPATH_SEARCH_PATHS": "$(inherited) @executable_path/Frameworks @loader_path/Frameworks",
- "SDKROOT": "macosx",
- "VALID_ARCHS": "$(ARCHS_STANDARD)",
- "INFOPLIST_FILE": "testFramework copy-Info.plist",
- "DEFINES_MODULE": "YES",
- "DYLIB_COMPATIBILITY_VERSION": "1",
- "MACOSX_DEPLOYMENT_TARGET": "10.8",
- "INFOPLIST_PATH": "$(FULL_PRODUCT_NAME)/Info.plist",
- "INSTALL_PATH": "$(LOCAL_LIBRARY_DIR)/Frameworks",
- "SKIP_INSTALL": "YES",
- "DYLIB_INSTALL_NAME_BASE": "@rpath",
- "MACH_O_TYPE": "staticlib",
- "DYLIB_CURRENT_VERSION": "1",
- "LIBRARY_SEARCH_PATHS": [
- "$(inherited)",
- "$(PROJECT_DIR)/Pods/build/Debug-iphoneos"
- ],
- "OTHER_LDFLAGS": "",
- "PRODUCT_NAME": "testFramework2"
- },
- "Base Configuration": "Pods-mainClient.release.xcconfig"
- }
- }
- ]
- }
- */
 - (void)setUserConfigrations:(NSDictionary *)userConfigrations {
     _userConfigrations = userConfigrations;
     [self anlayzeTargetFrameworkPhases];
@@ -122,8 +59,15 @@ NSString *nameForTargetType(MYPackageTargetType type) {
     return nil;
 }
 
+- (NSArray *)resources {
+    if (!_resources) {
+        _resources = [self valueForKey:@"Resources" inArray:self.userConfigrations[@"Build Phases"]];
+    }
+    return _resources;
+}
+
 - (void)anlayzeTargetFrameworkPhases {
-    NSArray        *frameworksBuildPhase = [self valueForKey:@"FrameworksBuildPhase" inArray:self.userConfigrations[@"Build Phases"]];
+    NSArray        *frameworksBuildPhase = [self valueForKey:@"Frameworks" inArray:self.userConfigrations[@"Build Phases"]];
     NSString       *frameworkName        = [self.name hasSuffix:@"Demo"] ? [[self.name substringToIndex:[self.name length] - 4] stringByAppendingPathExtension:@"framework"] : nil;
     NSMutableArray *frameworks           = [NSMutableArray array];
     NSMutableArray *libraries            = [NSMutableArray array];
@@ -232,7 +176,10 @@ NSString *nameForTargetType(MYPackageTargetType type) {
 
 - (NSString *)resourcePath {
     // like "testFramework.framework/Resources"
-    return [self.fullProductName stringByAppendingPathComponent:@"Resources"];
+    if (!_resourcePath) {
+        _resourcePath = [self configurationForKey:@"UNLOCALIZED_RESOURCES_FOLDER_PATH"];
+    }
+    return _resourcePath;
 }
 
 - (NSString *)publicHeaderPath {
@@ -240,19 +187,75 @@ NSString *nameForTargetType(MYPackageTargetType type) {
     return [self configurationForKey:@"PUBLIC_HEADERS_FOLDER_PATH"];
 }
 
-- (NSString *)systemMinVersion {
-    if ([self.supportedPlatform isEqualToString:@"ios"]) {
-        return [self configurationForKey:@"IPHONEOS_DEPLOYMENT_TARGET"];
+- (MYPackageTargetPlatformType)sdk {
+    NSString *platform = [self configurationForKey:@"SDK_NAME"];
+    if ([platform rangeOfString:@"macos"].location != NSNotFound) {
+        return MYPackageTargetPlatformType_macOS;
     }
-    return [self configurationForKey:@"MACOSX_DEPLOYMENT_TARGET"];
+    if ([platform rangeOfString:@"iphone"].location != NSNotFound) {
+        return MYPackageTargetPlatformType_iOS;
+    }
+    if ([platform rangeOfString:@"tv"].location != NSNotFound) {
+        return MYPackageTargetPlatformType_tvOS;
+    }
+    if ([platform rangeOfString:@"watch"].location != NSNotFound) {
+        return MYPackageTargetPlatformType_watchOS;
+    }
+    return MYPackageTargetPlatformType_iOS;
 }
 
-- (NSString *)supportedPlatform {
-    NSString *platform = [self configurationForKey:@"SUPPORTED_PLATFORMS"];
-    if ([platform isEqualToString:@"macosx"]) {
-        return @"osx";
+- (NSString *)sdkName {
+    switch (self.sdk) {
+        case MYPackageTargetPlatformType_iOS:
+            return @"iphone";
+        case MYPackageTargetPlatformType_macOS:
+            return @"macosx";
+        case MYPackageTargetPlatformType_tvOS:
+            return @"appletv";
+        case MYPackageTargetPlatformType_watchOS:
+            return @"watch";
+        default:
+            return @"iphone";
     }
-    return @"ios";
+}
+
+- (BOOL)needLipo {
+    if (self.sdk == MYPackageTargetPlatformType_macOS) {
+        return NO;
+    }
+    return YES;
+}
+
+- (NSString *)platformName {
+    switch (self.sdk) {
+        case MYPackageTargetPlatformType_iOS:
+            return @"ios";
+        case MYPackageTargetPlatformType_macOS:
+            return @"macos";
+        case MYPackageTargetPlatformType_tvOS:
+            return @"tvos";
+        case MYPackageTargetPlatformType_watchOS:
+            return @"watchos";
+        default:
+            return @"ios";
+    }
+}
+
+- (NSString *)platformMinVersion {
+    MYPackageTargetPlatformType type = self.sdk;
+    if (type == MYPackageTargetPlatformType_macOS) {
+        return [self configurationForKey:@"MACOSX_DEPLOYMENT_TARGET"];
+    }
+    if (type == MYPackageTargetPlatformType_watchOS) {
+        return [self configurationForKey:@"WATCHOS_DEPLOYMENT_TARGET"];
+    }
+    if (type == MYPackageTargetPlatformType_iOS) {
+        return [self configurationForKey:@"IPHONEOS_DEPLOYMENT_TARGET"];
+    }
+    if (type == MYPackageTargetPlatformType_tvOS) {
+        return [self configurationForKey:@"WATCHOS_DEPLOYMENT_TARGET"];
+    }
+    return @"";
 }
 
 - (NSString *)zipFileName {
