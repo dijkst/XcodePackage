@@ -76,8 +76,11 @@
             self.errorMessage = @"解析 ssh Host 失败！";
             return NO;
         }
-        url = [[NSURL alloc] initWithScheme:scheme host:self.shellTask.outputString path:url.path];
-        self.config.homePage = [url absoluteString];
+        NSURLComponents *urlComponents = [[NSURLComponents alloc] init];
+        urlComponents.scheme = scheme;
+        urlComponents.host = self.shellTask.outputString;
+        urlComponents.path = url.path;
+        self.config.homePage = [urlComponents string];
     }
     return YES;
 }
