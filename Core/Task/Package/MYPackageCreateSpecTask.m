@@ -100,7 +100,17 @@ static NSArray *ignoreResources;
                  forKey:@"platforms"];
     } else {
         // .bundle
-        [spec setObject:target.fullProductName forKey:@"resources"];
+        // Service 模式使用的是 Bundle 模版，
+        // 但是实际上是一个空的 Framework
+        if ([target.wrapperExtension isEqualToString:@"framework"]) {
+            // 头文件路径
+            NSString *headerPath = [[self.config.lipoDir stringByAppendingPathComponent:target.fullProductName] stringByAppendingPathComponent:@"Headers"];
+            if ([[NSFileManager defaultManager] fileExistsAtPath:headerPath]) {
+                [headers addObject:[target.fullProductName stringByAppendingPathComponent:@"Headers/*"]];
+            }
+        } else {
+            [spec setObject:target.fullProductName forKey:@"resources"];
+        }
     }
 
     // 本地 framework
