@@ -739,7 +739,7 @@
 		ABAC6FCE1AF5D91F00BBC281 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = taobao;
 				TargetAttributes = {
 					ABA2C5C71BD739F50069EC5C = {
