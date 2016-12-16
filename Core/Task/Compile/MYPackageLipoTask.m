@@ -41,11 +41,16 @@
         return NO;
     }
 
-    NSMutableArray *names = [NSMutableArray array];
-    for (MYPackageTarget *target in self.config.selectedScheme.libraryTargets) {
-        [names addObject:[NSString stringWithFormat:@"'%@'", target.fullProductName]];
-    }
-    if ([names count] > 0) {
+    NSArray *libraryTargets = self.config.selectedScheme.libraryTargets;
+    if ([libraryTargets count] > 0) {
+        NSMutableArray *names = [NSMutableArray array];
+        for (MYPackageTarget *target in libraryTargets) {
+            if (target.needLipo) {
+                [names addObject:[NSString stringWithFormat:@"'%@'", target.fullProductName]];
+            }
+            [self moveResourceFilesToFolder:target];
+        }
+
         self.workingDirectory = self.config.outputDir;
         NSString *shellPath = [self scriptForName:@"lipo" ofType:@"sh"];
         if ([self executeCommand:[NSString stringWithFormat:@"'%@' %@",
@@ -57,6 +62,63 @@
         }
     }
     return YES;
+}
+
+- (void)moveResourceFilesToFolder:(MYPackageTarget *)target {
+    if (target.type != MYPackageTargetTypeStaticLibrary) {
+        // 只有静态库需要移动资源到 Resources 目录
+        return;
+    }
+    if (![target.wrapperExtension isEqualToString:@"framework"]) {
+        // 只有 Framework 才有 Resources 目录
+        return;
+    }
+    NSString *sdk = target.sdkName;
+    if (target.needLipo) {
+        // 使用真机作为产物
+        sdk = [sdk stringByAppendingString:@"os"];
+    }
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *outputPath = [self.config.outputDir stringByAppendingPathComponent:sdk];
+    NSString *resourcePath = [[outputPath stringByAppendingPathComponent:target.fullProductName] stringByAppendingPathComponent:@"Resources"];
+    if ([[target.resourcePath lastPathComponent] isEqualToString:@"Resources"] || [fm fileExistsAtPath:resourcePath]) {
+        return;
+    }
+    if ([target.resources count] == 0) {
+        return;
+    }
+
+    [fm createDirectoryAtPath:resourcePath
+  withIntermediateDirectories:YES
+                   attributes:nil
+                        error:nil];
+
+    NSString *oldResourcePath = [outputPath stringByAppendingPathComponent:target.resourcePath];
+    NSDictionary *compileMapper = @{@"storyboard": @"storyboardc",
+                                    @"xib": @"nib",
+                                    @"xcdatamodel": @"mom",
+                                    @"xcdatamodeld": @"momd",
+                                    @"xcmappingmodel": @"cdm",
+                                    @"xcasset": @"car"};
+    for (NSString *fileName in target.resources) {
+        NSString *outFileName = fileName;
+
+        // 部分资源编译后后缀发生变化
+        NSString *extName = [compileMapper objectForKey:[fileName pathExtension]];
+        if (extName) {
+            outFileName = [[outFileName stringByDeletingPathExtension] stringByAppendingPathExtension:extName];
+        }
+
+        NSString *oldPath = [oldResourcePath stringByAppendingPathComponent:outFileName];
+        if ([fm fileExistsAtPath:oldPath]) {
+            [fm moveItemAtPath:oldPath
+                        toPath:[resourcePath stringByAppendingPathComponent:outFileName]
+                         error:nil];
+        }
+    }
+
+    // 更新 target 的资源路径
+    target.resourcePath = [target.fullProductName stringByAppendingPathComponent:@"Resources"];
 }
 
 @end
