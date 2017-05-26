@@ -7,30 +7,9 @@
 //
 
 @import Foundation;
+#import "MYPackageTargetDefine.h"
 
 @class MYPackageProject;
-
-@protocol MYPackageTarget <NSObject>
-
-@end
-
-typedef NS_OPTIONS (NSInteger, MYPackageTargetType) {
-    MYPackageTargetTypeUnknown            = 0,
-    MYPackageTargetTypeStaticLibrary      = 1,
-    MYPackageTargetTypeExecutable         = 1 << 1,
-    MYPackageTargetTypeDynamicLibrary = 1 << 2,
-    MYPackageTargetTypeBundle         = 1 << 3,
-    MYPackageTargetTypeObjectFile     = 1 << 4
-};
-
-typedef NS_ENUM (NSInteger, MYPackageTargetPlatformType) {
-    MYPackageTargetPlatformType_iOS = 1 << 0,
-    MYPackageTargetPlatformType_macOS = 1 << 1,
-    MYPackageTargetPlatformType_watchOS = 1 << 2,
-    MYPackageTargetPlatformType_tvOS = 1 << 3
-};
-
-NSString *nameForTargetType(MYPackageTargetType type);
 
 @interface MYPackageTarget : NSObject
 
@@ -54,17 +33,21 @@ NSString *nameForTargetType(MYPackageTargetType type);
 
 @property (nonatomic, readonly) NSArray<NSString *> *resources;
 
+@property (nonatomic, readonly) NSString *bundleId;
 @property (nonatomic, readonly) NSString *wrapperExtension;
 @property (nonatomic, readonly) NSString *productName;
 @property (nonatomic, readonly) NSString *fullProductName;
 @property (nonatomic, readonly) NSString *binaryPath;
 @property (nonatomic, readonly) NSString *originInfoPlistPath;
 @property (nonatomic, readonly) NSString *infoPlistPath;
+
 @property (nonatomic, strong)   NSString *resourcePath;
 @property (nonatomic, readonly) NSString *publicHeaderPath;
 
 @property (nonatomic, readonly) NSString *sdkName;
 @property (nonatomic, readonly) MYPackageTargetPlatformType sdk;
+@property (nonatomic, readonly) MYPackageTargetPlatformSubType sdkEnv;
+
 @property (nonatomic, readonly) BOOL needLipo;
 
 @property (nonatomic, readonly) NSString *platformName;

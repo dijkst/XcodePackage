@@ -7,24 +7,38 @@
 #  Copyright © 2016年 taobao. All rights reserved.
 #
 #  Usage:
-#   ./lipo.sh "xxx.framework" "yyy.a"
+#   ./lipo.sh
 #
 
 iphoneos="iphoneos"
 iphonesimulator="iphonesimulator"
-output="lipo"
 
-# 合并framework
-for name; do
-    if [[ -d "$iphoneos/$name" ]]; then
-        # 文件夹，例如 .framework
-        filename="${name%.*}"
-        if ! [[ -d "$output/$name" ]]; then
-            cp -r "$iphoneos/$name" "$output/$name"
-        fi
-        set -x && lipo -create "$iphoneos/$name/$filename" "$iphonesimulator/$name/$filename" -output "$output/$name/$filename"
-    elif [[ -f "$iphoneos/$name" ]]; then
-        # 文件，例如 .a
-        set -x && lipo -create "$iphoneos/$name" "$iphonesimulator/$name" -output "$output/$name"
+for os in os/*; do
+    if ! [[ -d "$os" ]]; then
+        continue
     fi
+    echo $os
+    dirname=$(basename $os)
+    device="${dirname%*os}"
+    simulator="simulator/${device}simulator"
+    output="products/${device}"
+    mkdir -p "$output/"
+    for f in ${os}/*; do
+        name=$(basename $f)
+        product="$output/$name"
+        if ! [[ -e "$simulator/$name" ]]; then
+            continue
+        fi
+        if [[ -d "$f" ]]; then
+            # 文件夹，例如 .framework
+            filename="${name%.*}"
+            if ! [[ -d "$product" ]]; then
+                cp -r "$f" "$product"
+            fi
+            set -x && lipo -create "$f/$filename" "$simulator/$name/$filename" -output "$product/$filename"
+        elif [[ -f "$f" ]]; then
+            # 文件，例如 .a
+            set -x && lipo -create "$f" "$simulator/$name" -output "$product"
+        fi
+    done
 done

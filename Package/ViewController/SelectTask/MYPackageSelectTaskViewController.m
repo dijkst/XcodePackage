@@ -17,15 +17,15 @@
 #import "MYPackageAnalyzeGitTask.h"
 
 #import "MYPackageCleanTask.h"
-#import "MYPackageBuildTask.h"
+#import "MYPackageBuildLibTask.h"
 #import "MYPackageLipoTask.h"
 #import "MYPackageCleanIntermediateProductTask.h"
 
 #import "MYPackageCheckGitTask.h"
 #import "MYPackageAnalyzeProductTask.h"
-#import "MYPackageUpdateVersionNumberTask.h"
+#import "MYPackageUpdatePlistTask.h"
 #import "MYPackageZipTask.h"
-#import "MYPackageCalculateMD5Task.h"
+#import "MYPackageCalculateSHA1Task.h"
 #import "MYPackageCreateSpecTask.h"
 
 #import "MYPackageCreateTagTask.h"
@@ -54,7 +54,7 @@
     }
     [self.configrationSelector addItemsWithTitles:[configurations valueForKeyPath:@"@distinctUnionOfObjects.self"]];
     [self toggleSNAPSHOT:nil];
-    self.podNameTextField.stringValue = self.config.podName;
+    self.podNameTextField.stringValue = self.config.name;
     [self updateVersionTextField];
 }
 
@@ -116,24 +116,12 @@
     [self.configrationSelector selectItemWithTitle:self.config.configruation];
 }
 
-- (IBAction)startAction:(id)sender {
-    if (self.busy) {
-        [self stopTask];
-    } else {
-        [self startTask];
-    }
-}
-
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
     if ([self.podNameTextField.stringValue length] == 0) {
-        self.podNameTextField.stringValue = self.config.podName;
+        self.podNameTextField.stringValue = self.config.name;
     }
     [self updateVersionTextField];
     return YES;
-}
-
-- (void)stopTask {
-    [self.taskManager cancelAllTask];
 }
 
 - (void)startTask {
@@ -143,9 +131,9 @@
     } else {
         self.config.configruation = nil;
     }
-    NSString *podName = [self.podNameTextField.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    if ([podName length] > 0) {
-        self.config.podName = podName;
+    NSString *name = [self.podNameTextField.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if ([name length] > 0) {
+        self.config.name = name;
     }
     if (self.config.version.length == 0) {
         [self.containerVC finishLoadingWithErrorText:@"版本号不能为空！"];
@@ -156,27 +144,27 @@
     }
     if (self.uploadCheck.state == NSOnState && !self.podExists) {
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:[NSString stringWithFormat:@"%@ 不存在，是否继续？", self.config.podName]];
-        [alert setInformativeText:[NSString stringWithFormat:@"Pod: %@ 不存在，是否提交第一个版本？\n", self.config.podName]];
+        [alert setMessageText:[NSString stringWithFormat:@"%@ 不存在，是否继续？", self.config.name]];
+        [alert setInformativeText:[NSString stringWithFormat:@"Pod: %@ 不存在，是否提交第一个版本？\n", self.config.name]];
         [alert addButtonWithTitle:@"继续"];
         [alert addButtonWithTitle:@"取消"];
         [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
             if (returnCode == NSAlertFirstButtonReturn) {
-                [self runTask];
+                [super startTask];
             }
         }];
     } else {
-        [self runTask];
+        [super startTask];
     }
 }
 
-- (void)runTask {
-    NSMutableArray *tasks = [NSMutableArray array];
+- (NSMutableArray *)tasksForRun {
+    NSMutableArray *tasks = [super tasksForRun];
     if (self.buildCheck.state == NSOnState) {
         [tasks addObjectsFromArray:@[NSStringFromClass([MYPackageAnalyzeSchemeTask class]), //重新执行一遍分析，防止用户修改项目导致设置不一致
                                      NSStringFromClass([MYPackageAnalyzeProjectTask class]),
                                      NSStringFromClass([MYPackageAnalyzeTargetTask class]),
-                                     NSStringFromClass([MYPackageBuildTask class]),
+                                     NSStringFromClass([MYPackageBuildLibTask class]),
                                      NSStringFromClass([MYPackageLipoTask class]),
                                      ]];
         if (![self.config isSNAPSHOT]) {
@@ -188,9 +176,9 @@
     if (self.packageCheck.state == NSOnState) {
         [tasks addObjectsFromArray:@[NSStringFromClass([MYPackageAnalyzeGitTask class]),
                                      NSStringFromClass([MYPackageAnalyzeProductTask class]),
-                                     NSStringFromClass([MYPackageUpdateVersionNumberTask class]),
+                                     NSStringFromClass([MYPackageUpdatePlistTask class]),
                                      NSStringFromClass([MYPackageZipTask class]),
-                                     NSStringFromClass([MYPackageCalculateMD5Task class]),
+                                     NSStringFromClass([MYPackageCalculateSHA1Task class]),
                                      NSStringFromClass([MYPackageCreateSpecTask class]),
                                      ]];
 
@@ -204,23 +192,18 @@
                                      NSStringFromClass([MYPackageCreateTagTask class]),
                                      ]];
     }
-    if ([tasks count] == 0) {
-        return;
+    return tasks;
+}
+
+- (void)tasks:(NSArray *)tasks didFinishWithResult:(BOOL)result {
+    [super tasks:tasks didFinishWithResult:result];
+    [self postUserNotificationWithResult:result];
+    if (result) {
+        [self.containerVC showNormalText:@"任务执行成功！"];
+        [self.config.logger logN:@"\n任务执行成功！"];
+    } else {
+        [self.config.logger logN:@"\n任务执行失败！"];
     }
-    self.rightButton.title = @"取消";
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        BOOL result = [self runTasks:tasks autoOrder:YES];
-        dispatch_main_async_safe(^{
-            [self postUserNotificationWithResult:result];
-            if (result) {
-                [self.containerVC showNormalText:@"任务执行成功！"];
-                [self.config.logger logN:@"\n任务执行成功！"];
-            } else {
-                [self.config.logger logN:@"\n任务执行失败！"];
-            }
-            self.rightButton.title = @"开始";
-        });
-    });
 }
 
 @end

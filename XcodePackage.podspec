@@ -18,6 +18,5 @@ Pod::Spec.new do |s|
   s.exclude_files = "**/MainMenu.xib"
   s.resources = "Core/Task/Prepare/Script/{RubyEnv,GemEnv}", "Core/**/*.{sh,rb,xcconfig}", "Package/**/*/*.xib", "Package/*.xcassets"
   s.prefix_header_file = "Package/PrefixHeader.pch"
-  s.dependency "GCDWebServer"
-
+  s.dependency "Criollo"
 end

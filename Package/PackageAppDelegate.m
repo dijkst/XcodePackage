@@ -11,6 +11,9 @@
 #import "MYPackageContainerViewController.h"
 #import "MYPackageConfig.h"
 
+#import "MYPackageCleanInvalidCertTask.h"
+#import "MYPackageCleanInvalidProfileTask.h"
+
 @interface PackageAppDelegate () <NSUserNotificationCenterDelegate>
 
 @property (nonatomic, strong) MYPackageContainerViewController *mainVC;
@@ -76,6 +79,21 @@
         return _mainVC.config.workspace.path != nil;
     }
     return YES;
+}
+
+- (IBAction)cleanInvalidProfileAndCert:(id)sender {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        MYPackageTaskManager *taskManager = [[MYPackageTaskManager alloc] init];
+        [taskManager setConfig:_mainVC.config];
+        BOOL result = [taskManager runTaskClassNames:@[NSStringFromClass([MYPackageCleanInvalidCertTask class]), NSStringFromClass([MYPackageCleanInvalidProfileTask class])]];
+        dispatch_main_async_safe(^{
+            NSUserNotification *notification = [[NSUserNotification alloc] init];
+            notification.informativeText = [NSString stringWithFormat:@"清理无效证书和描述文件执行%@", result ? @"成功" : @"失败"];
+            notification.soundName = NSUserNotificationDefaultSoundName;
+            [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        });
+    });
 }
 
 @end

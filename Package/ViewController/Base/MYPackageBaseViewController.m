@@ -35,6 +35,40 @@
 }
 
 #pragma mark - task
+- (IBAction)startAction:(id)sender {
+    if (self.busy) {
+        [self stopTask];
+    } else {
+        [self startTask];
+    }
+}
+
+- (void)stopTask {
+    [self.taskManager cancelAllTask];
+}
+
+- (void)startTask {
+    NSMutableArray *tasks = [self tasksForRun];
+    if ([tasks count] == 0) {
+        return;
+    }
+    self.rightButton.title = @"取消";
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        BOOL result = [self runTasks:tasks autoOrder:YES];
+        dispatch_main_async_safe(^{
+            self.rightButton.title = @"开始";
+            [self tasks:tasks didFinishWithResult:result];
+        });
+    });
+}
+
+- (NSMutableArray *)tasksForRun {
+    return [NSMutableArray array];
+}
+
+- (void)tasks:(NSArray *)tasks didFinishWithResult:(BOOL)result {
+
+}
 
 - (MYPackageTaskManager *)taskManager {
     if (!_taskManager) {

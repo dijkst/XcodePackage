@@ -14,7 +14,29 @@
     return @"分析 Target 信息";
 }
 
-// 分析版本号
+// 替换环境变量
+- (NSString *)parseTemplate:(NSString *)template target:(MYPackageTarget *)target {
+    NSRegularExpression *regular;
+    regular = [NSRegularExpression regularExpressionWithPattern:@"\\$\\((.+)\\)"
+                                                        options:NSRegularExpressionCaseInsensitive
+                                                          error:nil];
+    NSRange range = [regular rangeOfFirstMatchInString:template
+                                               options:0
+                                                 range:NSMakeRange(0, template.length)];
+    if (range.location != NSNotFound) {
+        NSString *name = [regular stringByReplacingMatchesInString:[template substringWithRange:range]
+                                                           options:0
+                                                             range:NSMakeRange(0, template.length)
+                                                      withTemplate:@"$1"];
+        NSString *value = [target.configurations objectForKey:name];
+        if (value) {
+            return [template stringByReplacingCharactersInRange:range withString:value];
+        }
+    }
+    return template;
+}
+
+// 分析版本号 和 显示名称(App用)
 - (BOOL)analyzeShortVersionNumber {
     if (self.config.version) {
         return YES;
@@ -34,29 +56,16 @@
         return NO;
     }
     NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
+    NSString *displayName = [info objectForKey:@"CFBundleDisplayName"] ?: [info objectForKey:@"CFBundleName"];
 
     if (version) {
-        // 替换环境变量
-        NSRegularExpression *regular;
-
-        regular = [NSRegularExpression regularExpressionWithPattern:@"\\$\\((.+)\\)"
-                                                            options:NSRegularExpressionCaseInsensitive
-                                                              error:nil];
-        NSRange range = [regular rangeOfFirstMatchInString:version
-                                                   options:0
-                                                     range:NSMakeRange(0, version.length)];
-        if (range.location != NSNotFound) {
-            NSString *name = [regular stringByReplacingMatchesInString:[version substringWithRange:range]
-                                                               options:0
-                                                                 range:NSMakeRange(0, range.length)
-                                                          withTemplate:@"$1"];
-            NSString *value = [target.configurations objectForKey:name];
-            if (value) {
-                version = [version stringByReplacingCharactersInRange:range withString:value];
-            }
-        }
+        version = [self parseTemplate:version target:target];
+    }
+    if (displayName) {
+        displayName = [self parseTemplate:displayName target:target];
     }
     self.config.version = version;
+    self.config.displayName = displayName;
     return YES;
 }
 
@@ -67,7 +76,7 @@
     if ([self executeCommand:[NSString stringWithFormat:@"xcodebuild -project '%@' -target '%@' -showBuildSettings -xcconfig '%@'",
                               project.filePath,
                               targetName,
-                              [self scriptForName:@"build" ofType:@"xcconfig"]
+                              self.config.xcconfig
                               ]] != 0) {
         self.errorMessage = [NSString stringWithFormat:@"分析 %@ target 出错，详见日志！", targetName];
         return NO;

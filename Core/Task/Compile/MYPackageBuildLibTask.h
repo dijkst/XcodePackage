@@ -1,5 +1,5 @@
 //
-//  MYPackageBuildTask.h
+//  MYPackageBuildLibTask.h
 //  Package
 //
 //  Created by Whirlwind on 15/5/4.
@@ -8,5 +8,5 @@
 
 #import "MYPackageShellTask.h"
 
-@interface MYPackageBuildTask : MYPackageShellTask
+@interface MYPackageBuildLibTask : MYPackageShellTask
 @end

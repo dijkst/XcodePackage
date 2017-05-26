@@ -31,4 +31,9 @@
 
 - (BOOL)runTasks:(NSArray<NSString *> *)tasks autoOrder:(BOOL)order;
 
+- (void)stopTask NS_REQUIRES_SUPER;
+- (void)startTask NS_REQUIRES_SUPER;
+- (NSMutableArray *)tasksForRun NS_REQUIRES_SUPER;
+- (void)tasks:(NSArray *)tasks didFinishWithResult:(BOOL)result NS_REQUIRES_SUPER;
+
 @end

@@ -25,6 +25,10 @@
     [self.config.logger logN:@"❌ %@", errorMessage];
 }
 
+- (void)logInfo:(NSString *)message {
+    [self.config.logger logN:@"⚠️ %@", message];
+}
+
 + (BOOL)shouldLaunchWithPreTaskStatus:(BOOL)status manager:(MYPackageTaskManager *)manager {
     return status;
 }

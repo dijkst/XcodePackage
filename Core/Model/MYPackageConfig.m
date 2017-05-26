@@ -17,8 +17,8 @@
 
 @synthesize logPath = _logPath;
 
-- (NSString *)podName {
-    return _podName ? : _workspace.name;
+- (NSString *)name {
+    return _name ? : _workspace.name;
 }
 
 - (BOOL)isSNAPSHOT {
@@ -33,26 +33,26 @@
 }
 
 - (NSString *)xcconfig {
-    if (self.IPA) {
-        return [[NSBundle mainBundle] pathForResource:@"build-ipa" ofType:@".xcconfig"];
+    if (self.appTarget) {
+        return [[NSBundle mainBundle] pathForResource:@"build-app" ofType:@".xcconfig"];
     }
-    return [[NSBundle mainBundle] pathForResource:@"build-static-framework" ofType:@".xcconfig"];
+    return [[NSBundle mainBundle] pathForResource:@"build-library" ofType:@".xcconfig"];
 }
 
-- (BOOL)IPA {
+- (MYPackageTarget *)appTarget {
     for (MYPackageTarget *target in self.selectedScheme.targets) {
         if (target.type == MYPackageTargetTypeExecutable) {
-            return YES;
+            return target;
         }
     }
-    return NO;
+    return nil;
 }
 
 - (NSString *)serverPath {
     if (!_serverPath) {
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd_HH-mm-ss"];
-        _serverPath =  [self.podName stringByAppendingPathComponent:[dateFormat stringFromDate:[NSDate date]]];
+        _serverPath =  [self.name stringByAppendingPathComponent:[dateFormat stringFromDate:[NSDate date]]];
     }
     return _serverPath;
 }
@@ -86,16 +86,36 @@
 }
 
 #pragma mark - path
+- (NSString *)productPathForTarget:(MYPackageTarget *)target {
+    return [self.productsDir stringByAppendingPathComponent:target.sdkName];
+}
+
+- (NSString *)simulatorPathForTarget:(MYPackageTarget *)target {
+    return [self.simulatorsDir stringByAppendingPathComponent:target.sdkName];
+}
+
+- (NSString *)devicePathForTarget:(MYPackageTarget *)target {
+    return [self.devicesDir stringByAppendingPathComponent:target.sdkName];
+}
+
 - (NSString *)outputDir {
     return [self.workspace.path stringByAppendingPathComponent:@"build"];
 }
 
-- (NSString *)lipoDir {
-    return [self.outputDir stringByAppendingPathComponent:@"lipo"];
+- (NSString *)productsDir {
+    return [self.outputDir stringByAppendingPathComponent:@"products"];
+}
+
+- (NSString *)simulatorsDir {
+    return [self.outputDir stringByAppendingPathComponent:@"simulator"];
+}
+
+- (NSString *)devicesDir {
+    return [self.outputDir stringByAppendingPathComponent:@"os"];
 }
 
 - (NSString *)zipDir {
-    return [self.lipoDir stringByAppendingPathComponent:@"zip"];
+    return [self.outputDir stringByAppendingPathComponent:@"zip"];
 }
 
 - (NSString *)logPath {
@@ -110,16 +130,16 @@
 }
 
 - (NSString *)specPath {
-    return [self.lipoDir stringByAppendingPathComponent:[self.podName stringByAppendingPathExtension:@"podspec.json"]];
+    return [self.outputDir stringByAppendingPathComponent:[self.name stringByAppendingPathExtension:@"podspec.json"]];
 }
 
-- (NSString *)largeZipPath {
-    return [self.lipoDir stringByAppendingPathComponent:[self.podName stringByAppendingString:@".library.zip"]];
+- (NSString *)bundlePath {
+    return [self.outputDir stringByAppendingPathComponent:[self.name stringByAppendingString:@".zip"]];
 }
 
-- (NSString *)zipUrl {
-    if (_zipUrl) {
-        return _zipUrl;
+- (NSString *)downloadUrl {
+    if (_downloadUrl) {
+        return _downloadUrl;
     }
     return @"服务器 zip 地址";
 }
@@ -144,12 +164,24 @@
 
     config.serverPath = _serverPath;
 
+    config.name          = _name;
+    config.bundleId      = _bundleId;
     config.version       = _version;
+    config.isSNAPSHOT    = _isSNAPSHOT;
+    config.configruation = _configruation;
+    config.xcconfigSettings = _xcconfigSettings;
+    config.downloadUrl   = _downloadUrl;
+
     config.authorName    = _authorName;
     config.authorEmail   = _authorEmail;
     config.homePage      = _homePage;
     config.commitHash    = _commitHash;
-    config.configruation = _configruation;
+    config.gitUrl        = _gitUrl;
+
+    config.displayName   = _displayName;
+    config.teamID        = _teamID;
+
+    config.bundleHash    = _bundleHash;
 
     config.selectedSchemeName = _selectedSchemeName;
     config.selectedScheme     = _selectedScheme;

@@ -15,7 +15,7 @@
         return NO;
     }
     NSError *error;
-    for (NSString *path in @[self.config.logPath, self.config.lipoDir]) {
+    for (NSString *path in @[self.config.logPath, self.config.productsDir]) {
         if (![[NSFileManager defaultManager] removeItemAtPath:path
                                                        error:&error]) {
             self.errorMessage = [NSString stringWithFormat:@"delete failed: %@ %@", path, [error description]];

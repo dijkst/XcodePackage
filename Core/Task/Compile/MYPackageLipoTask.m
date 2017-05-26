@@ -20,51 +20,44 @@
     }
     __block NSError *error = nil;
     NSFileManager *fm = [NSFileManager defaultManager];
-    [fm removeItemAtPath:self.config.lipoDir
+    [fm removeItemAtPath:self.config.productsDir
                    error:nil];
-    [fm createDirectoryAtPath:self.config.lipoDir
+    [fm createDirectoryAtPath:self.config.productsDir
   withIntermediateDirectories:YES
                    attributes:nil
                         error:nil];
     
-    [[self.config.selectedScheme targetsForType:MYPackageTargetTypeBundle] enumerateObjectsUsingBlock:^(MYPackageTarget *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-        [self.config.logger logN:@"cp %@ %@", [@"iphoneos" stringByAppendingPathComponent:obj.fullProductName], [@"lipo" stringByAppendingPathComponent:obj.fullProductName]];
-        if (![fm copyItemAtPath:[[self.config.outputDir stringByAppendingPathComponent:@"iphoneos"] stringByAppendingPathComponent:obj.fullProductName]
-                         toPath:[self.config.lipoDir stringByAppendingPathComponent:obj.fullProductName]
-                          error:&error]) {
-            self.errorMessage = [error localizedDescription];
-            *stop = YES;
+    [[self.config.selectedScheme targets] enumerateObjectsUsingBlock:^(MYPackageTarget *_Nonnull target, NSUInteger idx, BOOL *_Nonnull stop) {
+        NSString *fromPath = [[self.config devicePathForTarget:target] stringByAppendingPathComponent:target.fullProductName];
+        NSString *toPath = [[self.config productPathForTarget:target] stringByAppendingPathComponent:target.fullProductName];
+        if ((target.sdkEnv & MYPackageTargetPlatformSubTypeDevice) == 0) {
+            fromPath = [[self.config simulatorPathForTarget:target] stringByAppendingPathComponent:target.fullProductName];
+        }
+        [self moveResourceFilesToFolder:target productPath:fromPath];
+        if (!target.needLipo) {
+            [self.config.logger logN:@"cp %@ %@", [fromPath substringFromIndex:self.config.outputDir.length + 1], [toPath substringFromIndex:self.config.outputDir.length + 1]];
+            if (![fm copyItemAtPath:fromPath
+                             toPath:toPath
+                              error:&error]) {
+                self.errorMessage = [error localizedDescription];
+                *stop = YES;
+            }
         }
     }];
 
     if (self.errorMessage) {
         return NO;
     }
-
-    NSArray *libraryTargets = self.config.selectedScheme.libraryTargets;
-    if ([libraryTargets count] > 0) {
-        NSMutableArray *names = [NSMutableArray array];
-        for (MYPackageTarget *target in libraryTargets) {
-            if (target.needLipo) {
-                [names addObject:[NSString stringWithFormat:@"'%@'", target.fullProductName]];
-            }
-            [self moveResourceFilesToFolder:target];
-        }
-
-        self.workingDirectory = self.config.outputDir;
-        NSString *shellPath = [self scriptForName:@"lipo" ofType:@"sh"];
-        if ([self executeCommand:[NSString stringWithFormat:@"'%@' %@",
-                                  shellPath,
-                                  [names componentsJoinedByString:@" "]
-                                  ]] != 0) {
-            self.errorMessage = @"合并通用二进制出错，详见日志！";
-            return NO;
-        }
+    self.workingDirectory = self.config.outputDir;
+    NSString *shellPath = [self scriptForName:@"lipo" ofType:@"sh"];
+    if ([self executeCommand:shellPath] != 0) {
+        self.errorMessage = @"合并通用二进制出错，详见日志！";
+        return NO;
     }
     return YES;
 }
 
-- (void)moveResourceFilesToFolder:(MYPackageTarget *)target {
+- (void)moveResourceFilesToFolder:(MYPackageTarget *)target productPath:(NSString *)productPath {
     if (target.type != MYPackageTargetTypeStaticLibrary) {
         // 只有静态库需要移动资源到 Resources 目录
         return;
@@ -73,14 +66,8 @@
         // 只有 Framework 才有 Resources 目录
         return;
     }
-    NSString *sdk = target.sdkName;
-    if (target.needLipo) {
-        // 使用真机作为产物
-        sdk = [sdk stringByAppendingString:@"os"];
-    }
     NSFileManager *fm = [NSFileManager defaultManager];
-    NSString *outputPath = [self.config.outputDir stringByAppendingPathComponent:sdk];
-    NSString *resourcePath = [[outputPath stringByAppendingPathComponent:target.fullProductName] stringByAppendingPathComponent:@"Resources"];
+    NSString *resourcePath = [productPath stringByAppendingPathComponent:@"Resources"];
     if ([[target.resourcePath lastPathComponent] isEqualToString:@"Resources"] || [fm fileExistsAtPath:resourcePath]) {
         return;
     }
@@ -93,7 +80,7 @@
                    attributes:nil
                         error:nil];
 
-    NSString *oldResourcePath = [outputPath stringByAppendingPathComponent:target.resourcePath];
+    NSString *oldResourcePath = [productPath stringByAppendingPathComponent:[target.resourcePath substringFromIndex:target.fullProductName.length + 1]];
     NSDictionary *compileMapper = @{@"storyboard": @"storyboardc",
                                     @"xib": @"nib",
                                     @"xcdatamodel": @"mom",

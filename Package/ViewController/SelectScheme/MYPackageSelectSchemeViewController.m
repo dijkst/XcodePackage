@@ -9,7 +9,7 @@
 #import "MYPackageSelectSchemeViewController.h"
 #import "MYPackageContainerViewController.h"
 #import "MYPackageSelectTaskViewController.h"
-#import "MYPackageBuildIPAViewController.h"
+#import "MYPackageBuildAppViewController.h"
 
 #import "MYPackageSelectSchemeTableViewRow.h"
 #import "MYPackageTableRowView.h"
@@ -83,8 +83,8 @@
                  autoOrder:YES]) {
             dispatch_main_async_safe(^{
                 MYPackageBaseViewController *vc;
-                if (self.config.IPA) {
-                    vc = [[MYPackageBuildIPAViewController alloc] init];
+                if (self.config.appTarget) {
+                    vc = [[MYPackageBuildAppViewController alloc] init];
                 } else {
                     vc = [[MYPackageSelectTaskViewController alloc] init];
                 }

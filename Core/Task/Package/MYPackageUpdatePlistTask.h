@@ -1,5 +1,5 @@
 //
-//  MYPackageUpdateVersionNumberTask.h
+//  MYPackageUpdatePlistTask.h
 //  Package
 //
 //  Created by Whirlwind on 15/10/27.
@@ -8,6 +8,6 @@
 
 #import "MYPackageShellTask.h"
 
-@interface MYPackageUpdateVersionNumberTask : MYPackageShellTask
+@interface MYPackageUpdatePlistTask : MYPackageShellTask
 
 @end

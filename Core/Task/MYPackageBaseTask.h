@@ -24,6 +24,8 @@
 - (void)cancel;
 - (BOOL)launch;
 
+- (void)logInfo:(NSString *)message;
+
 + (BOOL)shouldLaunchWithPreTaskStatus:(BOOL)status manager:(MYPackageTaskManager *)manager;
 
 @end

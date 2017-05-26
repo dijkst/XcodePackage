@@ -77,14 +77,16 @@ static NSArray *blackKeys;
     NSMutableArray *headers    = [NSMutableArray array];
     NSFileManager  *fm         = [NSFileManager defaultManager];
 
+    NSString *productPath = [target.sdkName stringByAppendingPathComponent:target.fullProductName];
+
     // 判断是否是链接库
     if ([target isSharedLibrary]) {
         if ([target.wrapperExtension isEqualToString:@"framework"]) {
             NSMutableDictionary *frameworks = target.type == MYPackageTargetTypeDynamicLibrary ? dynamticallyFrameworks : staticFrameworks;
-            [frameworks setObject:[self.config.lipoDir stringByAppendingPathComponent:target.fullProductName]
-                           forKey:target.fullProductName];
+            [frameworks setObject:[[self.config productPathForTarget:target] stringByAppendingPathComponent:target.fullProductName]
+                           forKey:productPath];
         } else {
-            [libraries addObject:target.fullProductName];
+            [libraries addObject:productPath];
         }
         [spec setObject:@{target.platformName: target.platformMinVersion}
                  forKey:@"platforms"];
@@ -94,12 +96,12 @@ static NSArray *blackKeys;
         // 但是实际上是一个空的 Framework
         if ([target.wrapperExtension isEqualToString:@"framework"]) {
             // 头文件路径
-            NSString *headerPath = [[self.config.lipoDir stringByAppendingPathComponent:target.fullProductName] stringByAppendingPathComponent:@"Headers"];
+            NSString *headerPath = [[[self.config productPathForTarget:target] stringByAppendingPathComponent:target.fullProductName] stringByAppendingPathComponent:@"Headers"];
             if ([[NSFileManager defaultManager] fileExistsAtPath:headerPath]) {
-                [headers addObject:[target.fullProductName stringByAppendingPathComponent:@"Headers/*"]];
+                [headers addObject:[productPath stringByAppendingPathComponent:@"Headers/*"]];
             }
         } else {
-            [spec setObject:target.fullProductName forKey:@"resources"];
+            [spec setObject:productPath forKey:@"resources"];
         }
     }
 
@@ -185,8 +187,8 @@ static NSArray *blackKeys;
         [dirs addObject:self.config.workspace.path];
     }
     NSMutableArray *fileNames = [NSMutableArray arrayWithCapacity:2];
-    [fileNames addObject:[NSString stringWithFormat:@"%@.podspec.json", self.config.podName]];
-    [fileNames addObject:[NSString stringWithFormat:@"%@.podspec", self.config.podName]];
+    [fileNames addObject:[NSString stringWithFormat:@"%@.podspec.json", self.config.name]];
+    [fileNames addObject:[NSString stringWithFormat:@"%@.podspec", self.config.name]];
     for (NSString *dir in dirs) {
         for (NSString *fileName in fileNames) {
             NSString *path = [dir stringByAppendingPathComponent:fileName];
@@ -319,9 +321,9 @@ static NSArray *blackKeys;
                                   @"version": self.config.version,
                                   @"authors": @{self.config.authorName: self.config.authorEmail},
                                   @"homepage": self.config.homePage ? : @"",
-                                  @"description": self.config.podName,
-                                  @"source": @{@"http": self.config.zipUrl,
-                                               @"hash": self.config.largeZipHash?:@""}
+                                  @"description": self.config.name,
+                                  @"source": @{@"http": self.config.downloadUrl,
+                                               @"sha1": self.config.bundleHash?:@""}
                                   };
     NSMutableDictionary        *specDic = [NSMutableDictionary dictionaryWithDictionary:defaultSpec];
     NSArray<MYPackageTarget *> *targets = self.config.selectedScheme.targets;
@@ -334,7 +336,7 @@ static NSArray *blackKeys;
         }
         [specDic setObject:array forKey:@"subspecs"];
     }
-    [specDic setObject:self.config.podName forKey:@"name"];
+    [specDic setObject:self.config.name forKey:@"name"];
     [self applyUserSpecTo:specDic];
 
     if (![specDic objectForKey:@"license"]) {

@@ -9,22 +9,6 @@
 #import "MYPackageTarget.h"
 #import "MYPackageProject.h"
 
-NSString *nameForTargetType(MYPackageTargetType type) {
-    switch (type) {
-        case MYPackageTargetTypeObjectFile:
-            return @"Relocatable Object File";
-        case MYPackageTargetTypeBundle:
-            return @"Bundle";
-        case MYPackageTargetTypeDynamicLibrary:
-            return @"Dynamic Library";
-        case MYPackageTargetTypeExecutable:
-            return @"Executable";
-        case MYPackageTargetTypeStaticLibrary:
-            return @"Static Library";
-        default:
-            return @"Unknown";
-    }
-}
 
 @interface MYPackageTarget ()
 
@@ -144,6 +128,10 @@ NSString *nameForTargetType(MYPackageTargetType type) {
     return (_type & (MYPackageTargetTypeDynamicLibrary|MYPackageTargetTypeObjectFile|MYPackageTargetTypeStaticLibrary)) > 0;
 }
 
+- (NSString *)bundleId {
+    return [self configurationForKey:@"PRODUCT_BUNDLE_IDENTIFIER"];
+}
+
 - (NSString *)wrapperExtension {
     return [self configurationForKey:@"WRAPPER_EXTENSION"];
 }
@@ -189,56 +177,26 @@ NSString *nameForTargetType(MYPackageTargetType type) {
 
 - (MYPackageTargetPlatformType)sdk {
     NSString *platform = [self configurationForKey:@"SDK_NAME"];
-    if ([platform rangeOfString:@"macos"].location != NSNotFound) {
-        return MYPackageTargetPlatformType_macOS;
-    }
-    if ([platform rangeOfString:@"iphone"].location != NSNotFound) {
-        return MYPackageTargetPlatformType_iOS;
-    }
-    if ([platform rangeOfString:@"tv"].location != NSNotFound) {
-        return MYPackageTargetPlatformType_tvOS;
-    }
-    if ([platform rangeOfString:@"watch"].location != NSNotFound) {
-        return MYPackageTargetPlatformType_watchOS;
-    }
-    return MYPackageTargetPlatformType_iOS;
+    return SDKTypeForName(platform);
 }
 
 - (NSString *)sdkName {
-    switch (self.sdk) {
-        case MYPackageTargetPlatformType_iOS:
-            return @"iphone";
-        case MYPackageTargetPlatformType_macOS:
-            return @"macosx";
-        case MYPackageTargetPlatformType_tvOS:
-            return @"appletv";
-        case MYPackageTargetPlatformType_watchOS:
-            return @"watch";
-        default:
-            return @"iphone";
-    }
+    return SDKNameForType(self.sdk);
+}
+
+- (MYPackageTargetPlatformSubType)sdkEnv {
+    return MYPackageTargetPlatformSubTypeBoth;
 }
 
 - (BOOL)needLipo {
-    if (self.sdk == MYPackageTargetPlatformType_macOS) {
+    if (![self isSharedLibrary]) {
         return NO;
     }
-    return YES;
+    return self.sdkEnv == MYPackageTargetPlatformSubTypeBoth;
 }
 
 - (NSString *)platformName {
-    switch (self.sdk) {
-        case MYPackageTargetPlatformType_iOS:
-            return @"ios";
-        case MYPackageTargetPlatformType_macOS:
-            return @"macos";
-        case MYPackageTargetPlatformType_tvOS:
-            return @"tvos";
-        case MYPackageTargetPlatformType_watchOS:
-            return @"watchos";
-        default:
-            return @"ios";
-    }
+    return platformNameForType(self.sdk);
 }
 
 - (NSString *)platformMinVersion {
@@ -260,11 +218,6 @@ NSString *nameForTargetType(MYPackageTargetType type) {
 
 - (NSString *)zipFileName {
     return [self.name stringByAppendingString:@".zip"];
-}
-
-#pragma mark - TBJSONModel
-+ (NSDictionary *)jsonToModelKeyMapDictionary {
-    return @{@"Build Phases": @"phases"};
 }
 
 @end

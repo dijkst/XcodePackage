@@ -7,8 +7,7 @@
 //
 
 #import "MYPackageTaskManager.h"
-
-static NSArray *taskClassOrder;
+#import "MYPackageTaskManager+TaskList.h"
 
 @interface MYPackageTaskManager ()
 
@@ -17,44 +16,6 @@ static NSArray *taskClassOrder;
 @end
 
 @implementation MYPackageTaskManager
-
-+ (void)load {
-    taskClassOrder = @[
-                       // Prepare
-                       @"MYPackageInitTask",
-                       @"MYPackagePrepareEnvironmentTask",
-                       @"MYPackageCheckEnvironmentTask",
-                       @"MYPackageCheckGitTask",
-                       @"MYPackageAnalyzeGitTask",
-                       @"MYPackageListSchemeTask",
-                       @"MYPackageAnalyzeSchemeTask",
-                       @"MYPackageAnalyzeProjectTask",
-                       @"MYPackageAnalyzeTargetTask",
-
-                       // Build
-                       @"MYPackageCleanTask",
-                       @"MYPackageBuildTask",
-                       @"MYPackageLipoTask",
-
-                       // Package
-                       @"MYPackageAnalyzeProductTask",
-                       @"MYPackageUpdateVersionNumberTask",
-                       @"MYPackageZipTask",
-                       @"MYPackageCalculateMD5Task",
-                       @"MYPackageCreateSpecTask",
-
-                       // release
-                       @"MYPackageUploadLocalTask",
-                       @"MYPackageCreateTagTask",
-
-                       // Clean
-                       @"MYPackageCleanIntermediateProductTask",
-                       @"MYPackageCleanFinalProductTask",
-
-                       // Statistics
-                       @"MYPackageUploadStatisticsTask"
-                       ];
-}
 
 + (NSMutableDictionary *)tasksObserver {
     static dispatch_once_t onceToken;
@@ -71,7 +32,7 @@ static NSArray *taskClassOrder;
 
 - (BOOL)runTasks:(NSArray *)tasks {
     if (!tasks) {
-        return [self runTaskClassNames:taskClassOrder];
+        return [self runTaskClassNames:[self taskClassOrder]];
     }
     NSMutableArray *taskClassNames = [NSMutableArray arrayWithCapacity:[tasks count]];
     for (NSString *taskName in tasks) {
@@ -88,7 +49,7 @@ static NSArray *taskClassOrder;
 
 - (BOOL)runTaskClassNamesInOrder:(NSArray *)tasks {
     NSMutableArray *orderedTasks = [NSMutableArray arrayWithCapacity:tasks.count];
-    for (NSString *taskName in taskClassOrder) {
+    for (NSString *taskName in [self taskClassOrder]) {
         if ([tasks indexOfObject:taskName] != NSNotFound) {
             [orderedTasks addObject:taskName];
         }

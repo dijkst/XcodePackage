@@ -21,7 +21,7 @@
     }
 
     NSError *error;
-    if (![MYPackageServer publishLocalFolder:self.config.lipoDir serverPath:self.config.serverPath error:&error]) {
+    if (![MYPackageServer publishLocalFolder:self.config.productsDir serverPath:self.config.serverPath error:&error]) {
         self.errorMessage = [error localizedDescription];
         return NO;
     }

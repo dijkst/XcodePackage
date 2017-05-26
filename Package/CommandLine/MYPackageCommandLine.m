@@ -43,7 +43,7 @@
     config.authorName         = [defaults stringForKey:@"author-name"];
     config.authorEmail        = [defaults stringForKey:@"author-email"];
     config.version            = [defaults stringForKey:@"version"];
-    config.podName            = [defaults stringForKey:@"pod-name"];
+    config.name            = [defaults stringForKey:@"pod-name"];
     config.configruation      = [defaults stringForKey:@"configuration"];
     config.xcconfigSettings   = [defaults stringForKey:@"xcconfig"];
 

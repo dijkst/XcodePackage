@@ -49,7 +49,7 @@
             [targets addObject:target];
         }
     }];
-    return targets;
+    return [targets count] > 0 ? targets : nil;
 }
 
 - (NSArray<MYPackageTarget *> *)demoTargetsWithDictionary:(NSDictionary<NSString *, NSString *> *)dict {

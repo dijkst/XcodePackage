@@ -1,13 +1,13 @@
 //
-//  MYPackageCalculateMD5Task.h
+//  MYPackageCalculateSHA1Task.h
 //  Package
 //
 //  Created by Whirlwind on 2016/12/12.
 //  Copyright © 2016年 taobao. All rights reserved.
 //
 
-#import "MYPackageBaseTask.h"
+#import "MYPackageShellTask.h"
 
-@interface MYPackageCalculateMD5Task : MYPackageBaseTask
+@interface MYPackageCalculateSHA1Task : MYPackageShellTask
 
 @end

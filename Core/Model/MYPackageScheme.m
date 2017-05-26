@@ -27,6 +27,12 @@
 }
 
 - (NSArray<MYPackageTarget *> *)targets {
+    if (_targets) {
+        return _targets;
+    }
+    if ([self.targetNames count] == 0) {
+        return nil;
+    }
     if (!_targets) {
         _targets = [self.workspace targetsWithDictionary:self.targetNames];
     }
