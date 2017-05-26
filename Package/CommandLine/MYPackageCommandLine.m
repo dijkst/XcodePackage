@@ -8,6 +8,7 @@
 
 #import "MYPackageCommandLine.h"
 #import "MYPackageTaskManager.h"
+#import "MYPackageTaskManager+TaskList.h"
 
 #if __has_include(<ObjCCommandLine/ObjCShell.h>)
 #   import <ObjCCommandLine/ObjCShell.h>
@@ -18,65 +19,76 @@
 @implementation MYPackageCommandLine
 
 + (BOOL)canRunWithCommandLineMode {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [ObjCShell setIsCMDEnvironment:[defaults objectForKey:@"task"] != nil];
+    NSArray *args = [[NSProcessInfo processInfo] arguments];
+    for (NSString *arg in @[@"-project", @"-workspace", @"setup"]) {
+        if ([args containsObject:arg]) {
+            [ObjCShell setIsCMDEnvironment:YES];
+            break;
+        }
+    }
     return [ObjCShell isCMDEnvironment];
 }
 
-+ (int)run {
-    NSDictionary *map = @{
-                          @"setup": @[@"prepareEnvironment"],
-                          @"check": @[@"checkEnvironment"],
-                          @"package": @[@"analyzeProject", @"listScheme", @"analyzeScheme", @"analyzeTarget", @"clean", @"build", @"lipo", @"updateVersionNumber", @"zip"],
-                          @"createSpec": @[@"checkGit", @"analyzeProject", @"analyzeProduct", @"analyzeGit", @"calculateMD5Task", @"createSpec", @"uploadStatistics"],
-                          @"upload": @[@"upload", @"createTag"],
-                          @"clean": @[@"cleanIntermediateProduct"],
-                          @"cleanAll": @[@"cleanIntermediateProduct", @"cleanFinalProduct"]
-                          };
-
++ (MYPackageConfig *)createConfig {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     MYPackageConfig *config = [[MYPackageConfig alloc] init];
 
+    // for all
     config.workspaceFilePath  = [self getProjectPath:[defaults stringForKey:@"workspace"] ? : [defaults stringForKey:@"project"] ];
     config.selectedSchemeName = [defaults stringForKey:@"scheme"];
-    config.authorName         = [defaults stringForKey:@"author-name"];
-    config.authorEmail        = [defaults stringForKey:@"author-email"];
+    config.name               = [defaults stringForKey:@"name"];
+    config.bundleId           = [defaults stringForKey:@"bundle-id"];
     config.version            = [defaults stringForKey:@"version"];
-    config.name            = [defaults stringForKey:@"pod-name"];
     config.configruation      = [defaults stringForKey:@"configuration"];
     config.xcconfigSettings   = [defaults stringForKey:@"xcconfig"];
 
-    NSString *task  = [defaults stringForKey:@"task"];
-    NSArray  *tasks = [task componentsSeparatedByString:@","];
-    if ([tasks count] == 0) {
-        tasks = @[@"package", @"createSpec", @"upload", @"clean"];
-    }
-    NSMutableArray *execTasks = [NSMutableArray array];
-    for (NSString *t in tasks) {
-        NSArray *ts = map[t];
-        if (ts) {
-            [execTasks addObjectsFromArray:ts];
-        } else {
-            [config.logger logN:@"⚠️ 任务 %@ 不存在，将被忽略", t];
-        }
-    }
-    [execTasks addObject:@"init"];
-    [execTasks addObject:@"checkEnvironment"];
-    NSArray *ts = [execTasks valueForKeyPath:@"@distinctUnionOfObjects.self"];
+    // for pod
+    config.authorName         = [defaults stringForKey:@"author-name"];
+    config.authorEmail        = [defaults stringForKey:@"author-email"];
 
-    // 跳过任务
-    NSString *skipTask = [defaults stringForKey:@"skip-task"];
-    if (skipTask) {
-        NSArray *skipTasks = [skipTask componentsSeparatedByString:@","];
-        ts = [ts filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL (id _Nonnull evaluatedObject, NSDictionary < NSString *, id > *_Nullable bindings) {
-            return [skipTasks indexOfObject:evaluatedObject] == NSNotFound;
-        }]];
-    }
+    // for app
+    config.displayName        = [defaults stringForKey:@"display-name"];
+    config.teamID             = [defaults stringForKey:@"team-id"];
+    config.signType           = [defaults stringForKey:@"sign-type"];
+
+    return config;
+}
+
++ (int)run {
+    NSArray *args = [[NSProcessInfo processInfo] arguments];
+    MYPackageConfig *config = [self createConfig];
 
     MYPackageTaskManager *manager = [[MYPackageTaskManager alloc] init];
     manager.config = config;
-    BOOL result = [manager runTasks:ts];
+
+    if ([args containsObject:@"setup"]) {
+        return [manager runTaskClassNames:taskClassOrderSetup] ? 0:1;
+    }
+
+    NSMutableArray *tasks = [taskClassOrderPrefix mutableCopy];
+    if ([args containsObject:@"-no-remote-git"]) {
+        [tasks removeObject:@"MYPackageCheckGitTask"];
+    }
+    BOOL result = [manager runTaskClassNames:tasks];
+    if (!result) {
+        return 1;
+    }
+
+    if (config.appTarget) {
+        tasks = [taskClassOrderForApp mutableCopy];
+    } else {
+        tasks = [taskClassOrderForLib mutableCopy];
+    }
+    if ([args containsObject:@"-no-remote-git"]) {
+        [tasks removeObject:@"MYPackageCreateTagTask"];
+    }
+    result = [manager runTaskClassNames:tasks];
+    if (!result) {
+        return 1;
+    }
+    
+    result = [manager runTaskClassNames:taskClassOrderSuffix];
     return result ? 0 : 1;
 }
 

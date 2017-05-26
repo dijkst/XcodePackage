@@ -8,6 +8,7 @@
 
 #import "MYPackageTaskManager+TaskList.h"
 
+NSArray *taskClassOrderSetup;
 NSArray *taskClassOrderPrefix;
 NSArray *taskClassOrderForApp;
 NSArray *taskClassOrderForLib;
@@ -16,6 +17,11 @@ NSArray *taskClassOrderSuffix;
 @implementation MYPackageTaskManager (TaskList)
 
 + (void)load {
+    taskClassOrderSetup = @[
+                           @"MYPackageInitTask",
+                           @"MYPackagePrepareEnvironmentTask",
+                           @"MYPackageCheckEnvironmentTask"
+                           ];
     taskClassOrderPrefix = @[
                              // Prepare
                              @"MYPackageInitTask",

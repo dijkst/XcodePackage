@@ -8,6 +8,7 @@
 
 #import "MYPackageTaskManager.h"
 
+extern NSArray *taskClassOrderSetup;
 extern NSArray *taskClassOrderPrefix;
 extern NSArray *taskClassOrderForApp;
 extern NSArray *taskClassOrderForLib;
