@@ -167,7 +167,6 @@
     config.name          = _name;
     config.bundleId      = _bundleId;
     config.version       = _version;
-    config.isSNAPSHOT    = _isSNAPSHOT;
     config.configruation = _configruation;
     config.xcconfigSettings = _xcconfigSettings;
     config.downloadUrl   = _downloadUrl;

@@ -24,7 +24,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *bundleId;
 @property (nonatomic, strong) NSString *version;
-@property (nonatomic, assign) BOOL isSNAPSHOT;
+@property (nonatomic, readonly) BOOL isSNAPSHOT;
 @property (nonatomic, strong) NSString *configruation;
 @property (nonatomic, strong) NSString *xcconfigSettings;
 @property (nonatomic, strong) NSString *downloadUrl;

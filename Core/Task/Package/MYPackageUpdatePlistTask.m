@@ -58,10 +58,9 @@
     if (![super launch]) {
         return NO;
     }
-    NSString *version = self.config.version;
-    if (version.length == 0) {
-        self.errorMessage = @"无法读取版本号！";
-        return NO;
+    if (self.config.version.length == 0 || self.config.displayName.length == 0 || self.config.bundleId.length == 0) {
+        [self logInfo:@"配置信息未变化，不执行任何更新操作！"];
+        return YES;
     }
 
     if (self.config.appTarget) {
@@ -73,7 +72,7 @@
     } else {
         [self.config.selectedScheme.targets enumerateObjectsUsingBlock:^(MYPackageTarget *_Nonnull target, NSUInteger idx, BOOL *_Nonnull stop) {
             NSString *productPath = [[self.config productPathForTarget:target] stringByAppendingPathComponent:target.fullProductName];
-            [self updateBundle:productPath displayName:nil version:version bundleIdPrefix:nil oriBundleIdPrefix:nil];
+            [self updateBundle:productPath displayName:nil version:self.config.version bundleIdPrefix:nil oriBundleIdPrefix:nil];
         }];
     }
     return YES;

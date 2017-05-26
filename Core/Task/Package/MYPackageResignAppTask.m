@@ -15,6 +15,11 @@
         return NO;
     }
 
+    if ([self.config.signType length] == 0 || [self.config.teamID length] == 0) {
+        [self logInfo:@"未设置 signType 或者 teamId，不导出 IPA!"];
+        return YES;
+    }
+    
     NSString *archivePath = [self.config.productsDir stringByAppendingPathComponent:@"archive.xcarchive"];
 
     NSDictionary *options = @{
