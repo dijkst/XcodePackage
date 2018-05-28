@@ -3,10 +3,11 @@
 
 INVALID=[]
 `/usr/bin/security find-identity -p codesigning`.split("\n").each do |line|
+  puts line
   match = line.match(/\s+\d+\) (\h+) "(.*)" \((.+)\)$/)
   next if match.nil?
   next if INVALID.include?(match[1])
-  `/usr/bin/security delete-identity -Z #{match[1]} -t`
+#  `/usr/bin/security delete-identity -Z #{match[1]} -t`
   puts "#{match[1]} \"#{match[2]}\": #{match[3]}"
   INVALID << match[1]
 end

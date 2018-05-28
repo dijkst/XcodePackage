@@ -11,6 +11,7 @@
 extern NSArray *taskClassOrderSetup;
 extern NSArray *taskClassOrderPrefix;
 extern NSArray *taskClassOrderForApp;
+extern NSArray *taskClassOrderExportIPA;
 extern NSArray *taskClassOrderForLib;
 extern NSArray *taskClassOrderSuffix;
 

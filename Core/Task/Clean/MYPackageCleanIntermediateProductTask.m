@@ -26,7 +26,7 @@
     }
     NSString *path;
     for (NSString *filename in files) {
-        if (![filename isEqualToString:@"products"] && ![filename isEqualToString:@"log"]) {
+        if (![filename isEqualToString:@"products"] && ![[filename stringByDeletingPathExtension] isEqualToString:@"log"]) {
             path = [self.config.outputDir stringByAppendingPathComponent:filename];
             if (![fileManger removeItemAtPath:path error:&error]) {
                 self.errorMessage = [NSString stringWithFormat:@"delete failed: %@ %@", path, [error description]];

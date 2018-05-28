@@ -47,6 +47,7 @@ class ProvisionParser
   def certs=(certs)
     @dict["DeveloperCertificates"] &= certs
   end
+
   def to_json(args={})
     @dict.to_json
   end

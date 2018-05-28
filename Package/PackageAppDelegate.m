@@ -84,7 +84,7 @@
 - (IBAction)cleanInvalidProfileAndCert:(id)sender {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         MYPackageTaskManager *taskManager = [[MYPackageTaskManager alloc] init];
-        [taskManager setConfig:_mainVC.config];
+        [taskManager setConfig:self.mainVC.config];
         BOOL result = [taskManager runTaskClassNames:@[NSStringFromClass([MYPackageCleanInvalidCertTask class]), NSStringFromClass([MYPackageCleanInvalidProfileTask class])]];
         dispatch_main_async_safe(^{
             NSUserNotification *notification = [[NSUserNotification alloc] init];

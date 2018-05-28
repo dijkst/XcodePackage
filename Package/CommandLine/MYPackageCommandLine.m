@@ -20,7 +20,7 @@
 
 + (BOOL)canRunWithCommandLineMode {
     NSArray *args = [[NSProcessInfo processInfo] arguments];
-    for (NSString *arg in @[@"-project", @"-workspace", @"setup"]) {
+    for (NSString *arg in @[@"-project", @"-workspace", @"setup", @"export"]) {
         if ([args containsObject:arg]) {
             [ObjCShell setIsCMDEnvironment:YES];
             break;
@@ -42,13 +42,14 @@
     config.version            = [defaults stringForKey:@"version"];
     config.configruation      = [defaults stringForKey:@"configuration"];
     config.xcconfigSettings   = [defaults stringForKey:@"xcconfig"];
+    config.outputDir          = [defaults stringForKey:@"output"];
 
     // for pod
     config.authorName         = [defaults stringForKey:@"author-name"];
     config.authorEmail        = [defaults stringForKey:@"author-email"];
 
     // for app
-    config.displayName        = [defaults stringForKey:@"display-name"];
+    config.archivePath        = [defaults stringForKey:@"archive-path"];
     config.teamID             = [defaults stringForKey:@"team-id"];
     config.signType           = [defaults stringForKey:@"sign-type"];
 
@@ -62,33 +63,41 @@
     MYPackageTaskManager *manager = [[MYPackageTaskManager alloc] init];
     manager.config = config;
 
+    [config.logger logN:@"从命令行模式启动"];
+
+    BOOL result;
     if ([args containsObject:@"setup"]) {
-        return [manager runTaskClassNames:taskClassOrderSetup] ? 0:1;
-    }
-
-    NSMutableArray *tasks = [taskClassOrderPrefix mutableCopy];
-    if ([args containsObject:@"-no-remote-git"]) {
-        [tasks removeObject:@"MYPackageCheckGitTask"];
-    }
-    BOOL result = [manager runTaskClassNames:tasks];
-    if (!result) {
-        return 1;
-    }
-
-    if (config.appTarget) {
-        tasks = [taskClassOrderForApp mutableCopy];
+        result = [manager runTaskClassNames:taskClassOrderSetup];
+    } else if ([args containsObject:@"export"]) {
+        result = [manager runTaskClassNames:taskClassOrderExportIPA];
     } else {
-        tasks = [taskClassOrderForLib mutableCopy];
+        NSMutableArray *tasks = [taskClassOrderPrefix mutableCopy];
+        if ([args containsObject:@"-no-remote-git"]) {
+            [tasks removeObject:@"MYPackageCheckGitTask"];
+        }
+        result = [manager runTaskClassNames:tasks];
+        if (!result) {
+            return 1;
+        }
+
+        if (config.appTarget) {
+            tasks = [taskClassOrderForApp mutableCopy];
+            if ([config.teamID length] == 0 || [config.signType length] == 0) {
+                [tasks removeObject:@"MYPackageResignAppTask"];
+            }
+        } else {
+            tasks = [taskClassOrderForLib mutableCopy];
+        }
+        if ([args containsObject:@"-no-remote-git"]) {
+            [tasks removeObject:@"MYPackageCreateTagTask"];
+        }
+        result = [manager runTaskClassNames:tasks];
+        if (!result) {
+            return 1;
+        }
+        
+        result = [manager runTaskClassNames:taskClassOrderSuffix];
     }
-    if ([args containsObject:@"-no-remote-git"]) {
-        [tasks removeObject:@"MYPackageCreateTagTask"];
-    }
-    result = [manager runTaskClassNames:tasks];
-    if (!result) {
-        return 1;
-    }
-    
-    result = [manager runTaskClassNames:taskClassOrderSuffix];
     return result ? 0 : 1;
 }
 

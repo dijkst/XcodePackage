@@ -19,8 +19,9 @@
         return NO;
     }
 
+    [[NSFileManager defaultManager] createDirectoryAtPath:self.config.productsDir withIntermediateDirectories:YES attributes:nil error:nil];
+    
     NSString *archivePath = [self.config.productsDir stringByAppendingPathComponent:@"archive"];
-    [[NSFileManager defaultManager] removeItemAtPath:archivePath error:nil];
 
     if ([self executeCommand:[NSString stringWithFormat:@"set -o pipefail && xcodebuild %@ \"%@\" -configuration \"%@\" -hideShellScriptEnvironment -xcconfig \"%@\" %@ -scheme \"%@\" archive -archivePath \"%@\" | bundle exec xcpretty",
                               PathIsProject(self.config.workspaceFilePath) ? @"-project" : @"-workspace",

@@ -43,12 +43,12 @@
 @property (nonatomic, strong) NSString *commitHash;
 
 // for app
-@property (nonatomic, strong) NSString *displayName;
 @property (nonatomic, strong) NSString *teamID;
 @property (nonatomic, strong) NSString *signType;
 
 // 以下为绝对路径
-@property (nonatomic, readonly) NSString *outputDir;
+@property (nonatomic, strong) NSString *outputDir;
+@property (nonatomic, strong) NSString *archivePath;
 @property (nonatomic, readonly) NSString *productsDir;
 @property (nonatomic, readonly) NSString *simulatorsDir;
 @property (nonatomic, readonly) NSString *devicesDir;

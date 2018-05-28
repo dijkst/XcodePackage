@@ -56,16 +56,19 @@
         return NO;
     }
     NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
-    NSString *displayName = [info objectForKey:@"CFBundleDisplayName"] ?: [info objectForKey:@"CFBundleName"];
-
     if (version) {
         version = [self parseTemplate:version target:target];
     }
-    if (displayName) {
-        displayName = [self parseTemplate:displayName target:target];
-    }
     self.config.version = version;
-    self.config.displayName = displayName;
+
+    if (self.config.appTarget) {
+        NSString *displayName = [info objectForKey:@"CFBundleDisplayName"] ?: [info objectForKey:@"CFBundleName"];
+
+        if (displayName) {
+            displayName = [self parseTemplate:displayName target:target];
+        }
+        self.config.name = displayName;
+    }
     return YES;
 }
 

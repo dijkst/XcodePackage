@@ -50,7 +50,7 @@
     }
     self.workingDirectory = self.config.outputDir;
     NSString *shellPath = [self scriptForName:@"lipo" ofType:@"sh"];
-    if ([self executeCommand:shellPath] != 0) {
+    if ([self executeCommand:[NSString stringWithFormat:@"\"%@\"", shellPath]] != 0) {
         self.errorMessage = @"合并通用二进制出错，详见日志！";
         return NO;
     }

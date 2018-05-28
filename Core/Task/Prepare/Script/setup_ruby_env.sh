@@ -1,11 +1,5 @@
 #!/bin/sh
 
-#  setup_ruby_env.sh
-#  Package
-#
-#  Created by Whirlwind on 16/5/3.
-#  Copyright © 2016年 taobao. All rights reserved.
-
 exe() {
     echo "> $@"
     "$@"

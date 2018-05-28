@@ -19,9 +19,9 @@
         [self logInfo:@"未设置 signType 或者 teamId，不导出 IPA!"];
         return YES;
     }
-    
-    NSString *archivePath = [self.config.productsDir stringByAppendingPathComponent:@"archive.xcarchive"];
 
+    [[NSFileManager defaultManager] createDirectoryAtPath:self.config.productsDir withIntermediateDirectories:YES attributes:nil error:nil];
+    
     NSDictionary *options = @{
                               @"method": self.config.signType,
                               @"teamID": self.config.teamID,
@@ -31,7 +31,7 @@
     [options writeToFile:optionsPath atomically:YES];
 
     if ([self executeCommand:[NSString stringWithFormat:@"set -o pipefail && xcodebuild -archivePath \"%@\" -exportPath \"%@\" -exportOptionsPlist \"%@\" -exportArchive | bundle exec xcpretty",
-                              archivePath,
+                              self.config.archivePath,
                               self.config.productsDir,
                               optionsPath
                               ]] != 0) {

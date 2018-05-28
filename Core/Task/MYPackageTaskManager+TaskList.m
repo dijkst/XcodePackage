@@ -11,6 +11,7 @@
 NSArray *taskClassOrderSetup;
 NSArray *taskClassOrderPrefix;
 NSArray *taskClassOrderForApp;
+NSArray *taskClassOrderExportIPA;
 NSArray *taskClassOrderForLib;
 NSArray *taskClassOrderSuffix;
 
@@ -49,7 +50,7 @@ NSArray *taskClassOrderSuffix;
                              // release
                              @"MYPackageCreateTagTask",
                              ];
-    taskClassOrderForApp = @[                             
+    taskClassOrderForApp = @[
                              // Build
                              @"MYPackageCleanTask",
                              @"MYPackageBuildAppTask",
@@ -63,6 +64,12 @@ NSArray *taskClassOrderSuffix;
                              // Clean
                              @"MYPackageCleanIntermediateProductTask",
                              ];
+    taskClassOrderExportIPA = @[
+                                @"MYPackageInitTask",
+                                @"MYPackageCheckEnvironmentTask",
+                                @"MYPackageUpdatePlistTask",
+                                @"MYPackageResignAppTask",
+                                ];
 }
 
 + (NSMutableArray *)taskClassNamesForTasks:(NSArray *)shortTasks {

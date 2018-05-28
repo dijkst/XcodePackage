@@ -64,8 +64,6 @@
 		AB977B941EC566420007E443 /* MYPackageQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB977B8D1EC566420007E443 /* MYPackageQRCodeViewController.xib */; };
 		AB977B991EC5872B0007E443 /* MYPackageListProfilesTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB977B981EC5872B0007E443 /* MYPackageListProfilesTask.m */; };
 		AB977B9C1EC587550007E443 /* MYPackageIPAInfoTask.m in Sources */ = {isa = PBXBuildFile; fileRef = AB977B9B1EC587550007E443 /* MYPackageIPAInfoTask.m */; };
-		AB977B9E1EC595210007E443 /* build-app.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AB977B9D1EC5951C0007E443 /* build-app.xcconfig */; };
-		AB977B9F1EC595240007E443 /* build-library.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AB50A9271D6C3BB5005A6863 /* build-library.xcconfig */; };
 		ABA2C5CC1BD739F60069EC5C /* PackageAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5CB1BD739F60069EC5C /* PackageAppDelegate.m */; };
 		ABA2C5CF1BD739F60069EC5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA2C5CE1BD739F60069EC5C /* main.m */; };
 		ABA2C5D11BD739F60069EC5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABA2C5D01BD739F60069EC5C /* Assets.xcassets */; };
@@ -193,7 +191,7 @@
 		AB50A91D1D6C210D005A6863 /* NSImage+CGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+CGImage.m"; sourceTree = "<group>"; };
 		AB50A91E1D6C210D005A6863 /* NSImage+GDQrCodeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+GDQrCodeImage.h"; sourceTree = "<group>"; };
 		AB50A91F1D6C210D005A6863 /* NSImage+GDQrCodeImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+GDQrCodeImage.m"; sourceTree = "<group>"; };
-		AB50A9271D6C3BB5005A6863 /* build-library.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "build-library.xcconfig"; sourceTree = "<group>"; };
+		AB50A9271D6C3BB5005A6863 /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = build.xcconfig; sourceTree = "<group>"; };
 		AB50A92C1D6C3BCD005A6863 /* MYPackageUploadLocalTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageUploadLocalTask.h; sourceTree = "<group>"; };
 		AB50A92D1D6C3BCD005A6863 /* MYPackageUploadLocalTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageUploadLocalTask.m; sourceTree = "<group>"; };
 		AB50A9361D6C3C8C005A6863 /* MYPackageServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageServer.h; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 		AB977B981EC5872B0007E443 /* MYPackageListProfilesTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageListProfilesTask.m; sourceTree = "<group>"; };
 		AB977B9A1EC587550007E443 /* MYPackageIPAInfoTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageIPAInfoTask.h; sourceTree = "<group>"; };
 		AB977B9B1EC587550007E443 /* MYPackageIPAInfoTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageIPAInfoTask.m; sourceTree = "<group>"; };
-		AB977B9D1EC5951C0007E443 /* build-app.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "build-app.xcconfig"; sourceTree = "<group>"; };
 		ABA2C55C1BD659060069EC5C /* NSView+Enable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Enable.h"; sourceTree = "<group>"; };
 		ABA2C55D1BD659060069EC5C /* NSView+Enable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Enable.m"; sourceTree = "<group>"; };
 		ABA2C5C81BD739F50069EC5C /* Package.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Package.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -613,8 +610,7 @@
 			isa = PBXGroup;
 			children = (
 				AB977B6F1EC565EC0007E443 /* create-scheme.rb */,
-				AB977B9D1EC5951C0007E443 /* build-app.xcconfig */,
-				AB50A9271D6C3BB5005A6863 /* build-library.xcconfig */,
+				AB50A9271D6C3BB5005A6863 /* build.xcconfig */,
 				AB2030891C96A30C00F07A5E /* lipo.sh */,
 			);
 			path = Shell;
@@ -875,7 +871,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABC6BB191C02C8B900F97BE1 /* MYPackageContainerViewController.xib in Resources */,
-				AB977B9F1EC595240007E443 /* build-library.xcconfig in Resources */,
 				ABC6BB251C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.xib in Resources */,
 				AB977B941EC566420007E443 /* MYPackageQRCodeViewController.xib in Resources */,
 				ABAEB8FC1C085ADA0044A3F0 /* MYPackageSelectSchemeTableViewRow.xib in Resources */,
@@ -902,7 +897,6 @@
 				AB69AC081CD8B0A500A9E49C /* setup_ruby_env.sh in Resources */,
 				AB977B581EC5589E0007E443 /* Podfile.lock in Resources */,
 				AB977B5A1EC5589E0007E443 /* Podfile in Resources */,
-				AB977B9E1EC595210007E443 /* build-app.xcconfig in Resources */,
 				AB977B921EC566420007E443 /* MYPackageBuildAppViewController.xib in Resources */,
 				AB977B801EC566030007E443 /* parse_provisioning_profile.rb in Resources */,
 				ABAEB94E1C0D95530044A3F0 /* find_highest_version_in_repo.rb in Resources */,

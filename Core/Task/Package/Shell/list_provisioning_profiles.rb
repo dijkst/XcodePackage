@@ -29,5 +29,9 @@ end
 
 if __FILE__ == $0
   require 'json'
-  puts get_profiles.to_json
+get_profiles.each do |team_id, array|
+    puts team_id
+    puts array.to_json
+    puts "---"
+    end
 end

@@ -33,10 +33,7 @@
 }
 
 - (NSString *)xcconfig {
-    if (self.appTarget) {
-        return [[NSBundle mainBundle] pathForResource:@"build-app" ofType:@".xcconfig"];
-    }
-    return [[NSBundle mainBundle] pathForResource:@"build-library" ofType:@".xcconfig"];
+    return [[NSBundle mainBundle] pathForResource:@"build" ofType:@".xcconfig"];
 }
 
 - (MYPackageTarget *)appTarget {
@@ -99,7 +96,17 @@
 }
 
 - (NSString *)outputDir {
+    if ([_outputDir length] > 0) {
+        return _outputDir;
+    }
     return [self.workspace.path stringByAppendingPathComponent:@"build"];
+}
+
+- (NSString *)archivePath {
+    if ([_archivePath length] > 0) {
+        return _archivePath;
+    }
+    return [self.productsDir stringByAppendingPathComponent:@"archive.xcarchive"];
 }
 
 - (NSString *)productsDir {
@@ -162,7 +169,9 @@
     config.logger    = _logger;
     config.workspace = _workspace;
 
-    config.serverPath = _serverPath;
+    config.serverPath  = _serverPath;
+    config.outputDir   = _outputDir;
+    config.archivePath = _archivePath;
 
     config.name          = _name;
     config.bundleId      = _bundleId;
@@ -177,8 +186,8 @@
     config.commitHash    = _commitHash;
     config.gitUrl        = _gitUrl;
 
-    config.displayName   = _displayName;
     config.teamID        = _teamID;
+    config.signType      = _signType;
 
     config.bundleHash    = _bundleHash;
 

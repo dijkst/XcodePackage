@@ -11,6 +11,6 @@
 
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT NSString *IPAddress();
+FOUNDATION_EXPORT NSString *IPAddress(void);
 
 #endif

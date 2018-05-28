@@ -21,7 +21,6 @@
         return NO;
     }
     if (![[self objectForKey:aKey] isEqualToString:string]) {
-        NSLog(@"updating %@ \"%@\" -> \"%@\"", aKey, [self objectForKey:aKey], string);
         [self setObject:string forKey:aKey];
         return YES;
     }
@@ -58,14 +57,14 @@
     if (![super launch]) {
         return NO;
     }
-    if (self.config.version.length == 0 || self.config.displayName.length == 0 || self.config.bundleId.length == 0) {
+    if (self.config.version.length == 0 && self.config.name.length == 0 && self.config.bundleId.length == 0) {
         [self logInfo:@"配置信息未变化，不执行任何更新操作！"];
         return YES;
     }
 
-    if (self.config.appTarget) {
-        [self updateAppsInFolder:[self.config.productsDir stringByAppendingPathComponent:@"archive.xcarchive/Products/Applications"]
-                     displayName:self.config.displayName
+    if (self.config.appTarget || self.config.archivePath) {
+        [self updateAppsInFolder:[self.config.archivePath stringByAppendingPathComponent:@"Products/Applications"]
+                     displayName:self.config.name
                         bundleId:self.config.bundleId
                          version:self.config.version
                oriBundleIdPrefix:nil];
@@ -90,7 +89,7 @@
         return YES;
     }
 
-    if (![[self.config.version lowercaseString] hasSuffix:@"-snapshot"]) {
+    if (![self.config isSNAPSHOT]) {
         // Tag 是否存在
         int status = [self executeCommand:[NSString stringWithFormat:@"git ls-remote --tags 2>&1 | grep \"refs/tags/%@^{}$\"", self.version] inWorkingDirectory:self.config.workspace.path];
         if (status > 1) {
@@ -138,15 +137,16 @@
         [self.config.logger logN:[NSString stringWithFormat:@"<INFO> Info.plist 不存在，跳过！ %@", infoPath]];
         return nil;
     }
-    NSLog(@"正在处理InfoPlist: %@", path);
     __block NSString *prefix;
     [self updatePlistFile:infoPath handler:^BOOL(NSMutableDictionary *plist) {
         NSString *oriBundleId = [plist objectForKey:@"CFBundleIdentifier"];
         BOOL updated = NO;
         if ([plist updateString:version forKey:@"CFBundleShortVersionString"]) {
+            [self.config.logger logN:[NSString stringWithFormat:@"update %@: %@ %@", path, @"CFBundleShortVersionString", version]];
             updated = YES;
         }
         if ([plist updateString:displayName forKey:@"CFBundleDisplayName"]) {
+            [self.config.logger logN:[NSString stringWithFormat:@"update %@: %@ %@", path, @"CFBundleDisplayName", displayName]];
             updated = YES;
         }
 
@@ -159,12 +159,14 @@
                 prefix = oriBundleId;
             }
             if ([plist updateString:newBundleId forKey:@"CFBundleIdentifier"]) {
+                [self.config.logger logN:[NSString stringWithFormat:@"update %@: %@ %@", path, @"CFBundleIdentifier", newBundleId]];
                 updated = YES;
             }
 
             NSString *extensionBundleId = [plist valueForKeyPath:@"NSExtension.NSExtensionAttributes.WKAppBundleIdentifier"];
             extensionBundleId = [extensionBundleId stringByReplacingPrefix:oriBundleIdPrefix withString:bundleIdPrefix];
             if ([[plist valueForKeyPath:@"NSExtension.NSExtensionAttributes"] updateString:extensionBundleId forKey:@"WKAppBundleIdentifier"]) {
+                [self.config.logger logN:[NSString stringWithFormat:@"update %@: %@ %@", path, @"WKAppBundleIdentifier", extensionBundleId]];
                 updated = YES;
             }
         }

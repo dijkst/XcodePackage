@@ -54,7 +54,7 @@
 
     self.bundleIdTextField.stringValue = self.config.selectedScheme.targets.firstObject.bundleId;
     self.versionTextField.stringValue = self.config.version;
-    self.displayNameTextField.stringValue = self.config.displayName;
+    self.displayNameTextField.stringValue = self.config.name;
     [self reloadProvisioningProfile];
 }
 
@@ -138,7 +138,7 @@
         return;
     }
     self.config.configruation = self.configrationSelector.selectedItem.title;
-    self.config.displayName = self.displayNameTextField.stringValue;
+    self.config.name = self.displayNameTextField.stringValue;
     self.config.bundleId = self.bundleIdTextField.stringValue;
     self.config.version = self.versionTextField.stringValue;
     self.config.teamID = [self.codesignSelector selectedItem].representedObject;

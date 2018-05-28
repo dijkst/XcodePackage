@@ -31,7 +31,8 @@
     }
     simulators = [simulators valueForKeyPath:@"@distinctUnionOfObjects.self"];
     devices = [devices valueForKeyPath:@"@distinctUnionOfObjects.self"];
-    NSString *cmd = [NSString stringWithFormat:@"xcodebuild -project '%@' -configuration '%@' -xcconfig '%@' -scheme '%@' %@",
+    NSString *cmd = [NSString stringWithFormat:@"xcodebuild %@ '%@' -configuration '%@' -xcconfig '%@' -scheme '%@' %@",
+                     PathIsWorkspace(self.config.workspace.filePath) ? @"-workspace" : @"-project",
                      self.config.workspace.filePath,
                      self.config.configruation,
                      self.config.xcconfig,

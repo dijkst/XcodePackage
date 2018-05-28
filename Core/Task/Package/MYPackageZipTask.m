@@ -22,6 +22,8 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError       *error       = nil;
 
+    [fileManager createDirectoryAtPath:self.config.productsDir withIntermediateDirectories:YES attributes:nil error:nil];
+
     [fileManager removeItemAtPath:self.config.bundlePath error:&error];
 
     for (MYPackageTarget *target in self.config.selectedScheme.targets) {

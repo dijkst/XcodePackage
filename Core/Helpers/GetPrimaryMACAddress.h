@@ -11,6 +11,6 @@
 
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT NSString *macAddress();
+FOUNDATION_EXPORT NSString *macAddress(void);
 
 #endif /* GetPrimaryMACAddress_h */
