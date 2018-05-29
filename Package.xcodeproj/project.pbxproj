@@ -101,6 +101,7 @@
 		ABAEB9511C0D95530044A3F0 /* MYPackageCreateTagTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB9381C0D95530044A3F0 /* MYPackageCreateTagTask.m */; };
 		ABAEB9641C0D963D0044A3F0 /* MYPackageGetHighestVersionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB95F1C0D963D0044A3F0 /* MYPackageGetHighestVersionTask.m */; };
 		ABAEB9651C0D963D0044A3F0 /* MYPackageListOpenedProjectTask.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAEB9611C0D963D0044A3F0 /* MYPackageListOpenedProjectTask.m */; };
+		ABB9EAC420BD297E00C250A7 /* build.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AB50A9271D6C3BB5005A6863 /* build.xcconfig */; };
 		ABC6BB051BFF1ABE00F97BE1 /* MYPackageScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC6BB041BFF1ABE00F97BE1 /* MYPackageScheme.m */; };
 		ABC6BB131C02C89900F97BE1 /* MYPackageBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC6BB111C02C89900F97BE1 /* MYPackageBaseViewController.m */; };
 		ABC6BB181C02C8B900F97BE1 /* MYPackageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC6BB161C02C8B900F97BE1 /* MYPackageContainerViewController.m */; };
@@ -873,6 +874,7 @@
 				ABC6BB191C02C8B900F97BE1 /* MYPackageContainerViewController.xib in Resources */,
 				ABC6BB251C02E27F00F97BE1 /* MYPackageSelectSchemeViewController.xib in Resources */,
 				AB977B941EC566420007E443 /* MYPackageQRCodeViewController.xib in Resources */,
+				ABB9EAC420BD297E00C250A7 /* build.xcconfig in Resources */,
 				ABAEB8FC1C085ADA0044A3F0 /* MYPackageSelectSchemeTableViewRow.xib in Resources */,
 				AB977B7F1EC566030007E443 /* list_provisioning_profiles.rb in Resources */,
 				AB20308A1C96A30C00F07A5E /* lipo.sh in Resources */,
