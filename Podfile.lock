@@ -1,7 +1,7 @@
 PODS:
-  - CocoaAsyncSocket (7.6.0)
-  - Criollo (0.4.16):
-    - CocoaAsyncSocket (~> 7.5)
+  - CocoaAsyncSocket (7.6.3)
+  - Criollo (0.5.4):
+    - CocoaAsyncSocket (~> 7.6)
 
 DEPENDENCIES:
   - Criollo
@@ -12,8 +12,8 @@ SPEC REPOS:
     - Criollo
 
 SPEC CHECKSUMS:
-  CocoaAsyncSocket: b9d5589f07baf9de8f34cc25abd4fcba28f13805
-  Criollo: 7d28ac97c877ad9837d879c6b4353f65fbc6c289
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
+  Criollo: 41d5ee161ba483a0a5adecc3bc1e19af29c872cc
 
 PODFILE CHECKSUM: a91c3efc3aed4d3af2cb3b501fa5fdf8aa918242
 
