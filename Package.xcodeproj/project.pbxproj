@@ -208,8 +208,8 @@
 		AB8475631CC4E03800C6FAE8 /* GetIPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetIPAddress.m; sourceTree = "<group>"; };
 		AB8A79CE1ECBF35E00EEC9E1 /* clean_invalid_cert.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = clean_invalid_cert.rb; sourceTree = "<group>"; };
 		AB977B551EC5589E0007E443 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
-		AB977B561EC5589E0007E443 /* XcodePackage.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = XcodePackage.podspec; sourceTree = "<group>"; };
-		AB977B571EC5589E0007E443 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AB977B561EC5589E0007E443 /* XcodePackage.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = XcodePackage.podspec; sourceTree = "<group>"; };
+		AB977B571EC5589E0007E443 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AB977B5C1EC5658F0007E443 /* MYPackageProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPackageProfile.h; sourceTree = "<group>"; };
 		AB977B5D1EC5658F0007E443 /* MYPackageProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPackageProfile.m; sourceTree = "<group>"; };
 		AB977B5F1EC5659E0007E443 /* MYPackageTaskManager+TaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MYPackageTaskManager+TaskList.h"; sourceTree = "<group>"; };
