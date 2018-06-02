@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -76,7 +77,7 @@
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Wwi-lM-0L4">
                             <rect key="frame" x="15" y="228" width="306" height="21"/>
                             <subviews>
-                                <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0EP-lS-uWd">
+                                <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="0EP-lS-uWd">
                                     <rect key="frame" x="-2" y="2" width="91" height="17"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Configuration:" id="8my-Q2-rhU">
                                         <font key="font" metaFont="system"/>
@@ -209,12 +210,15 @@
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SAk-5F-4XG">
                                     <rect key="frame" x="95" y="23" width="214" height="26"/>
-                                    <popUpButtonCell key="cell" type="push" title="Adhoc / Inhouse" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" tag="2" imageScaling="proportionallyDown" inset="2" selectedItem="bg6-Yz-ptW" id="VIe-pF-cMo">
+                                    <popUpButtonCell key="cell" type="push" title="Development" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="bg6-Yz-ptW" id="VIe-pF-cMo">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
                                         <menu key="menu" id="0Eb-Xs-Qms">
                                             <items>
-                                                <menuItem title="Adhoc / Inhouse" tag="2" id="bg6-Yz-ptW">
+                                                <menuItem title="Development" state="on" id="bg6-Yz-ptW">
+                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                </menuItem>
+                                                <menuItem title="Adhoc / Inhouse" tag="2" id="fh8-xh-Sur">
                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                 </menuItem>
                                                 <menuItem title="AppStore / TestFlight" tag="3" id="DOa-HE-L7B">

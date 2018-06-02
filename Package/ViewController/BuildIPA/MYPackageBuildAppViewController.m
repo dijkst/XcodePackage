@@ -10,7 +10,6 @@
 #import "MYPackageContainerViewController.h"
 #import "MYPackageQRCodeViewController.h"
 #import "NSImage+GDQrCodeImage.h"
-#import "MYPackageServer.h"
 
 #import "MYPackageListProfilesTask.h"
 
@@ -76,12 +75,12 @@
     NSString *bundleId = [self.bundleIdTextField stringValue];
     if ([bundleId length] > 0) {
         NSMutableDictionary *filterProfiles = [NSMutableDictionary dictionary];
-        [self.profiles enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSArray<MYPackageProfile *> * _Nonnull obj, BOOL * _Nonnull stop) {
-            NSArray *profiles = [obj filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(MYPackageProfile *profile, NSDictionary<NSString *,id> * bindings) {
+        [self.profiles enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull teamId, NSArray<MYPackageProfile *> * _Nonnull profiles, BOOL * _Nonnull stop) {
+            NSArray *matchProfiles = [profiles filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(MYPackageProfile *profile, NSDictionary<NSString *,id> * bindings) {
                 return [profile isMatchAppBundleID:bundleId] && profile.SignCertificate && profile.type == self.codesignTypeSelector.selectedItem.tag;
             }]];
-            if (profiles.count > 0) {
-                [filterProfiles setObject:profiles forKey:key];
+            if (matchProfiles.count > 0) {
+                [filterProfiles setObject:matchProfiles forKey:teamId];
             }
         }];
         [filterProfiles enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSArray<MYPackageProfile *> * _Nonnull profiles, BOOL * _Nonnull stop) {
