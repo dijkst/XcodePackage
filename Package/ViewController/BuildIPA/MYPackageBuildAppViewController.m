@@ -95,7 +95,7 @@
                 item.indentationLevel = 1;
                 item.enabled = NO;
 
-                if ([obj.ApplectionIdentifier isEqualToString:bundleId]) {
+                if ([obj.ApplicationIdentifier isEqualToString:bundleId]) {
                     [self.codesignSelector selectItem:teamItem];
                 }
             }];

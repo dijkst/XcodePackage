@@ -22,11 +22,11 @@ NSString *profileTypeNameForType(MYPackageProfileType type) {
 }
 
 @implementation MYPackageProfile
-@synthesize ApplectionIdentifier = _ApplectionIdentifier;
+@synthesize ApplicationIdentifier = _ApplicationIdentifier;
 
-- (NSString *)ApplectionIdentifier {
-    if (_ApplectionIdentifier) {
-        return _ApplectionIdentifier;
+- (NSString *)ApplicationIdentifier {
+    if (_ApplicationIdentifier) {
+        return _ApplicationIdentifier;
     }
     NSString *identifier = self.Entitlements[@"application-identifier"];
     for (NSString *prefix in self.ApplicationIdentifierPrefix) {
@@ -35,8 +35,8 @@ NSString *profileTypeNameForType(MYPackageProfileType type) {
             break;
         }
     }
-    _ApplectionIdentifier = identifier;
-    return _ApplectionIdentifier;
+    _ApplicationIdentifier = identifier;
+    return _ApplicationIdentifier;
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
@@ -44,7 +44,7 @@ NSString *profileTypeNameForType(MYPackageProfileType type) {
 }
 
 - (BOOL)isMatchAppBundleID:(NSString *)bundleId {
-    NSString *expression = [[self.ApplectionIdentifier stringByReplacingOccurrencesOfString:@"." withString:@"\\."] stringByReplacingOccurrencesOfString:@"*" withString:@".*"];
+    NSString *expression = [[self.ApplicationIdentifier stringByReplacingOccurrencesOfString:@"." withString:@"\\."] stringByReplacingOccurrencesOfString:@"*" withString:@".*"];
     NSError *error = nil;
 
     NSRegularExpression *regExpr =
@@ -82,7 +82,7 @@ NSString *profileTypeNameForType(MYPackageProfileType type) {
 }
 
 - (NSString *)description {
-    if ([self.ApplectionIdentifier isEqualToString:@"*"]) {
+    if ([self.ApplicationIdentifier isEqualToString:@"*"]) {
         return [NSString stringWithFormat:@"%@ (%@)", self.Name, self.TeamName];
     }
     return self.Name;

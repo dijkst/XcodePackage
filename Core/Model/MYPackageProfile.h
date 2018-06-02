@@ -27,7 +27,7 @@ NSString *profileTypeNameForType(MYPackageProfileType type);
 @property (nonatomic, strong) NSArray *TeamIdentifier;
 @property (nonatomic, strong) NSString *TeamName;
 @property (nonatomic, strong) NSDictionary *Entitlements;
-@property (nonatomic, readonly) NSString *ApplectionIdentifier;
+@property (nonatomic, readonly) NSString *ApplicationIdentifier;
 
 @property (nonatomic, strong) NSString *CreationDate;
 @property (nonatomic, strong) NSString *ExpirationDate;
