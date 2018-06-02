@@ -27,7 +27,7 @@
                               PathIsProject(self.config.workspaceFilePath) ? @"-project" : @"-workspace",
                               self.config.workspaceFilePath,
                               self.config.configruation,
-                              [self scriptForName:@"build-app" ofType:@"xcconfig"],
+                              self.config.xcconfig,
                               self.config.xcconfigSettings ?: @"",
                               self.config.selectedSchemeName,
                               archivePath
