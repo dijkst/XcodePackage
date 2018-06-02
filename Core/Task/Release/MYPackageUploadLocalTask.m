@@ -25,6 +25,7 @@
         self.errorMessage = [error localizedDescription];
         return NO;
     }
+    self.config.downloadUrl = [[MYPackageServer sharedInstance] downloadUrlForPath:self.config.serverPath];
     return YES;
 }
 

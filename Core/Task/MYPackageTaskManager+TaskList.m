@@ -58,6 +58,7 @@ NSArray *taskClassOrderSuffix;
                              @"MYPackageResignAppTask",
                              
                              // release
+                             @"MYPackageUploadLocalTask",
                              @"MYPackageCreateTagTask",
                              ];
     taskClassOrderSuffix = @[
@@ -69,6 +70,7 @@ NSArray *taskClassOrderSuffix;
                                 @"MYPackageCheckEnvironmentTask",
                                 @"MYPackageUpdatePlistTask",
                                 @"MYPackageResignAppTask",
+                                @"MYPackageUploadLocalTask",
                                 ];
 }
 

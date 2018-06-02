@@ -14,8 +14,8 @@
 
 + (instancetype)sharedInstance;
 
-+ (NSString *)localFilePath;
-- (NSString *)serverAddress;
++ (NSString *)localDirectory;
+- (NSString *)downloadUrlForPath:(NSString *)path;
 
 - (BOOL)startup;
 - (void)stop;
